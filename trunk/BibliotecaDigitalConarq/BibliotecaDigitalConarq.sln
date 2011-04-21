@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "BibliotecaDigitalCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Tests", "BibliotecaDigitalConarq.Web.Tests\Web.Tests.csproj", "{814DE75E-941E-4FB6-916A-9AD9BB4E7484}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{93E96FFB-2675-4232-A1EA-8171C010A266}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -23,6 +25,10 @@ Global
 		{814DE75E-941E-4FB6-916A-9AD9BB4E7484}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{814DE75E-941E-4FB6-916A-9AD9BB4E7484}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{814DE75E-941E-4FB6-916A-9AD9BB4E7484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93E96FFB-2675-4232-A1EA-8171C010A266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93E96FFB-2675-4232-A1EA-8171C010A266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93E96FFB-2675-4232-A1EA-8171C010A266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93E96FFB-2675-4232-A1EA-8171C010A266}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
