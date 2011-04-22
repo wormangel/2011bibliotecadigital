@@ -10,11 +10,19 @@ namespace Core.Objetos
     public class Volume
     {
         // Metadados 1.6 - Identificador do volume (O)
+        /// <summary>
+        /// Identificador único atribuído ao volume do processo ou
+        /// dossiê no ato de sua captura para o SIGAD.
+        /// </summary>
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
         // Referência
         // Metadados 1.4 - Identificador do processo/dossiê (OA)
+        /// <summary>
+        /// Identificador único atribuído ao processo ou dossiê no ato de
+        /// sua captura para o SIGAD.
+        /// </summary>
         public long IdProcessoDossie
         {
             get { return DocumentoArquivistico.Id; }
@@ -22,24 +30,43 @@ namespace Core.Objetos
 
         // Referência
         // Metadados 1.5 - Número do processo/dossiê (F)
+        /// <summary>
+        /// Número ou código alfanumérico de registro do processo ou
+        /// dossiê.
+        /// </summary>
         public String NumeroDoProcessoOuDossie
         {
             get { return DocumentoArquivistico.NumeroDoProcessoOuDossie; }
         }
 
         // Metadados 1.7 - Número do volume (O)
+        /// <summary>
+        /// Número de registro do volume do processo ou dossiê.
+        /// </summary>
         [Required]
         public String NumeroDoVolume { get; set; }
 
         // Metadados 1.8 - Tipo de meio (O)
+        /// <summary>
+        /// Identificação do meio do documento/volume/processo/dossiê:
+        /// digital, não digital ou híbrido.
+        /// </summary>
         [Required]
         public TipoDoMeio TipoDoMeio { get; set; }
 
         // Metadados 1.25 - Quantidade de folhas/páginas (O)
+        /// <summary>
+        /// Indicação da quantidade de folhas/páginas de um documento.
+        /// </summary>
         [Required]
         public String QuantidadeDeFolhas { get; set; }
 
         // Metadados 1.34 - Localização (F)
+        /// <summary>
+        /// Local de armazenamento atual do documento.
+        /// Pode ser um lugar (depósito, estante, repositório digital) uma
+        /// notação física.
+        /// </summary>
         public String Localizacao { get; set; }
 
         // Referências
