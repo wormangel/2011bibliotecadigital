@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "BibliotecaDigitalConarq.Web\Web.csproj", "{8BB4D1C5-24F6-46CD-A1C4-496913183008}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{8BB4D1C5-24F6-46CD-A1C4-496913183008}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Tests", "BibliotecaDigitalConarq.Web.Tests\Web.Tests.csproj", "{814DE75E-941E-4FB6-916A-9AD9BB4E7484}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Tests", "Web.Tests\Web.Tests.csproj", "{814DE75E-941E-4FB6-916A-9AD9BB4E7484}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{93E96FFB-2675-4232-A1EA-8171C010A266}"
 EndProject
