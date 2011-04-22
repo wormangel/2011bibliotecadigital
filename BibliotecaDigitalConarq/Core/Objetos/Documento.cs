@@ -10,6 +10,7 @@ namespace Core.Objetos
     public class Documento
     {
         // Metadados 1.1 - Identificador do documento (O)
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
         // Metadados 1.2 - Número do documento (OA)
