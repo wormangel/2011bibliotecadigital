@@ -34,6 +34,12 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="LightInfocon.GoldenIndex.Extractors">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\LightInfocon\GoldenIndex\Service\LightInfocon.GoldenIndex.Extractors.dll</HintPath>
+    </Reference>
+    <Reference Include="LightInfocon.GoldenIndex.General">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\LightInfocon\GoldenIndex\Manager\LightInfocon.GoldenIndex.General.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -48,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcessoADados.cs" />
+    <Compile Include="Gerenciadores\GerenciadorArquivos.cs" />
     <Compile Include="Objetos\Arquivo.cs" />
     <Compile Include="Objetos\Documento.cs" />
     <Compile Include="Objetos\DocumentoArquivistico.cs" />
@@ -58,10 +65,21 @@
     <Compile Include="Objetos\Enums\TipoDoTitulo.cs" />
     <Compile Include="Objetos\Volume.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Gerenciadores\" />
     <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
