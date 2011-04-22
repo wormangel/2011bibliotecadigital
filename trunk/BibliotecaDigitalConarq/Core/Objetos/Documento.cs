@@ -76,7 +76,68 @@ namespace Core.Objetos
         [Required]
         public String Originador { get; set; }
 
+        // Metadados 1.17 - Redator (O)
+        [Required]
+        public String Redator { get; set; }
+
+        // Metadados 1.19 - Procedência (OA)
+        [Required]
+        public String Procedencia { get; set; }
+
+        // Referência
+        // Metadados 1.20 - Identificador do componente digital (O)
+        // TODO Deveria retornar a lista dos IDs?
+        public long IdComponenteDigital
+        {
+            get { return Arquivos[0].ArquivoId; }
+        }
+
+        // Metadados 1.21 - Gênero (F)
+        public String Genero { get; set; }
+
+        // Metadados 1.22 - Espécie (F)
+        public String Especie { get; set; }
+
+        // Metadados 1.23 - Tipo (F)
+        public String Tipo { get; set; }
+
+        // Metadados 1.24 - Idioma (F)
+        public String Idioma { get; set; }
+
+        // Metadados 1.25 - Quantidade de folhas/páginas (F)
+        public String QuantidadeDeFolhas { get; set; }
+
+        // Metadados 1.27 - Indicação de anexos (O)
+        public Boolean TemAnexos { get; set; }
+
+        // Metadados 1.29 - Níveis de acesso (O)
+        //TODO Ver isso!
+        public object NiveisDeAcesso { get; set; }
+
+        // Metadados 1.30 - Data de produção (O)
+        [Required]
+        public DateTime DataDeProducao { get; set; }
+
+        // Metadados 1.31 - Classe (O)
+        [Required]
+        public String Classe { get; set; }
+
+        // Metadados 1.32 - Destinação prevista (O)
+        [Required]
+        public TipoDeDestinacao DestinacaoPrevista { get; set; }
+
+        // Metadados 1.33 - Prazo de guarda (O)
+        [Required]
+        public TimeSpan PrazoDeGuarda { get; set; }
+
+        // Metadados 1.34 - Localização (OA)
+        [Required]
+        public String Localizacao { get; set; }
+
         // Referências
+
+        // Os arquivos que compõem este documento
+        public List<Arquivo> Arquivos { get; set; }
 
         // O volume a que este documento pertence
         [Required]

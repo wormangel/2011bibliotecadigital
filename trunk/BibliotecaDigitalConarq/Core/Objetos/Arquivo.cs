@@ -7,13 +7,13 @@ namespace Core.Objetos
     /// Representa um arquivo digital no contexto de um SIGAD definido pela CONARQ.
     /// </summary>
     [Table("Arquivos")]
-    internal class Arquivo
+    public class Arquivo
     {
         /// <summary>
         /// Identificador único do Arquivo. É gerado automaticamente.
         /// </summary>
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public long ArquivoID { get; set; }
+        public long ArquivoId { get; set; }
 
         /// <summary>
         /// Nome original do arquivo digital no momento em que foi inserido

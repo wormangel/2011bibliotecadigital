@@ -34,6 +34,12 @@ namespace Core.Objetos
         [Required]
         public TipoDoMeio TipoDoMeio { get; set; }
 
+        // Metadados 1.25 - Quantidade de folhas/páginas (O)
+        [Required]
+        public String QuantidadeDeFolhas { get; set; }
+
+        // Metadados 1.34 - Localização (F)
+        public String Localizacao { get; set; }
 
         // Referências
 

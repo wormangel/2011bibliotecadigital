@@ -41,10 +41,51 @@ namespace Core.Objetos
         // Metadados 1.15 - Tipo do Destinatário (F)
         public TipoDoDestinatario TipoDoDestinatario { get; set; }
 
+        // Metadados 1.18 - Interessado (O)
+        [Required]
+        public String Interessado { get; set; }
+
+        // Metadados 1.19 - Procedência (O)
+        [Required]
+        public String Procedencia { get; set; }
+
+        // Metadados 1.25 - Quantidade de folhas/páginas (O)
+        [Required]
+        public String QuantidadeDeFolhas { get; set; }
+
+        // Metadados 1.26 - Numeração sequencial dos documentos (O)
+        //TODO como fazer isso? deixar na mão mesmo?
+        [Required]
+        public String NumeracaoSequencialDosDocumentos { get; set; }
+
+        // Metadados 1.29 - Níveis de acesso (O)
+        //TODO Ver isso!
+        public object NiveisDeAcesso { get; set; }
+
+        // Metadados 1.30 - Data de produção (O)
+        [Required]
+        public DateTime DataDeProducao { get; set; }
+
+        // Metadados 1.31 - Classe (O)
+        [Required]
+        public String Classe { get; set; }
+
+        // Metadados 1.32 - Destinação prevista (O)
+        [Required]
+        public TipoDeDestinacao DestinacaoPrevista { get; set; }
+
+        // Metadados 1.33 - Prazo de guarda (O)
+        [Required]
+        public TimeSpan PrazoDeGuarda{ get; set; }
+
+        // Metadados 1.34 - Localização (OA)
+        [Required]
+        public String Localizacao { get; set; }
+
         // Referências
 
         // Os volumes que este processo/dossiê contém
-        public IEnumerable<Volume> Volumes { get; set; }
+        public List<Volume> Volumes { get; set; }
     }
 
 }
