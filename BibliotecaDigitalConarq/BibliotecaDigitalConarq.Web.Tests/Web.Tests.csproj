@@ -56,7 +56,7 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BibliotecaDigitalConarq.Web\BibliotecaDigitalConarq.Web.csproj">
+    <ProjectReference Include="..\Web\Web.csproj">
       <Project>{8BB4D1C5-24F6-46CD-A1C4-496913183008}</Project>
       <Name>BibliotecaDigitalConarq.Web</Name>
     </ProjectReference>
