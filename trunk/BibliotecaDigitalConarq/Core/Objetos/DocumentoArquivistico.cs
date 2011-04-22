@@ -9,6 +9,7 @@ namespace Core.Objetos
     public class DocumentoArquivistico
     {
         // Metadados 1.4 - Identificador do processo/dossiê (O)
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
         // Metadados 1.5 - Número do processo/dossiê (O)

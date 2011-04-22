@@ -10,6 +10,7 @@ namespace Core.Objetos
     public class Volume
     {
         // Metadados 1.6 - Identificador do volume (O)
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
         // Referência
