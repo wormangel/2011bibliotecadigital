@@ -12,6 +12,11 @@ namespace Core.Gerenciadores
 
         public void CriaDocumento(Documento doc)
         {
+            // Verifica com o gerenciador de segurança..
+            // Indexa com o gerenciador de indexação.. (inclusive arquivos se houver)
+            // Loga com o gerenciador de logging..
+
+
             AcessoADados.SalvaVersaoDeDocumentoArquivistico(doc);
         }
     }
