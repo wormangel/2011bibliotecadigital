@@ -17,7 +17,12 @@ namespace Core.Gerenciadores
             // Loga com o gerenciador de logging..
 
 
-            AcessoADados.SalvaVersaoDeDocumentoArquivistico(doc);
+            AcessoADados.CriaDocumento(doc);
+        }
+
+        public void AtualizaDocumento(Documento doc)
+        {
+            AcessoADados.AtualizaDocumento(doc);
         }
     }
 }
