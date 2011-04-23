@@ -271,6 +271,10 @@ namespace Core.Objetos
         [Required]
         public String Localizacao { get; set; }
 
+        public DateTime VersaoValidaDesde { get; set; }
+
+        public DateTime VersaoValidaAte { get; set; }
+
         // Referências
 
         // Os arquivos que compõem este documento
