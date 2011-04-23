@@ -35,10 +35,10 @@
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="LightInfocon.GoldenIndex.Extractors">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files\LightInfocon\GoldenIndex\Service\LightInfocon.GoldenIndex.Extractors.dll</HintPath>
+      <HintPath>..\packages\LightInfocon.GoldenIndex.Extractors.dll</HintPath>
     </Reference>
     <Reference Include="LightInfocon.GoldenIndex.General">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files\LightInfocon\GoldenIndex\Manager\LightInfocon.GoldenIndex.General.dll</HintPath>
+      <HintPath>..\packages\LightInfocon.GoldenIndex.General.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
