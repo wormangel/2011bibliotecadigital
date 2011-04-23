@@ -53,8 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcessoADados.cs" />
+    <Compile Include="ContextoAcessoADados.cs" />
+    <Compile Include="Gerenciadores\GerenciadorAcessoADados.cs" />
     <Compile Include="Gerenciadores\GerenciadorArquivos.cs" />
+    <Compile Include="Gerenciadores\GerenciadorDocumentosArquivisticos.cs" />
     <Compile Include="Objetos\Arquivo.cs" />
     <Compile Include="Objetos\Documento.cs" />
     <Compile Include="Objetos\DocumentoArquivistico.cs" />
