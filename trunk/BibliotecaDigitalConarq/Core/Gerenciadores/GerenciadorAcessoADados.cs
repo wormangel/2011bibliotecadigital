@@ -32,7 +32,7 @@ namespace Core.Gerenciadores
             // Atribui a data de validade da nova versão para a data infinita
             doc.VersaoValidaDesde = DateTime.Now;
             doc.VersaoValidaAte = DataValidadeVersaoMaisAtual;
-            Contexto.Documentos.Attach(doc); // ou add?
+            Contexto.Documentos.Add(doc);
 
             Contexto.SaveChanges();
         }
