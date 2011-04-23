@@ -30,9 +30,10 @@ namespace Core.Gerenciadores
             Contexto.Documentos.Add(versaoAnterior); //TODO Isso vai updatear mesmo?
 
             // Atribui a data de validade da nova versão para a data infinita
+            Contexto.Documentos.Attach(doc);
             doc.VersaoValidaDesde = DateTime.Now;
             doc.VersaoValidaAte = DataValidadeVersaoMaisAtual;
-            Contexto.Documentos.Add(doc);
+            
 
             Contexto.SaveChanges();
         }
