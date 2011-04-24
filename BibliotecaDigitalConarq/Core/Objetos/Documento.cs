@@ -170,12 +170,12 @@ namespace Core.Objetos
 
         // TODO Deveria retornar a lista dos IDs?
         // Referência
-        // Metadados 1.20 - Identificador do componente digital (O)
+        // Metadados 1.20 - Identificador do arquivo (O)
         /// <summary>
-        /// Identificador dos componentes digitais que integram o
+        /// Identificador dos arquivos que integram o
         /// documento.
         /// </summary>
-        public long IdComponenteDigital
+        public long IdArquivo
         {
             get { return Arquivos[0].ArquivoId; }
         }

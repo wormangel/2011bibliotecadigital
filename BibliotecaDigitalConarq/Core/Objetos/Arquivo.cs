@@ -35,7 +35,7 @@ namespace Core.Objetos
         public String Formato { get; set; }
 
         /// <summary>
-        /// Informações sobre a localização e o suporte do componente digital,
+        /// Informações sobre a localização e o suporte do arquivo,
         /// bem como os recursos necessários para armazenamento permanente.
         /// </summary>
         [Required]
@@ -43,7 +43,7 @@ namespace Core.Objetos
 
         /// <summary>
         /// Informações sobre o ambiente de software necessário para apresentar
-        /// e/ou usar os componentes digitais, incluindo a aplicação e o 
+        /// e/ou usar os arquivos, incluindo a aplicação e o 
         /// sistema operacional.
         /// </summary>
         [Required]
@@ -67,8 +67,8 @@ namespace Core.Objetos
 
         // NOTE Verificar se entra no contexto do projeto
         /// <summary>
-        /// Registro das relações de um componente digital com outros 
-        /// componentes digitais ou com documentos.
+        /// Registro das relações de um arquivo com outros 
+        /// arquivos ou com documentos.
         /// </summary>
         //public String Relacao { get; set; }
     }
