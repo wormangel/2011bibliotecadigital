@@ -33,9 +33,9 @@ namespace Core.Gerenciadores
             Contexto.Documentos.Attach(doc);
             doc.VersaoValidaDesde = DateTime.Now;
             doc.VersaoValidaAte = DataValidadeVersaoMaisAtual;
-            
 
-            Contexto.SaveChanges()
+
+            Contexto.SaveChanges();
         }
     }
 }
