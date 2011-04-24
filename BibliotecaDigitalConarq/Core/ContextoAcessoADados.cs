@@ -16,6 +16,6 @@ namespace Core
         public DbSet<Volume> Volumes { get; set; }
         
         // String de conexão definida no app.config
-        public ContextoAcessoADados() : base("LightBase") { }
+        public ContextoAcessoADados() : base("BibliotecaConarq") { }
     }
 }
