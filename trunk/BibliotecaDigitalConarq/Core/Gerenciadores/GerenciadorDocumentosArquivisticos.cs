@@ -6,9 +6,9 @@ using Core.Objetos;
 
 namespace Core.Gerenciadores
 {
-    class GerenciadorDocumentosArquivisticos
+    public class GerenciadorDocumentosArquivisticos
     {
-        private GerenciadorAcessoADados AcessoADados = new GerenciadorAcessoADados(); 
+        private readonly GerenciadorAcessoADados AcessoADados = new GerenciadorAcessoADados(); 
 
         public void CriaDocumento(Documento doc)
         {

@@ -35,7 +35,7 @@ namespace Core.Gerenciadores
             doc.VersaoValidaAte = DataValidadeVersaoMaisAtual;
             
 
-            Contexto.SaveChanges();
+            Contexto.SaveChanges()
         }
     }
 }
