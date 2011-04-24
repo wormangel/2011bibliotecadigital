@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Core.Objetos.Volume>
+
+@{
+    ViewBag.Title = "Biblioteca Digital - Listando volumes";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Criar novo", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Id. doc. arquivístico
+        </th>
+        <th>
+            Nr. doc. arquivístico
+        </th>
+        <th>
+            Nr do volume
+        </th>
+        <th>
+            Quantidade de folhas
+        </th>
+        <th>
+            Localização
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdProcessoDossie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroDoProcessoOuDossie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroDoVolume)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantidadeDeFolhas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Localizacao)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Visualizar", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Remover", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

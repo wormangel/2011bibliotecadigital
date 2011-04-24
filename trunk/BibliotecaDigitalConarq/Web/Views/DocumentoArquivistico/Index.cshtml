@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Core.Objetos.DocumentoArquivistico>
+
+@{
+    ViewBag.Title = "Biblioteca Digital - Listando documentos arquivísticos";
+}
+
+<h2>Listando documentos arquivísticos</h2>
+
+<p>
+    @Html.ActionLink("Criar novo", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Número
+        </th>
+        <th>
+            Título
+        </th>
+        <th>
+            Descrição
+        </th>
+        <th>
+            Assunto
+        </th>
+        <th>
+            Autor
+        </th>
+        <th>
+            Destinatário
+        </th>
+        <th>
+            Interessado
+        </th>
+        <th>
+            Procedência
+        </th>
+        <th>
+            Quantidade de folhas
+        </th>
+        <th>
+            Numeração sequencial
+        </th>
+        <th>
+            Data de produção
+        </th>
+        <th>
+            Classe
+        </th>
+        <th>
+            Prazo de guarda
+        </th>
+        <th>
+            Localização
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroDoProcessoOuDossie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assunto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Autor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Destinatario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Interessado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Procedencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantidadeDeFolhas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeracaoSequencialDosDocumentos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataDeProducao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Classe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrazoDeGuarda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Localizacao)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

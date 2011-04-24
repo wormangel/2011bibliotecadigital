@@ -1,0 +1,88 @@
+﻿@model Core.Objetos.DocumentoArquivistico
+
+@{
+    ViewBag.Title = "Biblioteca Digital - Remover " + @Html.DisplayFor(model => model.Titulo) + "?";
+}
+
+<h2>Você tem certeza que deseja remover o @Html.DisplayFor(model => model.Titulo)?</h2>
+
+<fieldset>
+    <legend>Dados</legend>
+
+    <div class="display-label">Número</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumeroDoProcessoOuDossie)
+    </div>
+
+    <div class="display-label">Título</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Titulo)
+    </div>
+
+    <div class="display-label">Descrição</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descricao)
+    </div>
+
+    <div class="display-label">Assunto</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Assunto)
+    </div>
+
+    <div class="display-label">Autor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Autor)
+    </div>
+
+    <div class="display-label">Destinatário</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Destinatario)
+    </div>
+
+    <div class="display-label">Interessado</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Interessado)
+    </div>
+
+    <div class="display-label">Procedência</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Procedência)
+    </div>
+
+    <div class="display-label">Quantidade de folhas</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuantidadeDeFolhas)
+    </div>
+
+    <div class="display-label">Numeração sequencial</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumeracaoSequencialDosDocumentos)
+    </div>
+
+    <div class="display-label">Data de produção</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataDeProducao)
+    </div>
+
+    <div class="display-label">Classe</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Classe)
+    </div>
+
+    <div class="display-label">Prazo de guarda</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PrazoDeGuarda)
+    </div>
+
+    <div class="display-label">Localização</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Localizacao)
+    </div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Remover" /> |
+        @Html.ActionLink("Voltar para a lista", "Index")
+    </p>
+}

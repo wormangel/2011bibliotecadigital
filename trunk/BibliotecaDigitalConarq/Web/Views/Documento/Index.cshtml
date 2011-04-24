@@ -1,0 +1,185 @@
+﻿@model IEnumerable<Core.Objetos.Documento>
+
+@{
+    ViewBag.Title = "Biblioteca Digital - Listando documentos";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Criar novo", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Número
+        </th>
+        <th>
+            Nr. do protocolo
+        </th>
+        <th>
+            <!-- criar um link -->
+            Id doc. arquivístico
+        </th>
+        <th>
+            <!-- criar um link -->
+            Id volume
+        </th>
+        <th>
+            Id versão
+        </th>
+        <th>
+            Titulo
+        </th>
+        <th>
+            Descrição
+        </th>
+        <th>
+            Assunto
+        </th>
+        <th>
+            Autor
+        </th>
+        <th>
+            Destinatário
+        </th>
+        <th>
+            Originador
+        </th>
+        <th>
+            Redator
+        </th>
+        <th>
+            Procedência
+        </th>
+        <th>
+            Id arquivo
+        </th>
+        <th>
+            Gênero
+        </th>
+        <th>
+            Espécie
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Idioma
+        </th>
+        <th>
+            Quantidade de folhas
+        </th>
+        <th>
+            Possui anexos?
+        </th>
+        <th>
+            Data de produção
+        </th>
+        <th>
+            Classe
+        </th>
+        <th>
+            Prazo de guarda
+        </th>
+        <th>
+            Localização
+        </th>
+        <th>
+            Versão válida desde
+        </th>
+        <th>
+            Versão válida até
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroDoDocumento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroDoProtocolo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdProcessoDossie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdVolume)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdVersao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assunto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Autor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Destinatario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Originador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Redator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Procedencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdArquivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Especie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Idioma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantidadeDeFolhas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TemAnexos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataDeProducao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Classe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrazoDeGuarda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Localizacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VersaoValidaDesde)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VersaoValidaAte)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Visualizar", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Remover", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

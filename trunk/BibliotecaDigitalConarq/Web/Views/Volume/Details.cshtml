@@ -1,0 +1,40 @@
+﻿@model Core.Objetos.Volume
+
+@{
+    ViewBag.Title = "Biblioteca Digital - Detalhes do volume " + @Html.DisplayFor(model => model.NumeroDoVolume);
+}
+
+<h2>Detalhes do volume @Html.DisplayFor(model => model.NumeroDoVolume)</h2>
+
+<fieldset>
+    <legend>Dados</legend>
+
+    <div class="display-label">Id doc. arquivístico</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdProcessoDossie)
+    </div>
+
+    <div class="display-label">Nr. doc. arquivístico</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumeroDoProcessoOuDossie)
+    </div>
+
+    <div class="display-label">Nr. do volume</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumeroDoVolume)
+    </div>
+
+    <div class="display-label">Quantidade de folhas</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuantidadeDeFolhas)
+    </div>
+
+    <div class="display-label">Localização</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Localizacao)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Voltar para a lista", "Index")
+</p>
