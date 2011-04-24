@@ -34,12 +34,6 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="LightInfocon.Data.Entity.Design.Extensibility">
-      <HintPath>..\packages\LightInfocon.Data.Entity.Design.Extensibility.dll</HintPath>
-    </Reference>
-    <Reference Include="LightInfocon.Data.Entity.SetupConfiguration">
-      <HintPath>..\packages\LightInfocon.Data.Entity.SetupConfiguration.dll</HintPath>
-    </Reference>
     <Reference Include="LightInfocon.GoldenIndex.Extractors">
       <HintPath>..\packages\LightInfocon.GoldenIndex.Extractors.dll</HintPath>
     </Reference>

@@ -79,7 +79,7 @@ namespace Core.Objetos
         /// Identificar a versão do documento e estabelecer a relação
         /// entre as versões anteriores e posteriores.
         /// </summary>
-        public String IdVersao { get; set; }
+        public long IdVersao { get; set; }
 
         // Metadados 1.11 - Título (O)
         /// <summary>
@@ -90,7 +90,7 @@ namespace Core.Objetos
         ///   um documento formalmente desprovido de titulo.
         /// </summary>
         [Required]
-        public Status Titulo { get; set; }
+        public String Titulo { get; set; }
 
         // Metadados 1.11 - Tipo do Título (O)
         /// <summary>
@@ -284,5 +284,38 @@ namespace Core.Objetos
         [Required]
         public Volume Volume { get; set; }
 
+        public Documento(string numeroDoDocumento, string numeroDoProtocolo, TipoDoMeio tipoDoMeio, Status status, long idVersao, string titulo, TipoDoTitulo tipoDoTitulo, string descricao, string assunto, string autor, string destinatario, TipoDoDestinatario tipoDoDestinatario, string originador, string redator, string procedencia, string genero, string especie, string tipo, string idioma, string quantidadeDeFolhas, bool temAnexos, DateTime dataDeProducao, string classe, TipoDeDestinacao destinacaoPrevista, TimeSpan prazoDeGuarda, string localizacao, DateTime versaoValidaDesde, DateTime versaoValidaAte, List<Arquivo> arquivos, Volume volume)
+        {
+            NumeroDoDocumento = numeroDoDocumento;
+            NumeroDoProtocolo = numeroDoProtocolo;
+            TipoDoMeio = tipoDoMeio;
+            Status = status;
+            IdVersao = idVersao;
+            Titulo = titulo;
+            TipoDoTitulo = tipoDoTitulo;
+            Descricao = descricao;
+            Assunto = assunto;
+            Autor = autor;
+            Destinatario = destinatario;
+            TipoDoDestinatario = tipoDoDestinatario;
+            Originador = originador;
+            Redator = redator;
+            Procedencia = procedencia;
+            Genero = genero;
+            Especie = especie;
+            Tipo = tipo;
+            Idioma = idioma;
+            QuantidadeDeFolhas = quantidadeDeFolhas;
+            TemAnexos = temAnexos;
+            DataDeProducao = dataDeProducao;
+            Classe = classe;
+            DestinacaoPrevista = destinacaoPrevista;
+            PrazoDeGuarda = prazoDeGuarda;
+            Localizacao = localizacao;
+            VersaoValidaDesde = versaoValidaDesde;
+            VersaoValidaAte = versaoValidaAte;
+            Arquivos = arquivos;
+            Volume = volume;
+        }
     }
 }
