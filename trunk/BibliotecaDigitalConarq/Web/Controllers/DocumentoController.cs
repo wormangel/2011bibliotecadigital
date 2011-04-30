@@ -1,26 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using Core.Gerenciadores;
+using Core.Interfaces;
 using Core.Objetos;
-using Web.Models;
+using Core.Gerenciadores;
 
 namespace Web.Controllers
 { 
     public class DocumentoController : Controller
     {
-        private GerenciadorDocumentosArquivisticos servico = new GerenciadorDocumentosArquivisticos();
+        private readonly GerenciadorDocumentosArquivisticos servico;
+
+        public DocumentoController(IRepositorio<DocumentoArquivistico> repositorio)
+        {
+            servico =  new GerenciadorDocumentosArquivisticos(repositorio);
+        }
 
         //
         // GET: /Documento/
 
         public ViewResult Index()
         {
-            IEnumerable<Documento> documentos = servico.RecuperarDocumentos();
+            IEnumerable<DocumentoArquivistico> documentos = servico.RecuperarDocumentos();
             return View(documentos);
         }
 

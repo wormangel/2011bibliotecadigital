@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Core.Interfaces;
 using Core.Objetos;
 
@@ -32,7 +31,28 @@ namespace Core.Gerenciadores
 
         public List<DocumentoArquivistico> RecuperarDocumentos()
         {
-            // TODO fazer.
+            var a = AcessoADados.PegarTodos();
+            return a as List<DocumentoArquivistico>;
+            throw new NotImplementedException();
+        }
+
+        public DocumentoArquivistico RecuperarPorId(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Salvar(DocumentoArquivistico documento)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Salvar(Documento documento)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remover(long id)
+        {
             throw new NotImplementedException();
         }
     }

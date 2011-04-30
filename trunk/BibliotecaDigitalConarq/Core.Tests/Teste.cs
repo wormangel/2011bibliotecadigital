@@ -20,7 +20,7 @@ namespace Core.Tests
 
             // Diz ao mock que quando for chamado o método "PegaTodos" retornar
             // a lista de documentos definidos.
-            repositorioMock.ExpectAndReturn("PegarTodos", documentos);
+            repositorioMock.ExpectAndReturn("PegarTodos", documentos.AsQueryable());
 
             // Instancia o gerenciador com o repositório mock
             GerenciadorDocumentosArquivisticos servico = new GerenciadorDocumentosArquivisticos((IRepositorio<DocumentoArquivistico>)repositorioMock.MockInstance);

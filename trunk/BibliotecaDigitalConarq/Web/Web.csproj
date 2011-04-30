@@ -75,7 +75,6 @@
     </Compile>
     <Compile Include="Infraestrutura\FabricaDeControlesNinject.cs" />
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\DbFakeContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

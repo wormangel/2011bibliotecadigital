@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Core.Interfaces;
 using Core.Objetos;
-using Web.Models;
+using Core.Gerenciadores;
 
 namespace Web.Controllers
 { 
     public class VolumeController : Controller
     {
-        private GerenciadorVolumes servico;
+        private readonly GerenciadorVolumes servico;
 
         public VolumeController(IRepositorio<Volume> repositorio)
         {
