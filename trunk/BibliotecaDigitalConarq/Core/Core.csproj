@@ -54,8 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextoAcessoADados.cs" />
-    <Compile Include="Gerenciadores\RepositorioFalso.cs" />
-    <Compile Include="Gerenciadores\Repositorio.cs" />
+    <Compile Include="Repositorios\RepositorioFalso.cs" />
+    <Compile Include="Repositorios\Repositorio.cs" />
     <Compile Include="Gerenciadores\GerenciadorArquivos.cs" />
     <Compile Include="Gerenciadores\GerenciadorDocumentosArquivisticos.cs" />
     <Compile Include="Interfaces\IRepositorio.cs" />
