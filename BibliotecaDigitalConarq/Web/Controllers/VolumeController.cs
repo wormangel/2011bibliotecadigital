@@ -55,7 +55,7 @@ namespace Web.Controllers
         }
         
         //
-        // GET: /Volume/Edit/5
+        // GET: /Volume/Editar/5
  
         public ActionResult Edit(long id)
         {
@@ -64,7 +64,7 @@ namespace Web.Controllers
         }
 
         //
-        // POST: /Volume/Edit/5
+        // POST: /Volume/Editar/5
 
         [HttpPost]
         public ActionResult Edit(Volume volume)

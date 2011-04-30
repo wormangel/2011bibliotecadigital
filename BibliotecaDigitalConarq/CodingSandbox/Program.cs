@@ -27,9 +27,11 @@ namespace CodingSandbox
                 GerenciadorDocumentosArquivisticos ger = new GerenciadorDocumentosArquivisticos();
                 ger.CriaDocumento(doc);
                 Console.Write("Documento gerado com sucesso :D");
+                Console.ReadKey();
             } catch (Exception exc)
             {
                 Console.WriteLine("Erro, vc se lascou :( Pia:" + exc.Message);
+                Console.ReadKey();
             }
             
             

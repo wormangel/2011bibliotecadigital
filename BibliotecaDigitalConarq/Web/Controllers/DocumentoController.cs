@@ -55,7 +55,7 @@ namespace Web.Controllers
         }
         
         //
-        // GET: /Documento/Edit/5
+        // GET: /Documento/Editar/5
  
         public ActionResult Edit(long id)
         {
@@ -63,7 +63,7 @@ namespace Web.Controllers
         }
 
         //
-        // POST: /Documento/Edit/5
+        // POST: /Documento/Editar/5
 
         [HttpPost]
         public ActionResult Edit(Documento documento)
