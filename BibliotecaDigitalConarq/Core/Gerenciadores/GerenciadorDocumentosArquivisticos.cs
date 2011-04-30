@@ -1,17 +1,16 @@
 ﻿using Core.Interfaces;
 using Core.Objetos;
+using Ninject;
 
 namespace Core.Gerenciadores
 {
     public class GerenciadorDocumentosArquivisticos
     {
-        private readonly IRepositorio<DocumentoArquivistico> AcessoADados;
-
-        public GerenciadorDocumentosArquivisticos(IRepositorio<DocumentoArquivistico> repositorio)
-        {
-            AcessoADados = repositorio; 
-        }
-
+        private readonly Repositorio<DocumentoArquivistico> AcessoADados = new Repositorio<DocumentoArquivistico>(); 
+        
+        [Inject]
+        private readonly ILogger logger;
+        
         public void CriaDocumento(DocumentoArquivistico doc)
         {
             // Verifica com o gerenciador de segurança..
@@ -20,6 +19,7 @@ namespace Core.Gerenciadores
 
 
             AcessoADados.Adicionar(doc);
+            //logger.LogaAcaoDocumentoArquivistico(doc.Id, usuario, "Criado processo/dossiê");
         }
 
         public void AtualizaDocumento(DocumentoArquivistico doc)
