@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using Core.Interfaces;
-using Core.Objetos;
 
-namespace Core.Gerenciadores
+namespace Core.Repositorios
 {
     public class RepositorioFalso<T> : IDisposable, IRepositorio<T> where T : class
     {
         protected readonly IList<T> itens;
 
-        public RepositorioFalso(IList<T> itens)
+        public RepositorioFalso()
         {
-            this.itens = itens;
+            itens = new List<T>();
         }
 
         public void Adicionar(T item)
@@ -43,7 +41,7 @@ namespace Core.Gerenciadores
 
         public IQueryable PegarTodos()
         {
-            throw new NotImplementedException();
+            return itens as IQueryable;
         }
 
         public void Dispose()

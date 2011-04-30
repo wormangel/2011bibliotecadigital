@@ -1,6 +1,4 @@
-﻿using Core.Gerenciadores;
-using Core.Objetos;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Core.Tests
 {
@@ -16,6 +14,6 @@ namespace Core.Tests
             
             // Assert
             
-        }
+        }   
     }
 }

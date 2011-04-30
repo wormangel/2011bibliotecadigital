@@ -57,12 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextoAcessoADados.cs" />
-    <Compile Include="Objetos\Logger\DebugLogger.cs" />
     <Compile Include="Repositorios\RepositorioFalso.cs" />
     <Compile Include="Repositorios\Repositorio.cs" />
     <Compile Include="Gerenciadores\GerenciadorArquivos.cs" />
     <Compile Include="Gerenciadores\GerenciadorDocumentosArquivisticos.cs" />
-    <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\IRepositorio.cs" />
     <Compile Include="Objetos\Arquivo.cs" />
     <Compile Include="Objetos\Documento.cs" />
@@ -73,8 +71,6 @@
     <Compile Include="Objetos\Enums\TipoDoLog.cs" />
     <Compile Include="Objetos\Enums\TipoDoMeio.cs" />
     <Compile Include="Objetos\Enums\TipoDoTitulo.cs" />
-    <Compile Include="Objetos\Logger\Log.cs" />
-    <Compile Include="Objetos\Logger\SQLLogger.cs" />
     <Compile Include="Objetos\Volume.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
