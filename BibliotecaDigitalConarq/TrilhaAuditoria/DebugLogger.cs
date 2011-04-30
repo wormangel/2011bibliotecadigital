@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Core.Interfaces;
-using Core.Objetos.Enums;
+using TrilhaAuditoria.Enums;
+using TrilhaAuditoria.Interfaces;
 
-namespace Core.Objetos.Logger
+namespace TrilhaAuditoria
 {
     class DebugLogger : ILogger
     {

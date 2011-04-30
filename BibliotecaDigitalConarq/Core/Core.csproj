@@ -68,7 +68,6 @@
     <Compile Include="Objetos\Enums\Status.cs" />
     <Compile Include="Objetos\Enums\TipoDeDestinacao.cs" />
     <Compile Include="Objetos\Enums\TipoDoDestinatario.cs" />
-    <Compile Include="Objetos\Enums\TipoDoLog.cs" />
     <Compile Include="Objetos\Enums\TipoDoMeio.cs" />
     <Compile Include="Objetos\Enums\TipoDoTitulo.cs" />
     <Compile Include="Objetos\Volume.cs" />
