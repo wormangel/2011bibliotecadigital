@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Core.Interfaces;
 using Core.Objetos;
 using Web.Models;
 
@@ -12,7 +13,12 @@ namespace Web.Controllers
 { 
     public class VolumeController : Controller
     {
-        private GerenciadorVolumes servico = new GerenciadorVolumes();
+        private GerenciadorVolumes servico;
+
+        public VolumeController(IRepositorio<Volume> repositorio)
+        {
+            servico = new GerenciadorVolumes(repositorio);
+        }
 
         //
         // GET: /Volume/

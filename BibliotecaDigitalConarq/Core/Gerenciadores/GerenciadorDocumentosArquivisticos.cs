@@ -1,12 +1,18 @@
-﻿using Core.Objetos;
+﻿using Core.Interfaces;
+using Core.Objetos;
 
 namespace Core.Gerenciadores
 {
     public class GerenciadorDocumentosArquivisticos
     {
-        private readonly Repositorio<Documento> AcessoADados = new Repositorio<Documento>(); 
+        private readonly IRepositorio<DocumentoArquivistico> AcessoADados;
 
-        public void CriaDocumento(Documento doc)
+        public GerenciadorDocumentosArquivisticos(IRepositorio<DocumentoArquivistico> repositorio)
+        {
+            AcessoADados = repositorio; 
+        }
+
+        public void CriaDocumento(DocumentoArquivistico doc)
         {
             // Verifica com o gerenciador de segurança..
             // Indexa com o gerenciador de indexação.. (inclusive arquivos se houver)
@@ -16,7 +22,7 @@ namespace Core.Gerenciadores
             AcessoADados.Adicionar(doc);
         }
 
-        public void AtualizaDocumento(Documento doc)
+        public void AtualizaDocumento(DocumentoArquivistico doc)
         {
             AcessoADados.Editar(doc);
         }

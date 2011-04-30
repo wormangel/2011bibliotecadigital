@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Core.Gerenciadores;
 using Core.Objetos;
 using Web.Models;
 
@@ -12,7 +13,7 @@ namespace Web.Controllers
 { 
     public class DocumentoController : Controller
     {
-        private GerenciadorDocumentos servico = new GerenciadorDocumentos();
+        private GerenciadorDocumentosArquivisticos servico = new GerenciadorDocumentosArquivisticos();
 
         //
         // GET: /Documento/
