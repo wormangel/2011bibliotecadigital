@@ -54,9 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextoAcessoADados.cs" />
-    <Compile Include="Gerenciadores\GerenciadorAcessoADados.cs" />
+    <Compile Include="Gerenciadores\RepositorioFalso.cs" />
+    <Compile Include="Gerenciadores\Repositorio.cs" />
     <Compile Include="Gerenciadores\GerenciadorArquivos.cs" />
     <Compile Include="Gerenciadores\GerenciadorDocumentosArquivisticos.cs" />
+    <Compile Include="Interfaces\IRepositorio.cs" />
     <Compile Include="Objetos\Arquivo.cs" />
     <Compile Include="Objetos\Documento.cs" />
     <Compile Include="Objetos\DocumentoArquivistico.cs" />
@@ -73,9 +75,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Core.Objetos;
+﻿using Core.Objetos;
 
 namespace Core.Gerenciadores
 {
     public class GerenciadorDocumentosArquivisticos
     {
-        private readonly GerenciadorAcessoADados AcessoADados = new GerenciadorAcessoADados(); 
+        private readonly Repositorio<Documento> AcessoADados = new Repositorio<Documento>(); 
 
         public void CriaDocumento(Documento doc)
         {
@@ -17,12 +13,12 @@ namespace Core.Gerenciadores
             // Loga com o gerenciador de logging..
 
 
-            AcessoADados.CriaDocumento(doc);
+            AcessoADados.Adicionar(doc);
         }
 
         public void AtualizaDocumento(Documento doc)
         {
-            AcessoADados.AtualizaDocumento(doc);
+            AcessoADados.Editar(doc);
         }
     }
 }
