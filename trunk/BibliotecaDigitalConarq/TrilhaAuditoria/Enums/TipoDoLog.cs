@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Core.Objetos.Enums
+namespace TrilhaAuditoria.Enums
 {
     public enum TipoDoLog
     {
