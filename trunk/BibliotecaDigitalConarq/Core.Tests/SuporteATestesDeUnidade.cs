@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Core.Interfaces;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Core.Tests
 {
     /// <summary>
     /// Classe com métodos de suporte para dar mais legibilidade aos testes.
     /// </summary>
-    static class SuporteATestesDeUnidade
+    public static class SuporteATestesDeUnidade
     {
         /// <summary>
         /// Verifica ser o valor recebido do teste é igual ao valor atual. Esse
