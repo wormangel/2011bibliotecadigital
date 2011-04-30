@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
+using Core.Gerenciadores;
+using Core.Interfaces;
+using Core.Repositorios;
 using Ninject;
 using Ninject.Modules;
 
@@ -23,8 +26,7 @@ namespace Web.Infraestrutura
         {
             public override void Load()
             {
-                //Exemplo
-
+                Bind<IRepositorio<Object>>().To<Repositorio<Object>>();
             }
         }
     }
