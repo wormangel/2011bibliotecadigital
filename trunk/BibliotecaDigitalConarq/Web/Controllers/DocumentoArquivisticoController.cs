@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Core.Gerenciadores;
+using Core.Interfaces;
 using Core.Objetos;
 using Web.Models;
 
@@ -13,7 +14,12 @@ namespace Web.Controllers
 { 
     public class DocumentoArquivisticoController : Controller
     {
-        private GerenciadorDocumentosArquivisticos servico = new GerenciadorDocumentosArquivisticos();
+        private readonly GerenciadorDocumentosArquivisticos servico;
+
+        public DocumentoArquivisticoController(IRepositorio<DocumentoArquivistico> repositorio)
+        {
+            servico = new GerenciadorDocumentosArquivisticos(repositorio);
+        }
 
         //
         // GET: /DocumentoArquivistico/
