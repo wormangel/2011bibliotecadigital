@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Core.Interfaces;
@@ -8,7 +9,7 @@ namespace Core.Repositorios
     public class Repositorio<T> : IDisposable, IRepositorio<T> where T : class
     {
         protected readonly DbContext contexto;
- 
+
         public Repositorio(DbContext contexto)
         {
             this.contexto = contexto;
@@ -16,32 +17,36 @@ namespace Core.Repositorios
  
         public void Adicionar(T item)
         {
-            throw new NotImplementedException();
+            this.contexto.Set<T>().Add(item);
+            this.contexto.SaveChanges();
         }
 
         public void Remover(T item)
         {
-            throw new NotImplementedException();
+            this.contexto.Set<T>().Remove(item);
+            this.contexto.SaveChanges();
         }
 
-        public void Remover(object id)
+        public void Remover(long id)
         {
-            throw new NotImplementedException();
+            this.contexto.Set<T>().Remove(this.RecuperarPorId(id));
+            this.contexto.SaveChanges();
         }
 
-        public void Editar(T item)
+        public void Salvar(T item)
         {
-            throw new NotImplementedException();
+            this.contexto.Set<T>().Attach(item);
+            this.contexto.SaveChanges();
         }
 
-        public T PegarPorId(object id)
+        public T RecuperarPorId(long id)
         {
-            throw new NotImplementedException();
+            return this.contexto.Set<T>().Find(id);
         }
 
-        public IQueryable PegarTodos()
+        public IList<T> RecuperarTodos()
         {
-            throw new NotImplementedException();
+            return this.contexto.Set<T>().ToList(); 
         }
 
         public void Dispose()

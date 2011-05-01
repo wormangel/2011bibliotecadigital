@@ -42,9 +42,9 @@
   <ItemGroup>
     <Compile Include="Enums\TipoDoLog.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
-    <Compile Include="DebugLogger.cs" />
-    <Compile Include="Log.cs" />
-    <Compile Include="SQLLogger.cs" />
+    <Compile Include="Objetos\DebugLogger.cs" />
+    <Compile Include="Objetos\Log.cs" />
+    <Compile Include="Objetos\SQLLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

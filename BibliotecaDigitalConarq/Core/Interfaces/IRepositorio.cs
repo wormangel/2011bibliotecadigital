@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 
 namespace Core.Interfaces
 {
@@ -6,9 +8,9 @@ namespace Core.Interfaces
     {
         void Adicionar(T item);
         void Remover(T item);
-        void Remover(object id);
-        void Editar(T item);
-        T PegarPorId(object id);
-        IQueryable PegarTodos();
+        void Remover(long id);
+        void Salvar(T item);
+        T RecuperarPorId(long id);
+        IList<T> RecuperarTodos();
     }
 }

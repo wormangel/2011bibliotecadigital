@@ -24,24 +24,24 @@ namespace Core.Repositorios
             itens.Remove(item);
         }
 
-        public void Remover(object id)
+        public void Remover(long id)
         {
             throw new NotImplementedException();
         }
 
-        public void Editar(T item)
+        public void Salvar(T item)
         {
             throw new NotImplementedException();
         }
 
-        public T PegarPorId(object id)
+        public T RecuperarPorId(long id)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable PegarTodos()
+        public IList<T> RecuperarTodos()
         {
-            return itens as IQueryable;
+            return itens;
         }
 
         public void Dispose()
