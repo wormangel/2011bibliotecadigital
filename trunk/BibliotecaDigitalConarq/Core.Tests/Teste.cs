@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Core.Gerenciadores;
 using Core.Interfaces;
@@ -18,13 +19,13 @@ namespace Core.Tests
             List<DocumentoArquivistico> documentos = new List<DocumentoArquivistico> { new DocumentoArquivistico(), new DocumentoArquivistico() };
             var repositorioMock = new DynamicMock(typeof(IRepositorio<DocumentoArquivistico>));
 
-            // Diz ao mock que quando for chamado o método "PegaTodos" retornar
+            // Diz ao mock que quando for chamado o método "RecuperarTodos" retornar
             // a lista de documentos definidos.
-            repositorioMock.ExpectAndReturn("PegarTodos", documentos.AsQueryable());
+            repositorioMock.ExpectAndReturn("RecuperarTodos", documentos);
 
             // Instancia o gerenciador com o repositório mock
-            GerenciadorDocumentosArquivisticos servico = new GerenciadorDocumentosArquivisticos((IRepositorio<DocumentoArquivistico>)repositorioMock.MockInstance);
-
+            GerenciadorDocumentosArquivisticos servico = new GerenciadorDocumentosArquivisticos((IRepositorio<DocumentoArquivistico>) repositorioMock.MockInstance);
+            
             // Act e Assert
             documentos.DeveSerIgualA(servico.RecuperarDocumentos());
         }

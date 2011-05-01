@@ -26,14 +26,12 @@ namespace Core.Gerenciadores
 
         public void AtualizaDocumento(DocumentoArquivistico doc)
         {
-            AcessoADados.Editar(doc);
+            AcessoADados.Salvar(doc);
         }
 
-        public List<DocumentoArquivistico> RecuperarDocumentos()
+        public IList<DocumentoArquivistico> RecuperarDocumentos()
         {
-            var a = AcessoADados.PegarTodos();
-            return a as List<DocumentoArquivistico>;
-            throw new NotImplementedException();
+            return AcessoADados.RecuperarTodos();
         }
 
         public DocumentoArquivistico RecuperarPorId(long id)
