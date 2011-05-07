@@ -16,10 +16,10 @@ namespace Core.Gerenciadores
             this.repositorio = repositorio;
         }
 
-        public void salvarArquivo(long id, HttpPostedFileBase arquivo)
-        {
-            throw new NotImplementedException();
-        }
+        //public void salvarArquivo(long id, HttpPostedFileBase arquivo)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public IList<Documento> RecuperarDocumentos()
         {
