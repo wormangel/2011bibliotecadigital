@@ -7,29 +7,37 @@ namespace Core.Gerenciadores
 {
     public class GerenciadorVolumes
     {
+
+        private readonly IRepositorio<Volume> _repositorio;
+
         public GerenciadorVolumes(IRepositorio<Volume> repositorio)
         {
-            throw new NotImplementedException();
+            this._repositorio = repositorio;
         }
 
-        public IEnumerable<Volume> RecuperarVolumes()
+        public IList<Volume> RecuperarVolumes()
         {
-            throw new NotImplementedException();
+            return this._repositorio.RecuperarTodos();
         }
 
         public Volume RecuperarPorId(long id)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Salvar(Volume volume)
-        {
-            throw new NotImplementedException();
+            return this._repositorio.RecuperarPorId(id);
         }
 
         public void Remover(long id)
         {
-            throw new NotImplementedException();
+            this._repositorio.Remover(id);
+        }
+
+        public void Atualizar(Volume volume)
+        {
+            this._repositorio.Salvar(volume);
+        }
+
+        public void Criar(Volume volume)
+        {
+            this._repositorio.Adicionar(volume);
         }
     }
 }

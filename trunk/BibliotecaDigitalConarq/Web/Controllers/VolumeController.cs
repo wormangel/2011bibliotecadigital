@@ -48,7 +48,7 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                servico.Salvar(volume);
+                servico.Criar(volume);
                 return RedirectToAction("Index");  
             }
 
@@ -72,7 +72,7 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                servico.Salvar(volume);
+                servico.Atualizar(volume);
                 return RedirectToAction("Index");
             }
             return View(volume);
