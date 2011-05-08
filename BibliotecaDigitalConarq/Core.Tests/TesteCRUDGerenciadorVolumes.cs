@@ -1,132 +1,133 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using Core.Gerenciadores;
-//using Core.Interfaces;
-//using Core.Objetos;
-//using Moq;
-//using NUnit.Framework;
+﻿using System.Collections.Generic;
+using Core.Gerenciadores;
+using Core.Interfaces;
+using Core.Objetos;
+using NUnit.Framework;
+using NUnit.Mocks;
 
-//namespace Core.Tests
-//{
-//    [TestFixture]
-//    public class TesteCrudGerenciadorVolumes
-//    {
-//        private GerenciadorVolumes _gerenciador;
-//        private Mock<IRepositorio<Volume>> _repositorioMock;
+namespace Core.Tests
+{
+    [TestFixture]
+    public class TesteCrudGerenciadorVolumes
+    {
+        #region Setup/Teardown
 
-//        [SetUp]
-//        public void SetUp()
-//        {
-//            this._repositorioMock = new Mock<IRepositorio<Volume>>();
-//            this._gerenciador = new GerenciadorVolumes((IRepositorio<Volume>) this._repositorioMock.MockInstance);
-//        }
+        [SetUp]
+        public void SetUp()
+        {
+            _repositorioMock = new DynamicMock(typeof (IRepositorio<Volume>));
+            _gerenciador = new GerenciadorVolumes((IRepositorio<Volume>) _repositorioMock.MockInstance);
+        }
 
-//        [Test]
-//        public void CriarVolume()
-//        {
-//            var volume = new Volume();
-//            var volumesRecuperados = new List<Volume> { volume };
-            
-//            this._repositorioMock.Call("Adicionar", volume);
-//            this._repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
+        #endregion
 
-//            this._gerenciador.Criar(volume);
-//            Assert.AreEqual(volumesRecuperados, this._gerenciador.RecuperarVolumes());
-            
-//            this._repositorioMock.Verify();
-//        }
+        private GerenciadorVolumes _gerenciador;
+        private DynamicMock _repositorioMock;
 
-//        [Test]
-//        public void RecuperarVolumePorId()
-//        {
-//            // quantidade de folhas string? lol.
-//            var volume = new Volume() {Id = 1, QuantidadeDeFolhas = "100"};
-//            var volumesRecuperados = new List<Volume> { volume };
+        [Test]
+        public void AtualizarVolume()
+        {
+            var volume = new Volume {Id = 1, QuantidadeDeFolhas = "100"};
 
-//            this._repositorioMock.Call("Adicionar", volume);
-//            this._repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
-//            this._repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
+            _repositorioMock.Call("Adicionar", volume);
+            _repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
+            _repositorioMock.Call("Salvar", volume);
+            _repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
 
-//            this._gerenciador.Criar(volume);
-//            var docTemp = this._gerenciador.RecuperarPorId(1);
-//            Assert.AreEqual(volumesRecuperados, this._gerenciador.RecuperarVolumes());
-//            Assert.AreEqual("100", docTemp.QuantidadeDeFolhas);
+            _gerenciador.Criar(volume);
+            Volume volTemp = _gerenciador.RecuperarPorId(1);
+            Assert.AreEqual("100", volume.QuantidadeDeFolhas);
+            volTemp.QuantidadeDeFolhas = "200";
+            _gerenciador.Atualizar(volume);
+            Volume volTemp2 = _gerenciador.RecuperarPorId(1);
+            Assert.AreEqual("200", volTemp2.QuantidadeDeFolhas);
 
-//            this._repositorioMock.Verify();
-//        }
+            _repositorioMock.Verify();
+        }
 
-//        [Test]
-//        public void RecuperarVolumePorIdInexistente()
-//        {
-//            this._repositorioMock.ExpectAndReturn("RecuperarPorId", null, 1);
+        [Test]
+        public void CriarVolume()
+        {
+            var volume = new Volume();
+            var volumesRecuperados = new List<Volume> {volume};
 
-//            // devemos ignorar ou lançar exceção dizendo que o id não existia?
-//            Assert.Null(this._gerenciador.RecuperarPorId(1));
-                
-//            this._repositorioMock.Verify();    
-//        }
+            _repositorioMock.Call("Adicionar", volume);
+            _repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
 
-//        [Test]
-//        public void RemoverVolume()
-//        {
-//            var volume = new Volume() { Id = 1, QuantidadeDeFolhas= "100" };
+            _gerenciador.Criar(volume);
+            Assert.AreEqual(volumesRecuperados, _gerenciador.RecuperarVolumes());
 
-//            this._repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
-//            this._repositorioMock.Call("Remover", 1);
-//            this._repositorioMock.ExpectAndReturn("RecuperarPorId", null, 1);
+            _repositorioMock.Verify();
+        }
 
-//            var docTemp = this._gerenciador.RecuperarPorId(1);
-//            Assert.AreEqual("100", volume.QuantidadeDeFolhas);
-//            this._gerenciador.Remover(1);
-//            Assert.Null(this._gerenciador.RecuperarPorId(1));
+        [Test]
+        public void RecuperarVolumePorId()
+        {
+            // quantidade de folhas string? lol.
+            var volume = new Volume {Id = 1, QuantidadeDeFolhas = "100"};
+            var volumesRecuperados = new List<Volume> {volume};
 
-//            this._repositorioMock.Verify();
-//        }
+            _repositorioMock.Call("Adicionar", volume);
+            _repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
+            _repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
 
-//        [Test]
-//        public void RemoverVolumeInexistente()
-//        {
-//            this._repositorioMock.Call("Remover", 1);
-            
-//            // devemos ignorar ou lançar exceção dizendo que o id não existia?
-//            this._gerenciador.Remover(1);
+            _gerenciador.Criar(volume);
+            Volume docTemp = _gerenciador.RecuperarPorId(1);
+            Assert.AreEqual(volumesRecuperados, _gerenciador.RecuperarVolumes());
+            Assert.AreEqual("100", docTemp.QuantidadeDeFolhas);
 
-//            this._repositorioMock.Verify();
-//        }
+            _repositorioMock.Verify();
+        }
 
-//        [Test]
-//        public void AtualizarVolume()
-//        {
-//            var volume = new Volume() { Id = 1, QuantidadeDeFolhas= "100"};
+        [Test]
+        public void RecuperarVolumePorIdInexistente()
+        {
+            _repositorioMock.ExpectAndReturn("RecuperarPorId", null, 1);
 
-//            this._repositorioMock.Call("Adicionar", volume);
-//            this._repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
-//            this._repositorioMock.Call("Salvar", volume);
-//            this._repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
+            // devemos ignorar ou lançar exceção dizendo que o id não existia?
+            Assert.Null(_gerenciador.RecuperarPorId(1));
 
-//            this._gerenciador.Criar(volume);
-//            var volTemp = this._gerenciador.RecuperarPorId(1);
-//            Assert.AreEqual("100", volume.QuantidadeDeFolhas);
-//            volTemp.QuantidadeDeFolhas = "200";
-//            this._gerenciador.Atualizar(volume);
-//            var volTemp2 = this._gerenciador.RecuperarPorId(1);
-//            Assert.AreEqual("200", volTemp2.QuantidadeDeFolhas);
+            _repositorioMock.Verify();
+        }
 
-//            this._repositorioMock.Verify();
-//        }
-        
-//        [Test]
-//        public void RecuperarVolumes()
-//        {
-//            var volumesRecuperados = new List<Volume> { new Volume(), new Volume() };
+        [Test]
+        public void RecuperarVolumes()
+        {
+            var volumesRecuperados = new List<Volume> {new Volume(), new Volume()};
 
-//            this._repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
+            _repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
 
-//            Assert.AreEqual(volumesRecuperados, this._gerenciador.RecuperarVolumes());
-            
-//            this._repositorioMock.Verify();
-//        }
+            Assert.AreEqual(volumesRecuperados, _gerenciador.RecuperarVolumes());
 
-//    }
-//}
+            _repositorioMock.Verify();
+        }
+
+        [Test]
+        public void RemoverVolume()
+        {
+            var volume = new Volume {Id = 1, QuantidadeDeFolhas = "100"};
+
+            _repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
+            _repositorioMock.Call("Remover", 1);
+            _repositorioMock.ExpectAndReturn("RecuperarPorId", null, 1);
+
+            Volume docTemp = _gerenciador.RecuperarPorId(1);
+            Assert.AreEqual("100", volume.QuantidadeDeFolhas);
+            _gerenciador.Remover(1);
+            Assert.Null(_gerenciador.RecuperarPorId(1));
+
+            _repositorioMock.Verify();
+        }
+
+        [Test]
+        public void RemoverVolumeInexistente()
+        {
+            _repositorioMock.Call("Remover", 1);
+
+            // devemos ignorar ou lançar exceção dizendo que o id não existia?
+            _gerenciador.Remover(1);
+
+            _repositorioMock.Verify();
+        }
+    }
+}
