@@ -21,7 +21,7 @@ namespace Core.Objetos
         /// Número ou código alfanumérico de registro do processo ou
         /// dossiê.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Um documento arquivístico deve ter um número de processo/dossiê"), Display(Name = "Número do processo/dossiê")]
         public String NumeroDoProcessoOuDossie { get; set; }
 
         // Metadados 1.8 - Tipo de meio (O)
@@ -29,7 +29,7 @@ namespace Core.Objetos
         /// Identificação do meio do documento/volume/processo/dossiê:
         /// digital, não digital ou híbrido.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Um documento arquivístico deve ser classificado quanto ao meio"), Display(Name = "Tipo do meio")]
         public TipoDoMeio TipoDoMeio { get; set; }
 
         // Metadados 1.11 - Título (F)
