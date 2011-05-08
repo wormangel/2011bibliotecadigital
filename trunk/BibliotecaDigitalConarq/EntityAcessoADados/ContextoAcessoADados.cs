@@ -7,7 +7,7 @@ namespace EntityAcessoADados
     /// Contexto de acesso a dados para o Entity Framework. O gerenciador de
     /// acesso a dados utiliza este contexto para realizar suas operações.
     /// </summary>
-    class ContextoAcessoADados : DbContext
+    public class ContextoAcessoADados : DbContext
     {
         public DbSet<Arquivo> Arquivos { get; set; }
 

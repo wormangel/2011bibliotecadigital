@@ -1,6 +1,8 @@
+using System.Data.Entity;
 using Core.Interfaces;
 using Core.Objetos;
-using Core.Repositorios;
+using EntityAcessoADados;
+using EntityAcessoADados.Repositorios;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(Web.App_Start.NinjectMVC3), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(Web.App_Start.NinjectMVC3), "Stop")]
@@ -54,6 +56,7 @@ namespace Web.App_Start
             kernel.Bind<IRepositorio<Documento>>().To<Repositorio<Documento>>();
             kernel.Bind<IRepositorio<Volume>>().To<Repositorio<Volume>>();
             kernel.Bind<IRepositorio<Arquivo>>().To<Repositorio<Arquivo>>();
+            kernel.Bind<DbContext>().To<ContextoAcessoADados>();
         }        
     }
 }
