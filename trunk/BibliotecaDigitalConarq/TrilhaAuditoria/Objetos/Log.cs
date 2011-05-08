@@ -1,7 +1,7 @@
 ﻿using System;
 using TrilhaAuditoria.Enums;
 
-namespace TrilhaAuditoria
+namespace TrilhaAuditoria.Objetos
 {
     class Log
     {

@@ -2,7 +2,7 @@
 using TrilhaAuditoria.Enums;
 using TrilhaAuditoria.Interfaces;
 
-namespace TrilhaAuditoria
+namespace TrilhaAuditoria.Objetos
 {
     class DebugLogger : ILogger
     {
