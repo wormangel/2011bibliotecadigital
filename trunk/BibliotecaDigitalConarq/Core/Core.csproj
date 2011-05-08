@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="LightInfocon.GoldenIndex.Extractors, Version=3.3.3.0, Culture=neutral, processorArchitecture=x86">
@@ -55,11 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContextoAcessoADados.cs" />
     <Compile Include="Gerenciadores\FachadaGerenciadores.cs" />
     <Compile Include="Gerenciadores\GerenciadorDocumentos.cs" />
     <Compile Include="Gerenciadores\GerenciadorVolumes.cs" />
-    <Compile Include="Repositorios\Repositorio.cs" />
     <Compile Include="Gerenciadores\GerenciadorArquivos.cs" />
     <Compile Include="Gerenciadores\GerenciadorDocumentosArquivisticos.cs" />
     <Compile Include="Interfaces\IRepositorio.cs" />

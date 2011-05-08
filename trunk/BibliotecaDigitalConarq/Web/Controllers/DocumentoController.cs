@@ -36,8 +36,7 @@ namespace Web.Controllers
         //
         // GET: /Documento/Create
 
-        public ActionResult Create()
-        {
+        public ActionResult Create(){
             return View();
         } 
 
