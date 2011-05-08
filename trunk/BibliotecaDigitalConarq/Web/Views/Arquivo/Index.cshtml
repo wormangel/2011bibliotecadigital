@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Core.Objetos.Arquivo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Nome
+        </th>
+        <th>
+            Caracteristicas
+        </th>
+        <th>
+            Formato
+        </th>
+        <th>
+            Armazenamento
+        </th>
+        <th>
+            AmbienteSoftware
+        </th>
+        <th>
+            AmbienteHardware
+        </th>
+        <th>
+            Dependencias
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Caracteristicas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Formato)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Armazenamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmbienteSoftware)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmbienteHardware)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dependencias)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ArquivoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ArquivoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ArquivoId })
+        </td>
+    </tr>
+}
+
+</table>

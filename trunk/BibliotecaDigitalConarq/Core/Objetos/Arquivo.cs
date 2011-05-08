@@ -19,6 +19,7 @@ namespace Core.Objetos
         /// Nome original do arquivo digital no momento em que foi inserido
         /// no repositório.
         /// </summary>
+        [Display(Name = "Nome")]
         public String Nome { get; set; }
 
         /// <summary>
@@ -26,12 +27,13 @@ namespace Core.Objetos
         /// maioria dos formatos, tais como: nível de composição, tamanho, 
         /// software de criação e inibidores.
         /// </summary>
+        [Display(Name = "Características")]
         public String Caracteristicas { get; set; }
 
         /// <summary>
         /// Identificação do formato de arquivo do arquivo digital.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "É necessário informar o formato do arquivo."), Display(Name = "Formato do Arquivo")]
         public String Formato { get; set; }
 
         /// <summary>
@@ -43,10 +45,9 @@ namespace Core.Objetos
 
         /// <summary>
         /// Informações sobre o ambiente de software necessário para apresentar
-        /// e/ou usar os arquivos, incluindo a aplicação e o 
-        /// sistema operacional.
+        /// e/ou usar os arquivos, incluindo a aplicação e o sistema operacional.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Necessário informar os requisitos de software necessários."), Display(Name = "Ambiente de Software")]
         public String AmbienteSoftware { get; set; }
 
 
@@ -55,7 +56,7 @@ namespace Core.Objetos
         /// operar o software necessário para acesso ao arquivo, incluindo
         /// periféricos.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Necessário informar os requisitos de hardware ncessários"), Display(Name = "Ambiente de Hardware")]
         public String AmbienteHardware { get; set; }
 
         /// <summary>
@@ -63,6 +64,7 @@ namespace Core.Objetos
         /// e hardware, necessárias para apresentar ou usar os documentos (por 
         /// exemplo, DTD, XML Schema, fontes, folha de estilo).
         /// </summary>
+        [Display(Name = "Outras Dependências")]
         public String Dependencias { get; set; }
 
         // NOTE Verificar se entra no contexto do projeto

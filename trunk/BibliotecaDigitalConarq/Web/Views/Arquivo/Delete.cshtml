@@ -1,0 +1,53 @@
+﻿@model Core.Objetos.Arquivo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Arquivo</legend>
+
+    <div class="display-label">Nome</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nome)
+    </div>
+
+    <div class="display-label">Caracteristicas</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Caracteristicas)
+    </div>
+
+    <div class="display-label">Formato</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Formato)
+    </div>
+
+    <div class="display-label">Armazenamento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Armazenamento)
+    </div>
+
+    <div class="display-label">AmbienteSoftware</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AmbienteSoftware)
+    </div>
+
+    <div class="display-label">AmbienteHardware</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AmbienteHardware)
+    </div>
+
+    <div class="display-label">Dependencias</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Dependencias)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

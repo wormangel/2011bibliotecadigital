@@ -1,0 +1,50 @@
+﻿@model Core.Objetos.Arquivo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Arquivo</legend>
+
+    <div class="display-label">Nome</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nome)
+    </div>
+
+    <div class="display-label">Caracteristicas</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Caracteristicas)
+    </div>
+
+    <div class="display-label">Formato</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Formato)
+    </div>
+
+    <div class="display-label">Armazenamento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Armazenamento)
+    </div>
+
+    <div class="display-label">AmbienteSoftware</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AmbienteSoftware)
+    </div>
+
+    <div class="display-label">AmbienteHardware</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AmbienteHardware)
+    </div>
+
+    <div class="display-label">Dependencias</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Dependencias)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ArquivoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
