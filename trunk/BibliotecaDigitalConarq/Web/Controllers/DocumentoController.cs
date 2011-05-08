@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
+using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
-using Core.Gerenciadores;
 
 namespace Web.Controllers
-{ 
+{
     public class DocumentoController : Controller
     {
         private readonly GerenciadorDocumentos _servico;
 
         public DocumentoController(IRepositorio<Documento> repositorio)
         {
-            this._servico =  new GerenciadorDocumentos(repositorio);
+            _servico = new GerenciadorDocumentos(repositorio);
         }
 
         //
@@ -21,7 +21,7 @@ namespace Web.Controllers
 
         public ViewResult Index()
         {
-            IList<Documento> documentos = this._servico.RecuperarDocumentos();
+            IList<Documento> documentos = _servico.RecuperarDocumentos();
             return View(documentos);
         }
 
@@ -30,15 +30,16 @@ namespace Web.Controllers
 
         public ViewResult Details(long id)
         {
-            return View(this._servico.RecuperarPorId(id));
+            return View(_servico.RecuperarPorId(id));
         }
 
         //
         // GET: /Documento/Create
 
-        public ActionResult Create(){
+        public ActionResult Create()
+        {
             return View();
-        } 
+        }
 
         //
         // POST: /Documento/Create
@@ -48,19 +49,19 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                this._servico.Adicionar(documento);
-                return RedirectToAction("Index");  
+                _servico.Adicionar(documento);
+                return RedirectToAction("Index");
             }
 
             return View(documento);
         }
-        
+
         //
         // GET: /Documento/Editar/5
- 
+
         public ActionResult Edit(long id)
         {
-            return View(this._servico.RecuperarPorId(id));
+            return View(_servico.RecuperarPorId(id));
         }
 
         //
@@ -71,7 +72,7 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                this._servico.Salvar(documento);
+                _servico.Salvar(documento);
                 return RedirectToAction("Index");
             }
             return View(documento);
@@ -79,10 +80,10 @@ namespace Web.Controllers
 
         //
         // GET: /Documento/Delete/5
- 
+
         public ActionResult Delete(long id)
         {
-            return View(this._servico.RecuperarPorId(id));
+            return View(_servico.RecuperarPorId(id));
         }
 
         //
@@ -91,7 +92,7 @@ namespace Web.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(long id)
         {
-            this._servico.Remover(id);
+            _servico.Remover(id);
             return RedirectToAction("Index");
         }
 
@@ -115,6 +116,5 @@ namespace Web.Controllers
 
             return View();
         }
-
     }
 }

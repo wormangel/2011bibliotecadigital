@@ -5,14 +5,14 @@ using Core.Interfaces;
 using Core.Objetos;
 
 namespace Web.Controllers
-{ 
+{
     public class DocumentoArquivisticoController : Controller
     {
-        private readonly GerenciadorDocumentosArquivisticos servico;
+        private readonly GerenciadorDocumentosArquivisticos _servico;
 
         public DocumentoArquivisticoController(IRepositorio<DocumentoArquivistico> repositorio)
         {
-            servico = new GerenciadorDocumentosArquivisticos(repositorio);
+            _servico = new GerenciadorDocumentosArquivisticos(repositorio);
         }
 
         //
@@ -20,7 +20,7 @@ namespace Web.Controllers
 
         public ViewResult Index()
         {
-            IEnumerable<DocumentoArquivistico> documentos = servico.RecuperarDocumentos();
+            IEnumerable<DocumentoArquivistico> documentos = _servico.RecuperarDocumentos();
             return View(documentos);
         }
 
@@ -29,7 +29,7 @@ namespace Web.Controllers
 
         public ViewResult Details(long id)
         {
-            return View(servico.RecuperarPorId(id));
+            return View(_servico.RecuperarPorId(id));
         }
 
         //
@@ -38,7 +38,7 @@ namespace Web.Controllers
         public ActionResult Create()
         {
             return View();
-        } 
+        }
 
         //
         // POST: /DocumentoArquivistico/Create
@@ -48,20 +48,20 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                servico.Salvar(documentoArquivistico);
-                return RedirectToAction("Index");  
+                _servico.Salvar(documentoArquivistico);
+                return RedirectToAction("Index");
             }
 
             return View(documentoArquivistico);
         }
-        
+
         //
         // GET: /DocumentoArquivistico/Editar/5
- 
+
         public ActionResult Edit(long id)
         {
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
-            return View(servico.RecuperarPorId(id));
+            return View(_servico.RecuperarPorId(id));
         }
 
         //
@@ -72,7 +72,7 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                servico.Salvar(documentoarquivistico);
+                _servico.Salvar(documentoarquivistico);
                 return RedirectToAction("Index");
             }
             return View(documentoarquivistico);
@@ -80,11 +80,11 @@ namespace Web.Controllers
 
         //
         // GET: /DocumentoArquivistico/Delete/5
- 
+
         public ActionResult Delete(long id)
         {
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
-            return View(servico.RecuperarPorId(id));
+            return View(_servico.RecuperarPorId(id));
         }
 
         //
@@ -93,9 +93,8 @@ namespace Web.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(long id)
         {
-            servico.Remover(id);
+            _servico.Remover(id);
             return RedirectToAction("Index");
         }
-
     }
 }
