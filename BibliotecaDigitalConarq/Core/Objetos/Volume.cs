@@ -43,7 +43,7 @@ namespace Core.Objetos
         /// <summary>
         /// Número de registro do volume do processo ou dossiê.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "O número do volume deve ser informado"), Display(Name = "Número do volume")]
         public String NumeroDoVolume { get; set; }
 
         // Metadados 1.8 - Tipo de meio (O)
@@ -51,14 +51,14 @@ namespace Core.Objetos
         /// Identificação do meio do documento/volume/processo/dossiê:
         /// digital, não digital ou híbrido.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Um volume deve ser classificado quanto ao meio"), Display(Name = "Tipo do meio")]
         public TipoDoMeio TipoDoMeio { get; set; }
 
         // Metadados 1.25 - Quantidade de folhas/páginas (O)
         /// <summary>
         /// Indicação da quantidade de folhas/páginas de um documento.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "A quantidade de folhas/páginas deve ser informada"), Display(Name = "Quantidade de folhas/páginas")]
         public String QuantidadeDeFolhas { get; set; }
 
         // Metadados 1.34 - Localização (F)
@@ -67,6 +67,7 @@ namespace Core.Objetos
         /// Pode ser um lugar (depósito, estante, repositório digital) uma
         /// notação física.
         /// </summary>
+        [Display(Name = "Localização")]
         public String Localizacao { get; set; }
 
         // Referências

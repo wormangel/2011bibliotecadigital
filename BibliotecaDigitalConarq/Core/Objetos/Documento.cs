@@ -22,7 +22,7 @@ namespace Core.Objetos
         /// Número ou código alfanumérico atribuído ao documento no
         /// ato da sua produção.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "O número do documento deve ser informado"), Display(Name = "Número do documento")]
         public String NumeroDoDocumento { get; set; }
 
         // Metadados 1.3 - Número do protocolo (OA)
@@ -30,7 +30,7 @@ namespace Core.Objetos
         /// Número ou código alfanumérico atribuído ao documento no
         /// ato do protocolo.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "O número do protocolo deve ser informado"), Display(Name = "Número do protocolo")]
         public String NumeroDoProtocolo { get; set; }
 
         // Referência
@@ -60,7 +60,7 @@ namespace Core.Objetos
         /// Identificação do meio do documento/volume/processo/dossiê:
         /// digital, não digital ou híbrido.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Um documento deve ser classificado quanto ao meio"), Display(Name = "Tipo do meio")]
         public TipoDoMeio TipoDoMeio { get; set; }
 
         // Metadados 1.9 - Status (O)
@@ -71,7 +71,7 @@ namespace Core.Objetos
         /// - original – primeiro documento completo e efetivo;
         /// - cópia – resultado da reprodução do documento.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Um documento deve ser classificado quanto ao grau de formalização"), Display(Name = "Status")]
         public Status Status { get; set; }
 
         // Metadados 1.10 - Identificador de versão (OA)
@@ -79,6 +79,7 @@ namespace Core.Objetos
         /// Identificar a versão do documento e estabelecer a relação
         /// entre as versões anteriores e posteriores.
         /// </summary>
+        [Display(Name = "Id da versão")]
         public long IdVersao { get; set; }
 
         // Metadados 1.11 - Título (O)
@@ -89,14 +90,14 @@ namespace Core.Objetos
         /// - atribuído - designação providenciada para identificação de
         ///   um documento formalmente desprovido de titulo.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "O título deve ser informado"), Display(Name = "Título do documento")]
         public String Titulo { get; set; }
 
         // Metadados 1.11 - Tipo do Título (O)
         /// <summary>
         /// Identifica o tipo do título, formal ou atribuído.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "O tipo do título deve ser informado"), Display(Name = "Tipo do título")]
         public TipoDoTitulo TipoDoTitulo { get; set; }
 
         // Metadados 1.12 - Descrição (F)
@@ -104,6 +105,7 @@ namespace Core.Objetos
         /// Exposição concisa do conteúdo do documento, processo ou
         /// dossiê.
         /// </summary>
+        [Display(Name = "Descrição")]
         public String Descricao { get; set; }
 
         // Metadados 1.13 - Assunto (F)
@@ -113,6 +115,7 @@ namespace Core.Objetos
         /// controlado ou tesauro.
         /// Diferente do já estabelecido no código de classificação.
         /// </summary>
+        [Display(Name = "Assunto")]
         public String Assunto { get; set; }
 
         // Metadados 1.14 - Autor (O)
@@ -121,7 +124,7 @@ namespace Core.Objetos
         /// documento e em cujo nome ou sob cuja ordem ou
         /// responsabilidade o documento é emitido.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "O autor deve ser informado"), Display(Name = "Autor")]
         public String Autor { get; set; }
 
         // Metadados 1.15 - Destinatário (O)
@@ -134,14 +137,14 @@ namespace Core.Objetos
         /// Ex.: cidadãos, povo, estudantes, a quem possa interessar, a
         /// todos os envolvidos.
         /// </summary>
-        [Required]
+        [Display(Name = "Destinatário")]
         public String Destinatario { get; set; }
 
         // Metadados 1.15 - Tipo do Destinatário (O)
         /// <summary>
         /// Identifica o tipo do destinatário, nominal ou geral.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "O tipo do destinatário deve ser informado"), Display(Name = "Tipo do Destinatário")]
         public TipoDoDestinatario TipoDoDestinatario { get; set; }
 
         // Metadados 1.16 - Originador (O)
@@ -149,14 +152,14 @@ namespace Core.Objetos
         /// Pessoa física ou jurídica designada no endereço eletrônico ou
         /// log in em que o documento é gerado e/ou enviado.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "O originador deve ser informado"), Display(Name = "Originador")]
         public String Originador { get; set; }
 
         // Metadados 1.17 - Redator (O)
         /// <summary>
         /// Responsável pela elaboração do conteúdo do documento.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "O redator deve ser informado"), Display(Name = "Redator")]
         public String Redator { get; set; }
 
         // Metadados 1.19 - Procedência (OA)
@@ -165,7 +168,7 @@ namespace Core.Objetos
         /// legitimamente responsável pela autuação e/ou registro do
         /// Processo | Dossiê.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "A procedência deve ser informada"), Display(Name = "Procedencia")]
         public String Procedencia { get; set; }
 
         // TODO Deveria retornar a lista dos IDs?
@@ -187,6 +190,7 @@ namespace Core.Objetos
         /// utilizado na comunicação do documento.
         /// Exemplos: Audiovisual; textual; cartográfico; iconográfico; multimídia.
         /// </summary>
+        [Display(Name = "Gênero")]
         public String Genero { get; set; }
 
         // Metadados 1.22 - Espécie (F)
@@ -196,6 +200,7 @@ namespace Core.Objetos
         /// natureza das informações nele contidas.
         /// Exemplos: Processo; oficio; ata; relatório; projeto; prontuário.
         /// </summary>
+        [Display(Name = "Espécie")]
         public String Especie { get; set; }
 
         // Metadados 1.23 - Tipo (F)
@@ -205,24 +210,28 @@ namespace Core.Objetos
         /// Exemplos: Relatório de pesquisa; carta precatória; ofício-circular;
         /// prontuário médico; prontuário de funcionário.
         /// </summary>
+        [Display(Name = "Tipo")]
         public String Tipo { get; set; }
 
         // Metadados 1.24 - Idioma (F)
         /// <summary>
         /// Idioma(s) em que é expresso o conteúdo do documento.
         /// </summary>
+        [Display(Name = "Idioma")]
         public String Idioma { get; set; }
 
         // Metadados 1.25 - Quantidade de folhas/páginas (F)
         /// <summary>
         /// Indicação da quantidade de folhas/páginas de um documento.
         /// </summary>
+        [Display(Name = "Quantidade de folhas")]
         public String QuantidadeDeFolhas { get; set; }
 
         // Metadados 1.27 - Indicação de anexos (O)
         /// <summary>
         /// Indica se o documento tem anexos.
         /// </summary>
+        [Required(ErrorMessage = "Informe se o documento contém anexos"), Display(Name = "Tem anexos")]
         public Boolean TemAnexos { get; set; }
 
         ///TODO 1.28 e 1.29 deixados de fora por enquanto (RELAÇÕES e NIVEIS DE ACESSO)
@@ -232,7 +241,7 @@ namespace Core.Objetos
         /// Registro cronológico (data e hora) e tópico (local) da
         /// produção do documento.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "A data de produção deve ser informada"), Display(Name = "Data de produção")]
         public DateTime DataDeProducao { get; set; }
 
         // Metadados 1.31 - Classe (O)
@@ -240,7 +249,7 @@ namespace Core.Objetos
         /// Identificação da classe52 do documento com base em um
         /// plano de classificação.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "A classe deve ser informada"), Display(Name = "Data de produção")]
         public String Classe { get; set; }
 
         //TODO Temporalidade - próximas iterações
@@ -250,7 +259,7 @@ namespace Core.Objetos
         /// eliminação ou recolhimento) prevista para o documento, em
         /// cumprimento à tabela de temporalidade.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "A destinação deve ser informada"), Display(Name = "Destinação prevista")]
         public TipoDeDestinacao DestinacaoPrevista { get; set; }
 
         //TODO Temporalidade - próximas iterações
@@ -259,7 +268,7 @@ namespace Core.Objetos
         /// Indicação do prazo estabelecido em tabela de temporalidade
         /// para o cumprimento da destinação.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "O prazo de guarda deve ser informado"), Display(Name = "Prazo de guarda")]
         public TimeSpan PrazoDeGuarda { get; set; }
 
         // Metadados 1.34 - Localização (OA)
@@ -268,12 +277,8 @@ namespace Core.Objetos
         /// Pode ser um lugar (depósito, estante, repositório digital) uma
         /// notação física.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "A localização deve ser informada"), Display(Name = "Localização")]
         public String Localizacao { get; set; }
-
-        public DateTime VersaoValidaDesde { get; set; }
-
-        public DateTime VersaoValidaAte { get; set; }
 
         // Referências
 
