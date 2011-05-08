@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Core.Interfaces;
 using Core.Objetos;
 
@@ -7,41 +6,41 @@ namespace Core.Gerenciadores
 {
     public class GerenciadorDocumentos
     {
-        private readonly IRepositorio<Documento> repositorio;
+        private readonly IRepositorio<Documento> _repositorio;
 
         public GerenciadorDocumentos(IRepositorio<Documento> repositorio)
         {
-            this.repositorio = repositorio;
+            _repositorio = repositorio;
         }
 
-        //public void salvarArquivo(long id, HttpPostedFileBase arquivo)
+        //public void SalvarArquivo(long id, HttpPostedFileBase arquivo)
         //{
         //    throw new NotImplementedException();
         //}
 
         public IList<Documento> RecuperarDocumentos()
         {
-            throw new NotImplementedException();
+            return _repositorio.RecuperarTodos();
         }
 
         public Documento RecuperarPorId(long id)
         {
-            throw new NotImplementedException();
+            return _repositorio.RecuperarPorId(id);
         }
 
         public void Salvar(Documento documento)
         {
-            throw new NotImplementedException();
+            _repositorio.Salvar(documento);
         }
 
         public void Adicionar(Documento documento)
         {
-            throw new NotImplementedException();
+            _repositorio.Adicionar(documento);
         }
 
         public void Remover(long id)
         {
-            throw new NotImplementedException();
+            _repositorio.Remover(id);
         }
     }
 }
