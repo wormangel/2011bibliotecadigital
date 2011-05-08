@@ -65,7 +65,6 @@
     <Compile Include="Gerenciadores\FachadaGerenciadores.cs" />
     <Compile Include="Gerenciadores\GerenciadorDocumentos.cs" />
     <Compile Include="Gerenciadores\GerenciadorVolumes.cs" />
-    <Compile Include="Repositorios\RepositorioFalso.cs" />
     <Compile Include="Repositorios\Repositorio.cs" />
     <Compile Include="Gerenciadores\GerenciadorArquivos.cs" />
     <Compile Include="Gerenciadores\GerenciadorDocumentosArquivisticos.cs" />
