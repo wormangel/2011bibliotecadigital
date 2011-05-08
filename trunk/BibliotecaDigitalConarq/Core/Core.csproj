@@ -34,14 +34,19 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="LightInfocon.GoldenIndex.Extractors">
-      <HintPath>..\packages\LightInfocon.GoldenIndex.Extractors.dll</HintPath>
+    <Reference Include="LightInfocon.Data.Entity.Design.Extensibility">
+      <HintPath>..\packages\LightInfocon\LightInfocon.Data.Entity.Design.Extensibility.dll</HintPath>
     </Reference>
-    <Reference Include="LightInfocon.GoldenIndex.General">
-      <HintPath>..\packages\LightInfocon.GoldenIndex.General.dll</HintPath>
+    <Reference Include="LightInfocon.Data.Entity.SetupConfiguration">
+      <HintPath>..\packages\LightInfocon\LightInfocon.Data.Entity.SetupConfiguration.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\packages\ninject\Ninject.dll</HintPath>
+    <Reference Include="LightInfocon.GoldenIndex.Extractors, Version=3.3.3.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\LightInfocon\LightInfocon.GoldenIndex.Extractors.dll</HintPath>
+    </Reference>
+    <Reference Include="LightInfocon.GoldenIndex.General, Version=3.3.3.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\LightInfocon\LightInfocon.GoldenIndex.General.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

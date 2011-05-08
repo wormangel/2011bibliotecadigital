@@ -16,7 +16,7 @@ namespace Core.Tests
         /// <param name="valorEsperado">Valor obtido pelo teste.</param>
         public static void DeveSerIgualA<T>(this T valorAtual, T valorEsperado)
         {
-            Assert.AreEqual(valorEsperado, valorAtual);
+            Assert.AreEqual(valorAtual, valorEsperado);
         }
     }
 }
