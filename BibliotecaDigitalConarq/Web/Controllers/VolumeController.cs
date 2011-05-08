@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
-using Core.Gerenciadores;
 
 namespace Web.Controllers
-{ 
+{
     public class VolumeController : Controller
     {
         private readonly GerenciadorVolumes servico;
@@ -38,7 +38,7 @@ namespace Web.Controllers
         public ActionResult Create()
         {
             return View();
-        } 
+        }
 
         //
         // POST: /Volume/Create
@@ -49,15 +49,15 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 servico.Criar(volume);
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
             }
 
             return View(volume);
         }
-        
+
         //
         // GET: /Volume/Editar/5
- 
+
         public ActionResult Edit(long id)
         {
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
@@ -80,7 +80,7 @@ namespace Web.Controllers
 
         //
         // GET: /Volume/Delete/5
- 
+
         public ActionResult Delete(long id)
         {
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
@@ -96,6 +96,5 @@ namespace Web.Controllers
             servico.Remover(id);
             return RedirectToAction("Index");
         }
-
     }
 }
