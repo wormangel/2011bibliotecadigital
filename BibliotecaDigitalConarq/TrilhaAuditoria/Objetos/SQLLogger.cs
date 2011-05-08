@@ -2,12 +2,17 @@
 using TrilhaAuditoria.Enums;
 using TrilhaAuditoria.Interfaces;
 
-namespace TrilhaAuditoria
+namespace TrilhaAuditoria.Objetos
 {
     class SQLLogger : ILogger
     {
         
-        private readonly IRepositorio<Log> repositorio = null;
+        private readonly IRepositorio<Log> repositorio;
+
+        public SQLLogger(IRepositorio<Log> repositorio)
+        {
+            this.repositorio = repositorio;
+        }
 
         public void LogaMensagem(string mensagem)
         {
