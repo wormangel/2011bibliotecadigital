@@ -16,6 +16,9 @@ namespace EntityAcessoADados
         public DbSet<Volume> Volumes { get; set; }
         
         // String de conexão definida no app.config
-        public ContextoAcessoADados() : base("BibliotecaConarq") { }
+        public ContextoAcessoADados() : base("BibliotecaConarq")
+        {
+            Database.SetInitializer(new ContextoInitializer());
+        }
     }
 }
