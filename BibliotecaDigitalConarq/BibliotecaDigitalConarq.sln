@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Tests", "Web.Tests\Web.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrilhaAuditoria", "TrilhaAuditoria\TrilhaAuditoria.csproj", "{04EE8E78-53A8-410A-99DB-5801CE0B9EFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityAcessoADados", "EntityAcessoADados\EntityAcessoADados.csproj", "{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -85,6 +87,16 @@ Global
 		{04EE8E78-53A8-410A-99DB-5801CE0B9EFB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{04EE8E78-53A8-410A-99DB-5801CE0B9EFB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{04EE8E78-53A8-410A-99DB-5801CE0B9EFB}.Release|x86.ActiveCfg = Release|Any CPU
+		{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
