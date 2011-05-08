@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using Core.Interfaces;
+using Core.Objetos;
 using Core.Properties;
 using LightInfocon.GoldenIndex.Extractors;
 using LightInfocon.GoldenIndex.General;
@@ -13,9 +16,12 @@ namespace Core.Gerenciadores
     {
         private readonly IGoldenIndex goldenIndex;
         private readonly User usuarioGoldenIndex;
+        private readonly IRepositorio<Arquivo> _repositorio;
 
-        public GerenciadorArquivos()
+        public GerenciadorArquivos(IRepositorio<Arquivo> repositorio)
         {
+            _repositorio = repositorio;
+
             goldenIndex = GoldenIndexClient.Instance(Settings.Default.HostGoldenIndex,
                                                      uint.Parse(Settings.Default.PortaGoldenIndex),
                                                      Settings.Default.UriGoldenIndex,
@@ -40,6 +46,31 @@ namespace Core.Gerenciadores
         public String Extrair(String caminhoArquivo)
         {
             return DocumentExtractor.Instance.Extract(caminhoArquivo);
+        }
+
+        public IList<Arquivo> RecuperarArquivos()
+        {
+            return _repositorio.RecuperarTodos();
+        }
+
+        public Arquivo RecuperarPorId(long id)
+        {
+            return _repositorio.RecuperarPorId(id);
+        }
+
+        public void Salvar(Arquivo documento)
+        {
+            _repositorio.Salvar(documento);
+        }
+
+        public void Adicionar(Arquivo documento)
+        {
+            _repositorio.Adicionar(documento);
+        }
+
+        public void Remover(long id)
+        {
+            _repositorio.Remover(id);
         }
     }
 }
