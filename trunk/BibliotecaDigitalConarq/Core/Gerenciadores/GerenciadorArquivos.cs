@@ -72,5 +72,10 @@ namespace Core.Gerenciadores
         {
             _repositorio.Remover(id);
         }
+
+        public void Atualizar(Arquivo arquivo)
+        {
+            _repositorio.Salvar(arquivo);
+        }
     }
 }
