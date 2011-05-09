@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Core.Interfaces;
 using Core.Objetos;
 
@@ -18,7 +19,7 @@ namespace Core.Gerenciadores
         //    throw new NotImplementedException();
         //}
 
-        public IList<Documento> RecuperarDocumentos()
+        public IQueryable<Documento> RecuperarDocumentos()
         {
             return _repositorio.RecuperarTodos();
         }
