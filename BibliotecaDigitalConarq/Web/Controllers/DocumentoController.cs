@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Core.Gerenciadores;
@@ -21,7 +22,7 @@ namespace Web.Controllers
 
         public ViewResult Index()
         {
-            IList<Documento> documentos = _servico.RecuperarDocumentos();
+            IQueryable<Documento> documentos = _servico.RecuperarDocumentos();
             return View(documentos);
         }
 

@@ -55,9 +55,9 @@ namespace EntityAcessoADados.Repositorios
             return contexto.Set<T>().Find(id);
         }
 
-        public IList<T> RecuperarTodos()
+        public IQueryable<T> RecuperarTodos()
         {
-            return contexto.Set<T>().ToList();
+            return contexto.Set<T>();
         }
 
         #endregion

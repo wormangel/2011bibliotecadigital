@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Core.Interfaces;
 using Core.Objetos;
 using Core.Properties;
@@ -48,7 +50,7 @@ namespace Core.Gerenciadores
             return DocumentExtractor.Instance.Extract(caminhoArquivo);
         }
 
-        public IList<Arquivo> RecuperarArquivos()
+        public IQueryable<Arquivo> RecuperarArquivos()
         {
             return _repositorio.RecuperarTodos();
         }
@@ -63,9 +65,23 @@ namespace Core.Gerenciadores
             _repositorio.Salvar(documento);
         }
 
-        public void Adicionar(Arquivo documento)
+        public long Adicionar(Arquivo arquivo)
         {
-            _repositorio.Adicionar(documento);
+            // Salva os metadados
+
+            _repositorio.Adicionar(arquivo);
+
+            return _repositorio.RecuperarTodos().FiltraPorCaminho(arquivo.CaminhoDoArquivo).FirstOrDefault().ArquivoId;
+        }
+
+        public void AdicionarAnexo(Arquivo arquivo, Stream conteudo)
+        {
+            // Salva o arquivo físico
+            Directory.CreateDirectory(Path.GetDirectoryName(arquivo.CaminhoDoArquivo));
+
+            FileStream anexo = new FileStream(arquivo.CaminhoDoArquivo, FileMode.Create);
+            conteudo.CopyTo(anexo);
+            anexo.Close();
         }
 
         public void Remover(long id)
@@ -76,6 +92,15 @@ namespace Core.Gerenciadores
         public void Atualizar(Arquivo arquivo)
         {
             _repositorio.Salvar(arquivo);
+        }
+    }
+    
+    // PipesAndFilters
+    public static class ArquivoFilters
+    {
+        public static IQueryable<Arquivo> FiltraPorCaminho(this IQueryable<Arquivo> consulta, string caminho)
+        {
+            return consulta.Where(arquivo => arquivo.CaminhoDoArquivo.Equals(caminho));
         }
     }
 }

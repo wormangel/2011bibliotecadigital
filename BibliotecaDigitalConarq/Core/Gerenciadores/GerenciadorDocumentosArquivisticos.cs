@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Core.Interfaces;
 using Core.Objetos;
 
@@ -33,7 +34,7 @@ namespace Core.Gerenciadores
             //logger.LogaAcaoDocumentoArquivistico(doc.Id, usuario, "Processo/Dossiê atualizado");
         }
 
-        public IList<DocumentoArquivistico> RecuperarDocumentos()
+        public IQueryable<DocumentoArquivistico> RecuperarDocumentos()
         {
             return _repositorio.RecuperarTodos();
             //logger.LogaAcaoDocumentoArquivistico(doc.Id, usuario, "Recuperados todos os processo/dossiês");

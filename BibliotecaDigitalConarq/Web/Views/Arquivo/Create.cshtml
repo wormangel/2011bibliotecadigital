@@ -1,4 +1,4 @@
-﻿@model Core.Objetos.Arquivo
+﻿@model Web.ViewModels.Arquivo.CreateArquivoViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -9,72 +9,80 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-@using (Html.BeginForm()) {
+<form method="post" action="@Url.Action("Create")" enctype="multipart/form-data">
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Arquivo</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Nome)
+            @Html.LabelFor(model => model.Arquivo.Nome)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Nome)
-            @Html.ValidationMessageFor(model => model.Nome)
+            @Html.EditorFor(model => model.Arquivo.Nome)
+            @Html.ValidationMessageFor(model => model.Arquivo.Nome)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Caracteristicas)
+            @Html.LabelFor(model => model.Arquivo.Caracteristicas)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Caracteristicas)
-            @Html.ValidationMessageFor(model => model.Caracteristicas)
+            @Html.EditorFor(model => model.Arquivo.Caracteristicas)
+            @Html.ValidationMessageFor(model => model.Arquivo.Caracteristicas)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Formato)
+            @Html.LabelFor(model => model.Arquivo.Formato)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Formato)
-            @Html.ValidationMessageFor(model => model.Formato)
+            @Html.EditorFor(model => model.Arquivo.Formato)
+            @Html.ValidationMessageFor(model => model.Arquivo.Formato)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Armazenamento)
+            @Html.LabelFor(model => model.Arquivo.Armazenamento)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Armazenamento)
-            @Html.ValidationMessageFor(model => model.Armazenamento)
+            @Html.EditorFor(model => model.Arquivo.Armazenamento)
+            @Html.ValidationMessageFor(model => model.Arquivo.Armazenamento)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.AmbienteSoftware)
+            @Html.LabelFor(model => model.Arquivo.AmbienteSoftware)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.AmbienteSoftware)
-            @Html.ValidationMessageFor(model => model.AmbienteSoftware)
+            @Html.EditorFor(model => model.Arquivo.AmbienteSoftware)
+            @Html.ValidationMessageFor(model => model.Arquivo.AmbienteSoftware)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.AmbienteHardware)
+            @Html.LabelFor(model => model.Arquivo.AmbienteHardware)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.AmbienteHardware)
-            @Html.ValidationMessageFor(model => model.AmbienteHardware)
+            @Html.EditorFor(model => model.Arquivo.AmbienteHardware)
+            @Html.ValidationMessageFor(model => model.Arquivo.AmbienteHardware)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Dependencias)
+            @Html.LabelFor(model => model.Arquivo.Dependencias)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Dependencias)
-            @Html.ValidationMessageFor(model => model.Dependencias)
+            @Html.EditorFor(model => model.Arquivo.Dependencias)
+            @Html.ValidationMessageFor(model => model.Arquivo.Dependencias)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Anexo)
+        </div>
+        <div class="editor-field">
+            <input id="Anexo" type="file" name="Anexo" />
+            @Html.ValidationMessageFor(model => model.Anexo)
         </div>
 
         <p>
             <input type="submit" value="Create" />
         </p>
     </fieldset>
-}
+</form>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

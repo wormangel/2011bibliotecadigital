@@ -67,6 +67,11 @@ namespace Core.Objetos
         [Display(Name = "Outras Dependências")]
         public String Dependencias { get; set; }
 
+        /// <summary>
+        /// Caminho para o arquivo em disco.
+        /// </summary>
+        public String CaminhoDoArquivo { get; set; }
+
         // NOTE Verificar se entra no contexto do projeto
         /// <summary>
         /// Registro das relações de um arquivo com outros 

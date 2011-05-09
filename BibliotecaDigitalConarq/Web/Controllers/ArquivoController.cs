@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
+using Web.ViewModels.Arquivo;
 
 namespace Web.Controllers
 {
@@ -20,7 +23,7 @@ namespace Web.Controllers
 
         public ActionResult Index()
         {
-            IList<Arquivo> arquivos = _servico.RecuperarArquivos();
+            IQueryable<Arquivo> arquivos = _servico.RecuperarArquivos();
             return View(arquivos);
         }
 
@@ -44,14 +47,36 @@ namespace Web.Controllers
         // POST: /Arquivo/Create
 
         [HttpPost]
-        public ActionResult Create(Arquivo arquivo)
+        public ActionResult Create(CreateArquivoViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                _servico.Adicionar(arquivo);
+                if (viewModel.Anexo.ContentLength > 0)
+                {
+
+                    // TODO Abstrair tudo isso dentro da fachada (aqui vai ficar soh uma chamada AdicionaArquivo, e ele 
+                    // TODO cuida de adicionar metadados, anexo, indexar, etc)
+                    
+                    // TODO ver como vai ficar o local de salvar mesmo (isso na verdade deveria ser gerenciado já lá dentro do gerenciador)
+                    // Define o local do arquivo
+                    string path = Path.Combine("C://temp/arquivos/", viewModel.Anexo.FileName);
+
+                    viewModel.Arquivo.Formato = viewModel.Anexo.ContentType;
+                    viewModel.Arquivo.CaminhoDoArquivo = path;
+                    
+                    // Adiciona os metadados
+                    long idArquivo = _servico.Adicionar(viewModel.Arquivo);
+   
+                    // Adiciona o anexo
+                    _servico.AdicionarAnexo(viewModel.Arquivo, viewModel.Anexo.InputStream);
+
+                    // Indexa o arquivo
+                    _servico.Indexar(idArquivo, path);
+                }
+                
                 return RedirectToAction("Index");
             }
-            return View(arquivo);
+            return View(viewModel);
         }
 
         //

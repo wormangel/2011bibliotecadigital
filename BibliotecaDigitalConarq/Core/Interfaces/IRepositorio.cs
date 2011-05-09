@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Core.Interfaces
 {
@@ -9,6 +10,6 @@ namespace Core.Interfaces
         void Remover(long id);
         void Salvar(T item);
         T RecuperarPorId(long id);
-        IList<T> RecuperarTodos();
+        IQueryable<T> RecuperarTodos();
     }
 }

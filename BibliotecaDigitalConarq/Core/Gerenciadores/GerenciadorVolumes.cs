@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Core.Interfaces;
 using Core.Objetos;
 
@@ -13,7 +14,7 @@ namespace Core.Gerenciadores
             _repositorio = repositorio;
         }
 
-        public IList<Volume> RecuperarVolumes()
+        public IQueryable<Volume> RecuperarVolumes()
         {
             //logger.LogaAcaoVolume(vol.Id, usuario, "Recuperado todos os volumes");
             return _repositorio.RecuperarTodos();
