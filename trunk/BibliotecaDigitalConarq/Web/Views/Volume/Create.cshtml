@@ -1,4 +1,5 @@
 ﻿@model Core.Objetos.Volume
+@using Web.Extensions           
 
 @{
     ViewBag.Title = "Biblioteca Digital - Novo volume";
@@ -20,6 +21,14 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.NumeroDoVolume)
             @Html.ValidationMessageFor(model => model.NumeroDoVolume)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TipoDoMeio)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownListFor(model => model.TipoDoMeio)
+            @Html.ValidationMessageFor(model => model.TipoDoMeio)
         </div>
 
         <div class="editor-label">

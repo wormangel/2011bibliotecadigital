@@ -1,4 +1,5 @@
 ﻿@model Core.Objetos.Volume
+@using Web.Extensions           
 
 @{
     ViewBag.Title = "Biblioteca Digital - Remover volume " + @Html.DisplayFor(model => model.NumeroDoVolume) + "?";
@@ -17,6 +18,11 @@
     <div class="display-label">Nr. doc arquivístico</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.NumeroDoProcessoOuDossie)
+    </div>
+
+    <div class="display-label">Tipo do meio</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoDoMeio.Description)
     </div>
 
     <div class="display-label">Nr. do volume</div>
