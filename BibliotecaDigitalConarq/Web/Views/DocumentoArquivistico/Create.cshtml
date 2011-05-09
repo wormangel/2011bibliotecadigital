@@ -1,4 +1,5 @@
 ﻿@model Core.Objetos.DocumentoArquivistico
+@using Web.Extensions           
 
 @{
     ViewBag.Title = "Biblioteca Digital - Novo documento arquivístico";
@@ -23,11 +24,27 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.TipoDoMeio)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownListFor(model => model.TipoDoMeio)
+            @Html.ValidationMessageFor(model => model.TipoDoMeio)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Titulo)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Titulo)
             @Html.ValidationMessageFor(model => model.Titulo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TipoDoTitulo)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownListFor(model => model.TipoDoTitulo)
+            @Html.ValidationMessageFor(model => model.TipoDoTitulo)
         </div>
 
         <div class="editor-label">
@@ -60,6 +77,14 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Destinatario)
             @Html.ValidationMessageFor(model => model.Destinatario)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TipoDoDestinatario)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownListFor(model => model.TipoDoDestinatario)
+            @Html.ValidationMessageFor(model => model.TipoDoDestinatario)
         </div>
 
         <div class="editor-label">
@@ -108,6 +133,14 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Classe)
             @Html.ValidationMessageFor(model => model.Classe)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DestinacaoPrevista)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownListFor(model => model.DestinacaoPrevista)
+            @Html.ValidationMessageFor(model => model.DestinacaoPrevista)
         </div>
 
         <div class="editor-label">

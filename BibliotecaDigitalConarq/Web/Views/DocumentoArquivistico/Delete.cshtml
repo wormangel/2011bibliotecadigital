@@ -1,4 +1,5 @@
 ﻿@model Core.Objetos.DocumentoArquivistico
+@using Web.Extensions           
 
 @{
     ViewBag.Title = "Biblioteca Digital - Remover " + @Html.DisplayFor(model => model.Titulo) + "?";
@@ -14,9 +15,19 @@
         @Html.DisplayFor(model => model.NumeroDoProcessoOuDossie)
     </div>
 
+    <div class="display-label">Tipo do meio</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoDoMeio.Description)
+    </div>
+
     <div class="display-label">Título</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Titulo)
+    </div>
+
+    <div class="display-label">Tipo do título</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoDoTitulo.Description)
     </div>
 
     <div class="display-label">Descrição</div>
@@ -37,6 +48,11 @@
     <div class="display-label">Destinatário</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Destinatario)
+    </div>
+
+    <div class="display-label">Tipo do destinatário</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoDoDestinatario.Description)
     </div>
 
     <div class="display-label">Interessado</div>
@@ -67,6 +83,11 @@
     <div class="display-label">Classe</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Classe)
+    </div>
+
+    <div class="display-label">Destinação prevista</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DestinacaoPrevista.Description)
     </div>
 
     <div class="display-label">Prazo de guarda</div>
