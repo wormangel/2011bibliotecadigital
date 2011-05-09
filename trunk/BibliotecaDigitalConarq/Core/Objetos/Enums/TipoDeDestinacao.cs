@@ -8,7 +8,7 @@ namespace Core.Objetos.Enums
 {
     public enum TipoDeDestinacao
     {
-        [Description("Transferência,")]
+        [Description("Transferência")]
         Transferencia,
 
         [Description("Eliminação")]
