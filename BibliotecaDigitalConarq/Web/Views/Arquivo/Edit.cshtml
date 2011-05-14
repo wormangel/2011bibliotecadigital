@@ -16,28 +16,12 @@
 
         @Html.HiddenFor(model => model.ArquivoId)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Nome)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Nome)
-            @Html.ValidationMessageFor(model => model.Nome)
-        </div>
-
-        <div class="editor-label">
+       <div class="editor-label">
             @Html.LabelFor(model => model.Caracteristicas)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Caracteristicas)
             @Html.ValidationMessageFor(model => model.Caracteristicas)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Formato)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Formato)
-            @Html.ValidationMessageFor(model => model.Formato)
         </div>
 
         <div class="editor-label">

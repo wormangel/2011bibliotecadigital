@@ -53,27 +53,12 @@ namespace Web.Controllers
             {
                 if (viewModel.Anexo.ContentLength > 0)
                 {
-
-                    // TODO Abstrair tudo isso dentro da fachada (aqui vai ficar soh uma chamada AdicionaArquivo, e ele 
-                    // TODO cuida de adicionar metadados, anexo, indexar, etc)
-                    
-                    // TODO ver como vai ficar o local de salvar mesmo (isso na verdade deveria ser gerenciado já lá dentro do gerenciador)
-                    // Define o local do arquivo
-                    string path = Path.Combine("C://temp/arquivos/", viewModel.Anexo.FileName);
-
-                    viewModel.Arquivo.Formato = viewModel.Anexo.ContentType;
-                    viewModel.Arquivo.CaminhoDoArquivo = path;
-                    
-                    // Adiciona os metadados
-                    long idArquivo = _servico.Adicionar(viewModel.Arquivo);
-   
-                    // Adiciona o anexo
-                    _servico.AdicionarAnexo(viewModel.Arquivo, viewModel.Anexo.InputStream);
-
-                    // Indexa o arquivo
-                    _servico.Indexar(idArquivo, path);
+                    // NOTE: Coloquei tudo dentro do gerenciador menos as linhas abaixo para o gerenciador não
+                    // NOTE: precisar conhecer coisa de view/controller
+                    viewModel.Arquivo.Formato = Path.GetExtension(viewModel.Anexo.FileName);
+                    viewModel.Arquivo.Nome = Path.GetFileNameWithoutExtension(viewModel.Anexo.FileName);
+                    _servico.Adicionar(viewModel.Arquivo, viewModel.Anexo.InputStream);
                 }
-                
                 return RedirectToAction("Index");
             }
             return View(viewModel);
