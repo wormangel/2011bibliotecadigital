@@ -1,4 +1,5 @@
 using System.Data.Entity;
+using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
 using EntityAcessoADados;
@@ -57,6 +58,7 @@ namespace Web.App_Start
             kernel.Bind<IRepositorio<Documento>>().To<Repositorio<Documento>>();
             kernel.Bind<IRepositorio<Volume>>().To<Repositorio<Volume>>();
             kernel.Bind<IRepositorio<Arquivo>>().To<Repositorio<Arquivo>>();
+            kernel.Bind<FachadaGerenciadores>().To<FachadaGerenciadores>().InSingletonScope();
             kernel.Bind<DbContext>().To<ContextoAcessoADados>();
         }
     }

@@ -3,52 +3,54 @@ using System.Web.Mvc;
 using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
+using Ninject;
 
 namespace Web.Controllers
 {
     public class VolumeController : Controller
     {
-        private readonly GerenciadorVolumes servico;
+        [Inject]
+        private readonly FachadaGerenciadores _fachada;
 
-        public VolumeController(IRepositorio<Volume> repositorio)
+        public VolumeController(FachadaGerenciadores fachada)
         {
-            servico = new GerenciadorVolumes(repositorio);
+            _fachada = fachada;
         }
 
         //
-        // GET: /Volume/
+        // GET: /DocumentoArquivistico/1/Volume/
 
-        public ViewResult Index()
+        public ViewResult Index(long idDocumentoArquivistico)
         {
-            IEnumerable<Volume> volumes = servico.RecuperarVolumes();
+            IEnumerable<Volume> volumes = _fachada.RecuperarVolumes();
             return View(volumes);
         }
 
         //
-        // GET: /Volume/Details/5
+        // GET: /DocumentoArquivistico/1/Volume/Details/5
 
-        public ViewResult Details(long id)
+        public ViewResult Details(long idDocumentoArquivistico, long id)
         {
-            return View(servico.RecuperarPorId(id));
+            return View(_fachada.RecuperarVolumePorId(id));
         }
 
         //
-        // GET: /Volume/Create
+        // GET: /DocumentoArquivistico/1/Volume/Create
 
-        public ActionResult Create()
+        public ActionResult Create(long idDocumentoArquivistico)
         {
             return View();
         }
 
         //
-        // POST: /Volume/Create
+        // POST: /DocumentoArquivistico/1/Volume/Create
 
         [HttpPost]
-        public ActionResult Create(Volume volume)
+        public ActionResult Create(long idDocumentoArquivistico, Volume volume)
         {
             if (ModelState.IsValid)
             {
-                servico.Criar(volume);
+                _fachada.AdicionarVolume(volume);
                 return RedirectToAction("Index");
             }
 
@@ -56,44 +58,44 @@ namespace Web.Controllers
         }
 
         //
-        // GET: /Volume/Editar/5
+        // GET: /DocumentoArquivistico/1/Volume/Editar/5
 
-        public ActionResult Edit(long id)
+        public ActionResult Edit(long idDocumentoArquivistico, long id)
         {
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
-            return View(servico.RecuperarPorId(id));
+            return View(_fachada.RecuperarVolumePorId(id));
         }
 
         //
-        // POST: /Volume/Editar/5
+        // POST: /DocumentoArquivistico/1/Volume/Editar/5
 
         [HttpPost]
-        public ActionResult Edit(Volume volume)
+        public ActionResult Edit(long idDocumentoArquivistico, Volume volume)
         {
             if (ModelState.IsValid)
             {
-                servico.Atualizar(volume);
+                _fachada.SalvarVolume(volume);
                 return RedirectToAction("Index");
             }
             return View(volume);
         }
 
         //
-        // GET: /Volume/Delete/5
+        // GET: /DocumentoArquivistico/1/Volume/Delete/5
 
-        public ActionResult Delete(long id)
+        public ActionResult Delete(long idDocumentoArquivistico, long id)
         {
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
-            return View(servico.RecuperarPorId(id));
+            return View(_fachada.RecuperarVolumePorId(id));
         }
 
         //
-        // POST: /Volume/Delete/5
+        // POST: /DocumentoArquivistico/1/Volume/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(long id)
+        public ActionResult DeleteConfirmed(long idDocumentoArquivistico, long id)
         {
-            servico.Remover(id);
+            _fachada.RemoverVolume(id);
             return RedirectToAction("Index");
         }
     }

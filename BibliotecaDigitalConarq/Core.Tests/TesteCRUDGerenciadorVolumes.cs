@@ -34,11 +34,11 @@ namespace Core.Tests
             _repositorioMock.Call("Salvar", volume);
             _repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
 
-            _gerenciador.Criar(volume);
+            _gerenciador.Adicionar(volume);
             Volume volTemp = _gerenciador.RecuperarPorId(1);
             Assert.AreEqual("100", volume.QuantidadeDeFolhas);
             volTemp.QuantidadeDeFolhas = "200";
-            _gerenciador.Atualizar(volume);
+            _gerenciador.Salvar(volume);
             Volume volTemp2 = _gerenciador.RecuperarPorId(1);
             Assert.AreEqual("200", volTemp2.QuantidadeDeFolhas);
 
@@ -54,7 +54,7 @@ namespace Core.Tests
             _repositorioMock.Call("Adicionar", volume);
             _repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
 
-            _gerenciador.Criar(volume);
+            _gerenciador.Adicionar(volume);
             Assert.AreEqual(volumesRecuperados, _gerenciador.RecuperarVolumes());
 
             _repositorioMock.Verify();
@@ -71,7 +71,7 @@ namespace Core.Tests
             _repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
             _repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
 
-            _gerenciador.Criar(volume);
+            _gerenciador.Adicionar(volume);
             Volume docTemp = _gerenciador.RecuperarPorId(1);
             Assert.AreEqual(volumesRecuperados, _gerenciador.RecuperarVolumes());
             Assert.AreEqual("100", docTemp.QuantidadeDeFolhas);

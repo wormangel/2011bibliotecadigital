@@ -32,13 +32,13 @@ namespace Core.Gerenciadores
             //logger.LogaAcaoVolume(id, usuario, "Volume removido");
         }
 
-        public void Atualizar(Volume volume)
+        public void Salvar(Volume volume)
         {
             _repositorio.Salvar(volume);
             //logger.LogaAcaoVolume(volume.Id, usuario, "Volume atualizado");
         }
 
-        public void Criar(Volume volume)
+        public void Adicionar(Volume volume)
         {
             _repositorio.Adicionar(volume);
             //logger.LogaAcaoVolume(volume.Id, usuario, "Volume criado");

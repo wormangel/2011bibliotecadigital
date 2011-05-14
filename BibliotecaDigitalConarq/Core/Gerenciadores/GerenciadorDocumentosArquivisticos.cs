@@ -18,7 +18,7 @@ namespace Core.Gerenciadores
             _repositorio = repositorio;
         }
 
-        public void Criar(DocumentoArquivistico doc)
+        public void Adicionar(DocumentoArquivistico doc)
         {
             // Verifica com o gerenciador de segurança..
             // Indexa com o gerenciador de indexação.. (inclusive arquivos se houver)
@@ -26,12 +26,6 @@ namespace Core.Gerenciadores
 
             _repositorio.Adicionar(doc);
             //logger.LogaAcaoDocumentoArquivistico(doc.Id, usuario, "Processo/Dossiê criado");
-        }
-
-        public void Atualizar(DocumentoArquivistico doc)
-        {
-            _repositorio.Salvar(doc);
-            //logger.LogaAcaoDocumentoArquivistico(doc.Id, usuario, "Processo/Dossiê atualizado");
         }
 
         public IQueryable<DocumentoArquivistico> RecuperarDocumentos()
