@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using Core.Objetos.Enums;
 
 namespace Core.Objetos
@@ -180,7 +181,7 @@ namespace Core.Objetos
 
         // Os volumes que este processo/dossiê contém
         [Display(Name = "Volumes contidos neste documento arquivístico")]
-        public List<Volume> Volumes { get; set; }
+        public IQueryable<Volume> Volumes { get; set; }
     }
 
 }

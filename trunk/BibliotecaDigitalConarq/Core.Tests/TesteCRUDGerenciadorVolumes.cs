@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
@@ -52,7 +53,7 @@ namespace Core.Tests
             var volumesRecuperados = new List<Volume> {volume};
 
             _repositorioMock.Call("Adicionar", volume);
-            _repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
+            _repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados.AsQueryable());
 
             _gerenciador.Adicionar(volume);
             Assert.AreEqual(volumesRecuperados, _gerenciador.RecuperarVolumes());
@@ -69,7 +70,7 @@ namespace Core.Tests
 
             _repositorioMock.Call("Adicionar", volume);
             _repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
-            _repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
+            _repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados.AsQueryable());
 
             _gerenciador.Adicionar(volume);
             Volume docTemp = _gerenciador.RecuperarPorId(1);
@@ -95,7 +96,7 @@ namespace Core.Tests
         {
             var volumesRecuperados = new List<Volume> {new Volume(), new Volume()};
 
-            _repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
+            _repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados.AsQueryable());
 
             Assert.AreEqual(volumesRecuperados, _gerenciador.RecuperarVolumes());
 

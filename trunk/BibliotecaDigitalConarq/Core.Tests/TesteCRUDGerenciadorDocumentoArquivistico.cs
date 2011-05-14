@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
@@ -54,7 +55,7 @@ namespace Core.Tests
             var documentosRecuperados = new List<DocumentoArquivistico> {documento};
 
             _repositorioMock.Call("Adicionar", documento);
-            _repositorioMock.ExpectAndReturn("RecuperarTodos", documentosRecuperados);
+            _repositorioMock.ExpectAndReturn("RecuperarTodos", documentosRecuperados.AsQueryable());
 
             _gerenciador.Adicionar(documento);
             Assert.AreEqual(documentosRecuperados, _gerenciador.RecuperarDocumentos());
@@ -70,7 +71,7 @@ namespace Core.Tests
 
             _repositorioMock.Call("Adicionar", documento);
             _repositorioMock.ExpectAndReturn("RecuperarPorId", documento, 1);
-            _repositorioMock.ExpectAndReturn("RecuperarTodos", documentosRecuperados);
+            _repositorioMock.ExpectAndReturn("RecuperarTodos", documentosRecuperados.AsQueryable());
 
             _gerenciador.Adicionar(documento);
             DocumentoArquivistico docTemp = _gerenciador.RecuperarPorId(1);
@@ -97,7 +98,7 @@ namespace Core.Tests
             var documentosRecuperados = new List<DocumentoArquivistico>
                                             {new DocumentoArquivistico(), new DocumentoArquivistico()};
 
-            _repositorioMock.ExpectAndReturn("RecuperarTodos", documentosRecuperados);
+            _repositorioMock.ExpectAndReturn("RecuperarTodos", documentosRecuperados.AsQueryable());
 
             Assert.AreEqual(documentosRecuperados, _gerenciador.RecuperarDocumentos());
 
