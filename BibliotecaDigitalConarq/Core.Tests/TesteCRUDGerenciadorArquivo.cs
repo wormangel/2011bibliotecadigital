@@ -1,4 +1,5 @@
-﻿using Core.Gerenciadores;
+﻿using System.Linq;
+using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
 using NUnit.Framework;
@@ -73,7 +74,7 @@ namespace Core.Tests
             var arquivosRecuperados = new List<Arquivo> {arquivo};
 
             _repositorioMock.Expect("Adicionar", arquivo);
-            _repositorioMock.ExpectAndReturn("RecuperarTodos", arquivosRecuperados);
+            _repositorioMock.ExpectAndReturn("RecuperarTodos", arquivosRecuperados.AsQueryable());
 
             _gerenciador.Adicionar(arquivo);
             Assert.AreEqual(arquivosRecuperados, _gerenciador.RecuperarArquivos());

@@ -180,7 +180,7 @@ namespace Core.Objetos
         /// </summary>
         public long IdArquivo
         {
-            get { return Arquivos[0].ArquivoId; }
+            get { return Arquivos.ElementAt(0).ArquivoId; }
         }
 
         // Metadados 1.21 - Gênero (F)
@@ -283,7 +283,7 @@ namespace Core.Objetos
         // Referências
 
         // Os arquivos que compõem este documento
-        public List<Arquivo> Arquivos { get; set; }
+        public IQueryable<Arquivo> Arquivos { get; set; }
 
         // O volume a que este documento pertence
         [Required]
