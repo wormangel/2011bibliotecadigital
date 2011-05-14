@@ -33,7 +33,7 @@ namespace Core.Objetos
         /// <summary>
         /// Identificação do formato de arquivo do arquivo digital.
         /// </summary>
-        [Required(ErrorMessage = "É necessário informar o formato do arquivo."), Display(Name = "Formato do Arquivo")]
+        [Display(Name = "Formato do Arquivo")]
         public String Formato { get; set; }
 
         /// <summary>

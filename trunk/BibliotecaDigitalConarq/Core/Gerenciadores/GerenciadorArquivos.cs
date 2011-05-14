@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Core.Interfaces;
@@ -16,9 +15,9 @@ namespace Core.Gerenciadores
     /// </summary>
     public class GerenciadorArquivos
     {
+        private readonly IRepositorio<Arquivo> _repositorio;
         private readonly IGoldenIndex goldenIndex;
         private readonly User usuarioGoldenIndex;
-        private readonly IRepositorio<Arquivo> _repositorio;
 
         public GerenciadorArquivos(IRepositorio<Arquivo> repositorio)
         {
@@ -34,18 +33,40 @@ namespace Core.Gerenciadores
         }
 
         //Exemplo de como indexar um arquivo.
-        public void Indexar(long arquivoId, String caminhArquivo)
+        private void _Indexar(Arquivo arquivo)
         {
-            var conteudo = new FileData
-                               {
-                                   Url = caminhArquivo,
-                                   IndexerParameters = new SimpleIndexerParameters {IdFieldValue = arquivoId.ToString()}
-                               };
-            goldenIndex.SaveFile(usuarioGoldenIndex, conteudo);
+            try
+            {
+                if (!goldenIndex.IsSupported(usuarioGoldenIndex, arquivo.Formato))
+                {
+                    // NOTE: Se não for um arquivo suportado, não faz nada
+                    return;
+                }
+
+                // TODO: Tem que dizer em qual campo e em qual base vai guardar o conteúdo extraído.
+                var parametros = new IndexerParameters
+                                     {
+                                         ContentField = "TextoArquivo",
+                                         IdField = "Id",
+                                         IdFieldValue = arquivo.ArquivoId.ToString(),
+                                         Table = ""
+                                     };
+
+                var conteudo = new FileData
+                                   {
+                                       Url = arquivo.CaminhoDoArquivo,
+                                       IndexerParameters = parametros
+                                   };
+                goldenIndex.SaveFile(usuarioGoldenIndex, conteudo);
+            }
+            catch (Exception exception)
+            {
+                throw new Exception("Arquivo salvo, porém não indexado para buscas. Contate o administrador do sistema.", exception);
+            }
         }
 
         //Exemplo de como extrair o texto do arquivo
-        public String Extrair(String caminhoArquivo)
+        private String _Extrair(String caminhoArquivo)
         {
             return DocumentExtractor.Instance.Extract(caminhoArquivo);
         }
@@ -60,28 +81,30 @@ namespace Core.Gerenciadores
             return _repositorio.RecuperarPorId(id);
         }
 
-        public void Salvar(Arquivo documento)
+        public void Salvar(Arquivo arquivo)
         {
-            _repositorio.Salvar(documento);
+            _repositorio.Salvar(arquivo);
         }
 
-        public long Adicionar(Arquivo arquivo)
+        public void Adicionar(Arquivo arquivo, Stream conteudo)
         {
-            // Salva os metadados
+            // Primeiro define aonde o arquivo será salvo
+            // TODO: Diretório temporário, precisa mudar.
+            const string repositoryFiles = "C://biblioteca/";
+            arquivo.CaminhoDoArquivo = repositoryFiles + arquivo.Nome + arquivo.Formato;
 
-            _repositorio.Adicionar(arquivo);
+            // Segundo cria o arquivo físico (conteúdo)
+            Directory.CreateDirectory(repositoryFiles);
 
-            return _repositorio.RecuperarTodos().FiltraPorCaminho(arquivo.CaminhoDoArquivo).FirstOrDefault().ArquivoId;
-        }
-
-        public void AdicionarAnexo(Arquivo arquivo, Stream conteudo)
-        {
-            // Salva o arquivo físico
-            Directory.CreateDirectory(Path.GetDirectoryName(arquivo.CaminhoDoArquivo));
-
-            FileStream anexo = new FileStream(arquivo.CaminhoDoArquivo, FileMode.Create);
+            var anexo = new FileStream(arquivo.CaminhoDoArquivo, FileMode.Create);
             conteudo.CopyTo(anexo);
             anexo.Close();
+
+            // Terceiro cria o arquivo lógico (com metadados)
+            _repositorio.Adicionar(arquivo);
+
+            // Quarto, indexa o arquivo
+            _Indexar(arquivo);
         }
 
         public void Remover(long id)
@@ -94,7 +117,7 @@ namespace Core.Gerenciadores
             _repositorio.Salvar(arquivo);
         }
     }
-    
+
     // PipesAndFilters
     public static class ArquivoFilters
     {
