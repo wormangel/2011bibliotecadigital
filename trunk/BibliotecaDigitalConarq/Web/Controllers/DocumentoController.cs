@@ -10,47 +10,47 @@ namespace Web.Controllers
 {
     public class DocumentoController : Controller
     {
-        private readonly GerenciadorDocumentos _servico;
+        private readonly FachadaGerenciadores _fachada;
 
-        public DocumentoController(IRepositorio<Documento> repositorio)
+        public DocumentoController(FachadaGerenciadores fachada)
         {
-            _servico = new GerenciadorDocumentos(repositorio);
+            _fachada = fachada;
         }
 
         //
-        // GET: /Documento/
+        // GET: /DocumentoArquivistico/1/Volume/1/Documento/
 
-        public ViewResult Index()
+        public ViewResult Index(long idDocmentoArquivistico, long idVolume)
         {
-            IQueryable<Documento> documentos = _servico.RecuperarDocumentos();
+            IQueryable<Documento> documentos = _fachada.RecuperarDocumentos();
             return View(documentos);
         }
 
         //
-        // GET: /Documento/Details/5
+        // GET: /DocumentoArquivistico/1/Volume/1/Documento/Details/5
 
-        public ViewResult Details(long id)
+        public ViewResult Details(long idDocmentoArquivistico, long idVolume, long id)
         {
-            return View(_servico.RecuperarPorId(id));
+            return View(_fachada.RecuperarDocumentoPorId(id));
         }
 
         //
-        // GET: /Documento/Create
+        // GET: /DocumentoArquivistico/1/Volume/1/Documento/Create
 
-        public ActionResult Create()
+        public ActionResult Create(long idDocmentoArquivistico, long idVolume)
         {
             return View();
         }
 
         //
-        // POST: /Documento/Create
+        // POST: /DocumentoArquivistico/1/Volume/1/Documento/Create
 
         [HttpPost]
-        public ActionResult Create(Documento documento)
+        public ActionResult Create(long idDocmentoArquivistico, long idVolume, Documento documento)
         {
             if (ModelState.IsValid)
             {
-                _servico.Adicionar(documento);
+                _fachada.AdicionarDocumento(documento);
                 return RedirectToAction("Index");
             }
 
@@ -58,64 +58,44 @@ namespace Web.Controllers
         }
 
         //
-        // GET: /Documento/Editar/5
+        // GET: /DocumentoArquivistico/1/Volume/1/Documento/Editar/5
 
-        public ActionResult Edit(long id)
+        public ActionResult Edit(long idDocmentoArquivistico, long idVolume, long id)
         {
-            return View(_servico.RecuperarPorId(id));
+            return View(_fachada.RecuperarDocumentoPorId(id));
         }
 
         //
-        // POST: /Documento/Editar/5
+        // POST: /DocumentoArquivistico/1/Volume/1/Documento/Editar/5
 
         [HttpPost]
-        public ActionResult Edit(Documento documento)
+        public ActionResult Edit(long idDocmentoArquivistico, long idVolume, Documento documento)
         {
             if (ModelState.IsValid)
             {
-                _servico.Salvar(documento);
+                _fachada.SalvarDocumento(documento);
                 return RedirectToAction("Index");
             }
             return View(documento);
         }
 
         //
-        // GET: /Documento/Delete/5
+        // GET: /DocumentoArquivistico/1/Volume/1/Documento/Delete/5
 
-        public ActionResult Delete(long id)
+        public ActionResult Delete(long idDocmentoArquivistico, long idVolume, long id)
         {
-            return View(_servico.RecuperarPorId(id));
+            return View(_fachada.RecuperarDocumentoPorId(id));
         }
 
         //
-        // POST: /Documento/Delete/5
+        // POST: /DocumentoArquivistico/1/Volume/1/Documento/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(long id)
+        public ActionResult DeleteConfirmed(long idDocmentoArquivistico, long idVolume, long id)
         {
-            _servico.Remover(id);
+            _fachada.RemoverDocumento(id);
             return RedirectToAction("Index");
         }
 
-        //
-        // GET: /Documento/Upload/5
-        public ActionResult Upload(long idDocumento)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Documento/Upload/5
-        [HttpPost]
-        public ActionResult Upload(long idDocumento, HttpPostedFileBase arquivo)
-        {
-            if (arquivo.ContentLength > 0)
-            {
-                // TODO: this._servico.salvarArquivo(idDocumento, arquivo);
-                return RedirectToAction("Details", new {id = idDocumento});
-            }
-
-            return View();
-        }
     }
 }

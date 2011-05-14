@@ -36,11 +36,11 @@ namespace Core.Tests
             _repositorioMock.Call("Salvar", documento);
             _repositorioMock.ExpectAndReturn("RecuperarPorId", documento, 1);
 
-            _gerenciador.Criar(documento);
+            _gerenciador.Adicionar(documento);
             DocumentoArquivistico docTemp = _gerenciador.RecuperarPorId(1);
             Assert.AreEqual("Descrição1", docTemp.Descricao);
             docTemp.Descricao = "Descrição2";
-            _gerenciador.Atualizar(docTemp);
+            _gerenciador.Salvar(docTemp);
             DocumentoArquivistico docTemp2 = _gerenciador.RecuperarPorId(1);
             Assert.AreEqual("Descrição2", docTemp2.Descricao);
 
@@ -56,7 +56,7 @@ namespace Core.Tests
             _repositorioMock.Call("Adicionar", documento);
             _repositorioMock.ExpectAndReturn("RecuperarTodos", documentosRecuperados);
 
-            _gerenciador.Criar(documento);
+            _gerenciador.Adicionar(documento);
             Assert.AreEqual(documentosRecuperados, _gerenciador.RecuperarDocumentos());
 
             _repositorioMock.Verify();
@@ -72,7 +72,7 @@ namespace Core.Tests
             _repositorioMock.ExpectAndReturn("RecuperarPorId", documento, 1);
             _repositorioMock.ExpectAndReturn("RecuperarTodos", documentosRecuperados);
 
-            _gerenciador.Criar(documento);
+            _gerenciador.Adicionar(documento);
             DocumentoArquivistico docTemp = _gerenciador.RecuperarPorId(1);
             Assert.AreEqual(documentosRecuperados, _gerenciador.RecuperarDocumentos());
             Assert.AreEqual("Descrição", docTemp.Descricao);
