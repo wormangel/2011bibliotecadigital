@@ -22,11 +22,28 @@ namespace Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+               "Arquivo", // Route name
+               "DocumentoArquivistico/{idDocArq}/Volume/{idVol}/Documento/Upload/{id}", // URL with parameters
+               new { controller = "Arquivo", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "Documento", // Route name
+                "DocumentoArquivistico/{idDocArq}/Volume/{idVol}/Documento/{action}/{id}", // URL with parameters
+                new { controller = "Documento", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "Volume", // Route name
+                "DocumentoArquivistico/{idDocArq}/Volume/{action}/{id}", // URL with parameters
+                new { controller = "Volume", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
+            
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
-
         }
 
         protected void Application_Start()
