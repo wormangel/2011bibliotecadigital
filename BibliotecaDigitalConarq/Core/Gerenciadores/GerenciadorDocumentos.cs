@@ -2,22 +2,18 @@
 using System.Linq;
 using Core.Interfaces;
 using Core.Objetos;
+using Core.Repositorios;
 
 namespace Core.Gerenciadores
 {
     public class GerenciadorDocumentos
     {
-        private readonly IRepositorio<Documento> _repositorio;
+        private readonly RepositorioDocumento _repositorio;
 
-        public GerenciadorDocumentos(IRepositorio<Documento> repositorio)
+        public GerenciadorDocumentos(RepositorioDocumento repositorio)
         {
             _repositorio = repositorio;
         }
-
-        //public void SalvarArquivo(long id, HttpPostedFileBase arquivo)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public IQueryable<Documento> RecuperarDocumentos()
         {
@@ -34,8 +30,9 @@ namespace Core.Gerenciadores
             _repositorio.Salvar(documento);
         }
 
-        public void Adicionar(Documento documento, DocumentoArquivistico documentoArquivistico)
+        public void Adicionar(Volume volume, Documento documento)
         {
+            volume.Documentos.ToList().Add(documento);
             _repositorio.Adicionar(documento);
         }
 

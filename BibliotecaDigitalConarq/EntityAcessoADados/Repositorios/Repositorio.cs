@@ -1,65 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using Core.Interfaces;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Data.Entity;
+//using System.Linq;
 
-namespace EntityAcessoADados.Repositorios
-{
-    public class Repositorio<T> : IDisposable, IRepositorio<T> where T : class
-    {
-        protected readonly DbContext contexto;
+//namespace EntityAcessoADados.Repositorios
+//{
+//    public class Repositorio<T> : IDisposable, IRepositorio<T> where T : class
+//    {
+//        protected readonly ContextoAcessoADados contexto;
 
-        public Repositorio(DbContext contexto)
-        {
-            this.contexto = contexto;
-        }
+//        public Repositorio(ContextoAcessoADados contexto)
+//        {
+//            this.contexto = contexto;
+//        }
 
-        #region IDisposable Members
+//        #region IDisposable Members
 
-        public void Dispose()
-        {
-            contexto.Dispose();
-        }
+//        public void Dispose()
+//        {
+//            contexto.Dispose();
+//        }
 
-        #endregion
+//        #endregion
 
-        #region IRepositorio<T> Members
+//        #region IRepositorio<T> Members
 
-        public void Adicionar(T item)
-        {
-            contexto.Set<T>().Add(item);
-            contexto.SaveChanges();
-        }
+//        public void Adicionar(T item)
+//        {
+//            contexto.Set<T>().Add(item);
+//            contexto.SaveChanges();
+//        }
 
-        public void Remover(T item)
-        {
-            contexto.Set<T>().Remove(item);
-            contexto.SaveChanges();
-        }
+//        public void Remover(T item)
+//        {
+//            contexto.Set<T>().Remove(item);
+//            contexto.SaveChanges();
+//        }
 
-        public void Remover(long id)
-        {
-            contexto.Set<T>().Remove(RecuperarPorId(id));
-            contexto.SaveChanges();
-        }
+//        public void Remover(long id)
+//        {
+//            contexto.Set<T>().Remove(RecuperarPorId(id));
+//            contexto.SaveChanges();
+//        }
 
-        public void Salvar(T item)
-        {
-            contexto.Set<T>().Attach(item);
-            contexto.SaveChanges();
-        }
+//        public void Salvar(T item)
+//        {
+//            contexto.Set<T>().Attach(item);
+//            contexto.SaveChanges();
+//        }
 
-        public T RecuperarPorId(long id)
-        {
-            return contexto.Set<T>().Find(id);
-        }
+//        public T RecuperarPorId(long id)
+//        {
+//            return contexto.Set<T>().Find(id);
+//        }
 
-        public IQueryable<T> RecuperarTodos()
-        {
-            return contexto.Set<T>();
-        }
+//        public IQueryable<T> RecuperarTodos()
+//        {
+//            return contexto.Set<T>();
+//        }
 
-        #endregion
-    }
-}
+//        #endregion
+//    }
+//}

@@ -20,7 +20,7 @@ namespace Web.Controllers
         //
         // GET: /DocumentoArquivistico/1/Volume/1/Documento/
 
-        public ViewResult Index(long idDocmentoArquivistico, long idVolume)
+        public ViewResult Index(long idDocArq, long idVol)
         {
             IQueryable<Documento> documentos = _fachada.RecuperarDocumentos();
             return View(documentos);
@@ -29,7 +29,7 @@ namespace Web.Controllers
         //
         // GET: /DocumentoArquivistico/1/Volume/1/Documento/Details/5
 
-        public ViewResult Details(long idDocmentoArquivistico, long idVolume, long id)
+        public ViewResult Details(long idDocArq, long idVol, long id)
         {
             return View(_fachada.RecuperarDocumentoPorId(id));
         }
@@ -37,7 +37,7 @@ namespace Web.Controllers
         //
         // GET: /DocumentoArquivistico/1/Volume/1/Documento/Create
 
-        public ActionResult Create(long idDocmentoArquivistico, long idVolume)
+        public ActionResult Create(long idDocArq, long idVol)
         {
             return View();
         }
@@ -46,11 +46,11 @@ namespace Web.Controllers
         // POST: /DocumentoArquivistico/1/Volume/1/Documento/Create
 
         [HttpPost]
-        public ActionResult Create(long idDocArq, long idVolume, Documento documento)
+        public ActionResult Create(long idDocArq, long idVol, Documento documento)
         {
             if (ModelState.IsValid)
             {
-                _fachada.AdicionarDocumento(idDocArq, idVolume, documento);
+                _fachada.AdicionarDocumento(idDocArq, idVol, documento);
                 return RedirectToAction("Index");
             }
 
@@ -60,7 +60,7 @@ namespace Web.Controllers
         //
         // GET: /DocumentoArquivistico/1/Volume/1/Documento/Editar/5
 
-        public ActionResult Edit(long idDocmentoArquivistico, long idVolume, long id)
+        public ActionResult Edit(long idDocArq, long idVol, long id)
         {
             return View(_fachada.RecuperarDocumentoPorId(id));
         }
@@ -69,7 +69,7 @@ namespace Web.Controllers
         // POST: /DocumentoArquivistico/1/Volume/1/Documento/Editar/5
 
         [HttpPost]
-        public ActionResult Edit(long idDocmentoArquivistico, long idVolume, Documento documento)
+        public ActionResult Edit(long idDocArq, long idVol, Documento documento)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace Web.Controllers
         //
         // GET: /DocumentoArquivistico/1/Volume/1/Documento/Delete/5
 
-        public ActionResult Delete(long idDocmentoArquivistico, long idVolume, long id)
+        public ActionResult Delete(long idDocArq, long idVol, long id)
         {
             return View(_fachada.RecuperarDocumentoPorId(id));
         }
@@ -91,7 +91,7 @@ namespace Web.Controllers
         // POST: /DocumentoArquivistico/1/Volume/1/Documento/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(long idDocmentoArquivistico, long idVolume, long id)
+        public ActionResult DeleteConfirmed(long idDocArq, long idVol, long id)
         {
             _fachada.RemoverDocumento(id);
             return RedirectToAction("Index");

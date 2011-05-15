@@ -2,8 +2,7 @@ using System.Data.Entity;
 using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
-using EntityAcessoADados;
-using EntityAcessoADados.Repositorios;
+using Core.Repositorios;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Mvc;
@@ -55,8 +54,8 @@ namespace Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IRepositorio<DocumentoArquivistico>>().To<Repositorio<DocumentoArquivistico>>();
-            kernel.Bind<IRepositorio<Documento>>().To<Repositorio<Documento>>();
-            kernel.Bind<IRepositorio<Volume>>().To<Repositorio<Volume>>();
+            kernel.Bind<RepositorioDocumento>().To<RepositorioDocumento>();
+            kernel.Bind<RepositorioVolume>().To<RepositorioVolume>();
             kernel.Bind<IRepositorio<Arquivo>>().To<Repositorio<Arquivo>>();
             kernel.Bind<FachadaGerenciadores>().To<FachadaGerenciadores>().InSingletonScope();
             kernel.Bind<DbContext>().To<ContextoAcessoADados>();
