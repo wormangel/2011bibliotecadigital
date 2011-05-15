@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Core.Gerenciadores;
 using Core.Interfaces;
@@ -20,16 +21,17 @@ namespace Web.Controllers
         //
         // GET: /DocumentoArquivistico/1/Volume/
 
-        public ViewResult Index(long idDocumentoArquivistico)
+        public ViewResult Index(long idDocArq)
         {
-            IEnumerable<Volume> volumes = _fachada.RecuperarVolumes();
+            IQueryable<Volume> volumes = _fachada.RecuperarVolumes(idDocArq);
+            ViewBag.TituloDoc = _fachada.RecuperarDocumentoArquivisticoPorId(idDocArq).Titulo;
             return View(volumes);
         }
 
         //
         // GET: /DocumentoArquivistico/1/Volume/Details/5
 
-        public ViewResult Details(long idDocumentoArquivistico, long id)
+        public ViewResult Details(long idDocArq, long id)
         {
             return View(_fachada.RecuperarVolumePorId(id));
         }
@@ -37,7 +39,7 @@ namespace Web.Controllers
         //
         // GET: /DocumentoArquivistico/1/Volume/Create
 
-        public ActionResult Create(long idDocumentoArquivistico)
+        public ActionResult Create(long idDocArq)
         {
             return View();
         }
@@ -46,11 +48,11 @@ namespace Web.Controllers
         // POST: /DocumentoArquivistico/1/Volume/Create
 
         [HttpPost]
-        public ActionResult Create(long idDocumentoArquivistico, Volume volume)
+        public ActionResult Create(long idDocArq, Volume volume)
         {
             if (ModelState.IsValid)
             {
-                _fachada.AdicionarVolume(volume);
+                _fachada.AdicionarVolume(idDocArq, volume);
                 return RedirectToAction("Index");
             }
 
@@ -60,7 +62,7 @@ namespace Web.Controllers
         //
         // GET: /DocumentoArquivistico/1/Volume/Editar/5
 
-        public ActionResult Edit(long idDocumentoArquivistico, long id)
+        public ActionResult Edit(long idDocArq, long id)
         {
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
             return View(_fachada.RecuperarVolumePorId(id));
@@ -70,7 +72,7 @@ namespace Web.Controllers
         // POST: /DocumentoArquivistico/1/Volume/Editar/5
 
         [HttpPost]
-        public ActionResult Edit(long idDocumentoArquivistico, Volume volume)
+        public ActionResult Edit(long idDocArq, Volume volume)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +85,7 @@ namespace Web.Controllers
         //
         // GET: /DocumentoArquivistico/1/Volume/Delete/5
 
-        public ActionResult Delete(long idDocumentoArquivistico, long id)
+        public ActionResult Delete(long idDocArq, long id)
         {
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
             return View(_fachada.RecuperarVolumePorId(id));
@@ -93,7 +95,7 @@ namespace Web.Controllers
         // POST: /DocumentoArquivistico/1/Volume/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(long idDocumentoArquivistico, long id)
+        public ActionResult DeleteConfirmed(long idDocArq, long id)
         {
             _fachada.RemoverVolume(id);
             return RedirectToAction("Index");

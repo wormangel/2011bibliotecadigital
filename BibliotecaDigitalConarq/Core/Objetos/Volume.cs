@@ -25,7 +25,7 @@ namespace Core.Objetos
         /// </summary>
         public long IdProcessoDossie
         {
-            get { return DocumentoArquivistico.Id; }
+            get { return (DocumentoArquivistico != null) ? DocumentoArquivistico.Id : -1; }
         }
 
         // Referência
@@ -36,7 +36,7 @@ namespace Core.Objetos
         /// </summary>
         public String NumeroDoProcessoOuDossie
         {
-            get { return DocumentoArquivistico.NumeroDoProcessoOuDossie; }
+            get { return (DocumentoArquivistico != null) ? DocumentoArquivistico.NumeroDoProcessoOuDossie : null; }
         }
 
         // Metadados 1.7 - Número do volume (O)
@@ -73,7 +73,6 @@ namespace Core.Objetos
         // Referências
 
         // O processo/dossiê a que este volume pertence
-        [Required]
         public DocumentoArquivistico DocumentoArquivistico { get; set; }
 
         // Os documentos que este volume contém

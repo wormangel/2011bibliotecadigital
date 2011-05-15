@@ -34,7 +34,7 @@ namespace Core.Gerenciadores
             _repositorio.Salvar(documento);
         }
 
-        public void Adicionar(Documento documento)
+        public void Adicionar(Documento documento, DocumentoArquivistico documentoArquivistico)
         {
             _repositorio.Adicionar(documento);
         }
