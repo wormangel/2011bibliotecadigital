@@ -180,7 +180,7 @@ namespace Core.Objetos
         /// </summary>
         public long IdArquivo
         {
-            get { return Arquivos.ElementAt(0).ArquivoId; }
+            get { return (Arquivos != null) ? Arquivos.ElementAt(0).ArquivoId : -1; }
         }
 
         // Metadados 1.21 - Gênero (F)

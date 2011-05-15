@@ -104,10 +104,12 @@
     <div class="display-field">
         @if (Model.Volumes != null)
         {
-            foreach (var item in Model.Volumes)
+            <ul>
+            @foreach (var item in Model.Volumes.Where(v => v.IdProcessoDossie == Model.Id).ToList())
             {
-                @Html.DisplayFor(modelVol => item.Localizacao);
+                <li>item.Localizacao</li>
             }
+            </ul>
         }
     </div>
 </fieldset>

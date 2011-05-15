@@ -2,14 +2,15 @@
 using System.Linq;
 using Core.Interfaces;
 using Core.Objetos;
+using Core.Repositorios;
 
 namespace Core.Gerenciadores
 {
     public class GerenciadorVolumes
     {
-        private readonly IRepositorio<Volume> _repositorio;
+        private readonly RepositorioVolume _repositorio;
 
-        public GerenciadorVolumes(IRepositorio<Volume> repositorio)
+        public GerenciadorVolumes(RepositorioVolume repositorio)
         {
             _repositorio = repositorio;
         }

@@ -22,7 +22,7 @@
 
     <div class="display-label">Tipo do meio</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.TipoDoMeio.Description)
+        @Html.DisplayFor(model => model.TipoDoMeio)
     </div>
 
     <div class="display-label">Nr. do volume</div>
@@ -38,6 +38,17 @@
     <div class="display-label">Localização</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Localizacao)
+    </div>
+
+    <div class="display-label">Documentos <a href="/DocumentoArquivistico/@Html.DisplayFor(model => model.IdProcessoDossie)/Volume/@Html.DisplayFor(model => model.Id)/Documento/Create">Criar documento</a></div>
+    <div class="display-field">
+        @if (Model.Documentos != null)
+        {
+            foreach (var item in Model.Documentos.Where(v => v.IdProcessoDossie == Model.Id).ToList())
+            {
+                @(item.Localizacao)
+            }
+        }
     </div>
 </fieldset>
 <p>

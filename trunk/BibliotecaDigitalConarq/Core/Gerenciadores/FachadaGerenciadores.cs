@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.Interfaces;
 using Core.Objetos;
+using Core.Repositorios;
 
 namespace Core.Gerenciadores
 {
@@ -13,15 +14,16 @@ namespace Core.Gerenciadores
         private readonly GerenciadorVolumes _volumes;
 
         public FachadaGerenciadores(IRepositorio<DocumentoArquivistico> repositorioDocumentosArquivisticos,
-                                    IRepositorio<Volume> repositorioVolumes,
-                                    IRepositorio<Documento> repositorioDocumentos)
+                                    RepositorioVolume repositorioVolumes,
+                                    RepositorioDocumento repositorioDocumentos)
         {
             _documentosArquivisticos = new GerenciadorDocumentosArquivisticos(repositorioDocumentosArquivisticos);
             _volumes = new GerenciadorVolumes(repositorioVolumes);
             _documentos = new GerenciadorDocumentos(repositorioDocumentos);
         }
 
-        // DOCUMENTO ARQUIVISTICO
+        #region DocumentoArquivistico Members
+
         public DocumentoArquivistico RecuperarDocumentoArquivisticoPorId(long id)
         {
             return _documentosArquivisticos.RecuperarPorId(id);
@@ -46,8 +48,11 @@ namespace Core.Gerenciadores
         {
             _documentosArquivisticos.Remover(id);
         }
-        
-        // VOLUMES
+
+        #endregion
+
+        #region Volume Members
+
         public IQueryable<Volume> RecuperarVolumes(long idDocumentoArquivistico)
         {
             return _volumes.RecuperarVolumes();
@@ -73,7 +78,10 @@ namespace Core.Gerenciadores
             _volumes.Remover(id);
         }
 
-        // DOCUMENTOS
+        #endregion
+
+        #region Documento Members
+
         public IQueryable<Documento> RecuperarDocumentos()
         {
             return _documentos.RecuperarDocumentos();
@@ -86,7 +94,7 @@ namespace Core.Gerenciadores
 
         public void AdicionarDocumento(long idDocumentoArquivistico, long idVolume, Documento documento)
         {
-            _documentos.Adicionar(documento, _documentosArquivisticos.RecuperarPorId(idDocumentoArquivistico));
+            _documentos.Adicionar(_volumes.RecuperarPorId(idVolume), documento);
         }
 
         public void SalvarDocumento(Documento documento)
@@ -98,5 +106,7 @@ namespace Core.Gerenciadores
         {
             _documentos.Remover(id);
         }
+
+        #endregion
     }
 }
