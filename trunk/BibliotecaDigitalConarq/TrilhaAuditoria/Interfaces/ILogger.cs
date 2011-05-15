@@ -2,7 +2,7 @@
 
 namespace TrilhaAuditoria.Interfaces
 {
-    interface ILogger
+    public interface ILogger
     {
 
         void LogaMensagem(String mensagem);
