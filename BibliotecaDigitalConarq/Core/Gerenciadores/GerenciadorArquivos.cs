@@ -32,7 +32,10 @@ namespace Core.Gerenciadores
                                                                 goldenIndex);
         }
 
-        //Exemplo de como indexar um arquivo.
+        // TODO: Há duas formas de indexar os arquivo, uma é utilizando o serviço (que é feito usando
+        // TODO: o método abaixo). Essa forma tem a vantagem de não deixar o usuário esperando a 
+        // TODO: indexação, mas é dependente do LightBase, pois tem que informar os campos e a
+        // TODO: extent de onde o conteúdo será salvo.
         private void _Indexar(Arquivo arquivo)
         {
             try
@@ -46,10 +49,11 @@ namespace Core.Gerenciadores
                 // TODO: Tem que dizer em qual campo e em qual base vai guardar o conteúdo extraído.
                 var parametros = new IndexerParameters
                                      {
-                                         ContentField = "TextoArquivo",
-                                         IdField = "Id",
+                                         //TODO: Alterar esses campos quando arrumar as coisas do LightBase
+                                         ContentField = "NomeDoAtributoNaTabela",
+                                         IdField = "NomeDoAtributoQueEhOIDNaTabela",
                                          IdFieldValue = arquivo.ArquivoId.ToString(),
-                                         Table = ""
+                                         Table = "NomeDaTabelaNaBaseDeDados"
                                      };
 
                 var conteudo = new FileData
@@ -65,7 +69,9 @@ namespace Core.Gerenciadores
             }
         }
 
-        //Exemplo de como extrair o texto do arquivo
+        // TODO: O método abaixo utiliza a forma sincrona de fazer a indexação, não é necessário o serviço
+        // TODO: e fica independente da tecnologia da base de dados, mas o usuário teria que esperar a
+        // TODO: indexação terminar. Poderiamos contornar esse problema com o uso de threads, o que acham?
         private String _Extrair(String caminhoArquivo)
         {
             return DocumentExtractor.Instance.Extract(caminhoArquivo);
@@ -116,6 +122,7 @@ namespace Core.Gerenciadores
         {
             _repositorio.Salvar(arquivo);
         }
+
     }
 
     // PipesAndFilters
