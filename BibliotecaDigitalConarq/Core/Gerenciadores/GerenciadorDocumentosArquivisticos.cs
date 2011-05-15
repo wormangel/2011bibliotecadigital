@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Core.Interfaces;
+﻿using System.Linq;
 using Core.Objetos;
+using EntityAcessoADados.Interfaces;
 
 namespace Core.Gerenciadores
 {

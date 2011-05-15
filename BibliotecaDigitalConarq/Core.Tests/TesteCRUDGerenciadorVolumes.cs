@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Core.Gerenciadores;
-using Core.Interfaces;
 using Core.Objetos;
 using Core.Repositorios;
 using NUnit.Framework;
@@ -17,7 +16,7 @@ namespace Core.Tests
         [SetUp]
         public void SetUp()
         {
-            _repositorioMock = new DynamicMock(typeof(RepositorioVolume));
+            _repositorioMock = new DynamicMock(typeof (RepositorioVolume));
             _gerenciador = new GerenciadorVolumes((RepositorioVolume) _repositorioMock.MockInstance);
         }
 

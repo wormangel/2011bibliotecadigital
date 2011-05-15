@@ -1,9 +1,9 @@
 using System.Data.Entity;
 using Core.ContextoBD;
 using Core.Gerenciadores;
-using Core.Interfaces;
 using Core.Objetos;
 using Core.Repositorios;
+using EntityAcessoADados.Interfaces;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Mvc;

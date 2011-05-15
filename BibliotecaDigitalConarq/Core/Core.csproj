@@ -61,7 +61,6 @@
     <Compile Include="Gerenciadores\GerenciadorVolumes.cs" />
     <Compile Include="Gerenciadores\GerenciadorArquivos.cs" />
     <Compile Include="Gerenciadores\GerenciadorDocumentosArquivisticos.cs" />
-    <Compile Include="Interfaces\IRepositorio.cs" />
     <Compile Include="Objetos\Arquivo.cs" />
     <Compile Include="Objetos\Documento.cs" />
     <Compile Include="Objetos\DocumentoArquivistico.cs" />

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Core.Interfaces;
+﻿using System.Linq;
 using Core.Objetos;
 using Core.Repositorios;
+using EntityAcessoADados.Interfaces;
 
 namespace Core.Gerenciadores
 {
@@ -21,8 +19,6 @@ namespace Core.Gerenciadores
             _volumes = new GerenciadorVolumes(repositorioVolumes);
             _documentos = new GerenciadorDocumentos(repositorioDocumentos);
         }
-
-        #region DocumentoArquivistico Members
 
         public DocumentoArquivistico RecuperarDocumentoArquivisticoPorId(long id)
         {
@@ -49,10 +45,6 @@ namespace Core.Gerenciadores
             _documentosArquivisticos.Remover(id);
         }
 
-        #endregion
-
-        #region Volume Members
-
         public IQueryable<Volume> RecuperarVolumes(long idDocumentoArquivistico)
         {
             return _volumes.RecuperarVolumes();
@@ -78,10 +70,6 @@ namespace Core.Gerenciadores
             _volumes.Remover(id);
         }
 
-        #endregion
-
-        #region Documento Members
-
         public IQueryable<Documento> RecuperarDocumentos()
         {
             return _documentos.RecuperarDocumentos();
@@ -106,7 +94,5 @@ namespace Core.Gerenciadores
         {
             _documentos.Remover(id);
         }
-
-        #endregion
     }
 }

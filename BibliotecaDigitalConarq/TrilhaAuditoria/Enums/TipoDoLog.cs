@@ -14,7 +14,9 @@ namespace TrilhaAuditoria.Enums
         Volume,
 
         [Description("Documento")]
-        Documento
+        Documento,
 
+        [Description("Arquivo")]
+        Arquivo
     }
 }

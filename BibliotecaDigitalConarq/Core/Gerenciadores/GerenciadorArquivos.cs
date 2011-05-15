@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using Core.Interfaces;
 using Core.Objetos;
 using Core.Properties;
+using EntityAcessoADados.Interfaces;
 using LightInfocon.GoldenIndex.Extractors;
 using LightInfocon.GoldenIndex.General;
 
@@ -15,21 +15,22 @@ namespace Core.Gerenciadores
     /// </summary>
     public class GerenciadorArquivos
     {
+        private readonly IGoldenIndex _goldenIndex;
         private readonly IRepositorio<Arquivo> _repositorio;
-        private readonly IGoldenIndex goldenIndex;
-        private readonly User usuarioGoldenIndex;
+        //private readonly TrilhaAuditoria _trilhaAuditoria;
+        private readonly User _usuarioGoldenIndex;
 
         public GerenciadorArquivos(IRepositorio<Arquivo> repositorio)
         {
             _repositorio = repositorio;
 
-            goldenIndex = GoldenIndexClient.Instance(Settings.Default.HostGoldenIndex,
-                                                     uint.Parse(Settings.Default.PortaGoldenIndex),
-                                                     Settings.Default.UriGoldenIndex,
-                                                     Settings.Default.ProtocoloGoldenIndex);
-            usuarioGoldenIndex = GoldenIndexClient.Authenticate(Settings.Default.UsuarioGoldenIndex,
-                                                                Settings.Default.SenhaGoldenIndex,
-                                                                goldenIndex);
+            _goldenIndex = GoldenIndexClient.Instance(Settings.Default.HostGoldenIndex,
+                                                      uint.Parse(Settings.Default.PortaGoldenIndex),
+                                                      Settings.Default.UriGoldenIndex,
+                                                      Settings.Default.ProtocoloGoldenIndex);
+            _usuarioGoldenIndex = GoldenIndexClient.Authenticate(Settings.Default.UsuarioGoldenIndex,
+                                                                 Settings.Default.SenhaGoldenIndex,
+                                                                 _goldenIndex);
         }
 
         // TODO: Há duas formas de indexar os arquivo, uma é utilizando o serviço (que é feito usando
@@ -40,7 +41,7 @@ namespace Core.Gerenciadores
         {
             try
             {
-                if (!goldenIndex.IsSupported(usuarioGoldenIndex, arquivo.Formato))
+                if (!_goldenIndex.IsSupported(_usuarioGoldenIndex, arquivo.Formato))
                 {
                     // NOTE: Se não for um arquivo suportado, não faz nada
                     return;
@@ -61,11 +62,12 @@ namespace Core.Gerenciadores
                                        Url = arquivo.CaminhoDoArquivo,
                                        IndexerParameters = parametros
                                    };
-                goldenIndex.SaveFile(usuarioGoldenIndex, conteudo);
+                _goldenIndex.SaveFile(_usuarioGoldenIndex, conteudo);
             }
             catch (Exception exception)
             {
-                throw new Exception("Arquivo salvo, porém não indexado para buscas. Contate o administrador do sistema.", exception);
+                throw new Exception(
+                    "Arquivo salvo, porém não indexado para buscas. Contate o administrador do sistema.", exception);
             }
         }
 
@@ -122,7 +124,6 @@ namespace Core.Gerenciadores
         {
             _repositorio.Salvar(arquivo);
         }
-
     }
 
     // PipesAndFilters

@@ -1,10 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Core.Gerenciadores;
-using Core.Interfaces;
 using Core.Objetos;
+using EntityAcessoADados.Interfaces;
 using NUnit.Framework;
 using NUnit.Mocks;
-using System.Collections.Generic;
 
 namespace Core.Tests
 {
@@ -24,6 +24,32 @@ namespace Core.Tests
 
         private GerenciadorArquivos _gerenciador;
         private DynamicMock _repositorioMock;
+
+        [Test]
+        public void Precisa_Adicionar_Arquivo()
+        {
+            var arquivo = new Arquivo
+                              {
+                                  ArquivoId = 1,
+                                  AmbienteHardware = "x86",
+                                  AmbienteSoftware = "WindowsXP",
+                                  Armazenamento = "C://arquivo.txt",
+                                  Caracteristicas = "Arquivo Digital",
+                                  Dependencias = "Notepad",
+                                  Formato = "txt",
+                                  Nome = "Teste"
+                              };
+
+            var arquivosRecuperados = new List<Arquivo> {arquivo};
+
+            _repositorioMock.Expect("Adicionar", arquivo);
+            _repositorioMock.ExpectAndReturn("RecuperarTodos", arquivosRecuperados.AsQueryable());
+
+            _gerenciador.Adicionar(arquivo, null);
+            Assert.AreEqual(arquivosRecuperados, _gerenciador.RecuperarArquivos());
+
+            _repositorioMock.Verify();
+        }
 
         [Test]
         public void Precisa_Atualizar_Arquivo()
@@ -57,35 +83,9 @@ namespace Core.Tests
         }
 
         [Test]
-        public void Precisa_Adicionar_Arquivo()
-        {
-            var arquivo = new Arquivo
-                              {
-                                  ArquivoId = 1,
-                                  AmbienteHardware = "x86",
-                                  AmbienteSoftware = "WindowsXP",
-                                  Armazenamento = "C://arquivo.txt",
-                                  Caracteristicas = "Arquivo Digital",
-                                  Dependencias = "Notepad",
-                                  Formato = "txt",
-                                  Nome = "Teste"
-                              };
-
-            var arquivosRecuperados = new List<Arquivo> {arquivo};
-
-            _repositorioMock.Expect("Adicionar", arquivo);
-            _repositorioMock.ExpectAndReturn("RecuperarTodos", arquivosRecuperados.AsQueryable());
-
-            _gerenciador.Adicionar(arquivo, null);
-            Assert.AreEqual(arquivosRecuperados, _gerenciador.RecuperarArquivos());
-
-            _repositorioMock.Verify();
-        }
-
-        [Test]
         public void Precisa_Excluir_Arquivo()
         {
-            var arq = new Arquivo { ArquivoId = 1, Nome = "Teste"};
+            var arq = new Arquivo {ArquivoId = 1, Nome = "Teste"};
 
             _repositorioMock.ExpectAndReturn("RecuperarPorId", arq, 1);
             _repositorioMock.Expect("Remover", 1);
@@ -98,6 +98,5 @@ namespace Core.Tests
 
             _repositorioMock.Verify();
         }
-
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using Core.ContextoBD;
-using Core.Interfaces;
+﻿using Core.ContextoBD;
 using Core.Objetos;
 
 namespace Core.Repositorios
@@ -11,8 +6,6 @@ namespace Core.Repositorios
     public class RepositorioVolume : Repositorio<Volume>
     {
         protected new readonly ContextoAcessoADados contexto;
-
-        #region IRepositorio<T> Members
 
         public RepositorioVolume(ContextoAcessoADados contexto) : base(contexto)
         {
@@ -32,7 +25,5 @@ namespace Core.Repositorios
             contexto.Set<Volume>().Attach(item);
             contexto.SaveChanges();
         }
-
-        #endregion
     }
 }
