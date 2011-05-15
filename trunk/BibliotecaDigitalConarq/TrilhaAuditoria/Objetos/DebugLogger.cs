@@ -26,5 +26,10 @@ namespace TrilhaAuditoria.Objetos
         {
             Console.WriteLine(new Log(TipoDoLog.Documento, idDocumento, usuario, acao));
         }
+
+        public void LogaAcaoDoArquivo(long idArquivo, long usuario, string acao)
+        {
+            Console.WriteLine(new Log(TipoDoLog.Arquivo, idArquivo, usuario, acao));
+        }
     }
 }

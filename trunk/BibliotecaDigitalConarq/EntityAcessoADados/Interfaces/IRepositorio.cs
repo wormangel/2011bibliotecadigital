@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
-namespace Core.Interfaces
+namespace EntityAcessoADados.Interfaces
 {
     public interface IRepositorio<T> where T : class
     {

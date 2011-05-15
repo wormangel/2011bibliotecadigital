@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="ContextoAcessoADados.cs" />
     <Compile Include="ContextoInitializer.cs" />
+    <Compile Include="Interfaces\IRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\Repositorio.cs" />
   </ItemGroup>

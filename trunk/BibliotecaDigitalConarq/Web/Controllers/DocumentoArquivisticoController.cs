@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Core.Gerenciadores;
-using Core.Interfaces;
 using Core.Objetos;
 using Ninject;
 

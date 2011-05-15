@@ -3,7 +3,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Core.Gerenciadores;
-using Core.Interfaces;
 using Core.Objetos;
 
 namespace Web.Controllers

@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Web.Mvc;
 using Core.Gerenciadores;
-using Core.Interfaces;
 using Core.Objetos;
 using Ninject;
 

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using Core.ContextoBD;
-using Core.Interfaces;
+using EntityAcessoADados.Interfaces;
 
 namespace Core.Repositorios
 {

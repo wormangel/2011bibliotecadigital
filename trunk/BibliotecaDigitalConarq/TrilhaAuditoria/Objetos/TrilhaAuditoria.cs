@@ -1,18 +1,19 @@
-﻿using Core.Interfaces;
+﻿using EntityAcessoADados.Interfaces;
 using TrilhaAuditoria.Enums;
 using TrilhaAuditoria.Interfaces;
 
 namespace TrilhaAuditoria.Objetos
 {
-    class SQLLogger : ILogger
+    internal class TrilhaAuditoria : ILogger
     {
-        
         private readonly IRepositorio<Log> repositorio;
 
-        public SQLLogger(IRepositorio<Log> repositorio)
+        public TrilhaAuditoria(IRepositorio<Log> repositorio)
         {
             this.repositorio = repositorio;
         }
+
+        #region ILogger Members
 
         public void LogaMensagem(string mensagem)
         {
@@ -33,5 +34,12 @@ namespace TrilhaAuditoria.Objetos
         {
             repositorio.Adicionar(new Log(TipoDoLog.Documento, idDocumento, usuario, acao));
         }
+
+        public void LogaAcaoDoArquivo(long idArquivo, long usuario, string acao)
+        {
+            repositorio.Adicionar(new Log(TipoDoLog.Arquivo, idArquivo, usuario, acao));
+        }
+
+        #endregion
     }
 }

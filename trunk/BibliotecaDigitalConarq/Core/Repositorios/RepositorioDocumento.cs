@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using Core.ContextoBD;
-using Core.Interfaces;
+﻿using Core.ContextoBD;
 using Core.Objetos;
 
 namespace Core.Repositorios
 {
     public class RepositorioDocumento : Repositorio<Documento>
     {
-        #region IRepositorio<T> Members
-
         public RepositorioDocumento(ContextoAcessoADados contexto) : base(contexto)
         {
             this.contexto = contexto;
@@ -30,7 +23,5 @@ namespace Core.Repositorios
             contexto.Set<Documento>().Attach(item);
             contexto.SaveChanges();
         }
-
-        #endregion
     }
 }

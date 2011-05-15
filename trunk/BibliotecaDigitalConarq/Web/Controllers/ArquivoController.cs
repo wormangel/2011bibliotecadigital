@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 using Core.Gerenciadores;
-using Core.Interfaces;
 using Core.Objetos;
+using EntityAcessoADados.Interfaces;
 using Web.ViewModels.Arquivo;
 
 namespace Web.Controllers
