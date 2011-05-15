@@ -38,8 +38,9 @@ namespace Core.Gerenciadores
             //logger.LogaAcaoVolume(volume.Id, usuario, "Volume atualizado");
         }
 
-        public void Adicionar(Volume volume)
+        public void Adicionar(DocumentoArquivistico documentoArquivistico, Volume volume)
         {
+            volume.DocumentoArquivistico = documentoArquivistico;
             _repositorio.Adicionar(volume);
             //logger.LogaAcaoVolume(volume.Id, usuario, "Volume criado");
         }

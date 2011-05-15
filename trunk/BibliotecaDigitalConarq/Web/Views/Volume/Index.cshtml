@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Core.Objetos.Volume>
+﻿@model IQueryable<Core.Objetos.Volume>
 
 @{
     ViewBag.Title = "Biblioteca Digital - Listando volumes";
 }
 
-<h2>Index</h2>
+<h2>Listando volumes do documento arquivístico @(ViewBag.TituloDoc)</h2>
 
 <p>
     @Html.ActionLink("Criar novo", "Create")

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Core.Objetos.DocumentoArquivistico>
+﻿@model IQueryable<Core.Objetos.DocumentoArquivistico>
 
 @{
     ViewBag.Title = "Biblioteca Digital - Listando documentos arquivísticos";
@@ -101,9 +101,9 @@
             @Html.DisplayFor(modelItem => item.Localizacao)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Visualizar", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Remover", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

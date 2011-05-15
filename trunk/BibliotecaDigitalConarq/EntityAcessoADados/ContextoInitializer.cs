@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EntityAcessoADados
 {
-    public class ContextoInitializer : DropCreateDatabaseIfModelChanges<ContextoAcessoADados>
+    public class ContextoInitializer : DropCreateDatabaseAlways<ContextoAcessoADados>
     {
     }
 }

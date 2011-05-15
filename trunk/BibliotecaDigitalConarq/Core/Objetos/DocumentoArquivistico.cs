@@ -146,7 +146,7 @@ namespace Core.Objetos
         /// Identificação da classe do documento com base em um
         /// plano de classificação.
         /// </summary>
-        [Required(ErrorMessage = "A classe deve ser informada"), Display(Name = "Data de produção")]
+        [Required(ErrorMessage = "A classe deve ser informada"), Display(Name = "Classe")]
         public String Classe { get; set; }
 
         //TODO Temporalidade - próximas iterações

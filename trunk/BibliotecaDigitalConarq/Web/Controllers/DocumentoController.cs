@@ -46,11 +46,11 @@ namespace Web.Controllers
         // POST: /DocumentoArquivistico/1/Volume/1/Documento/Create
 
         [HttpPost]
-        public ActionResult Create(long idDocmentoArquivistico, long idVolume, Documento documento)
+        public ActionResult Create(long idDocArq, long idVolume, Documento documento)
         {
             if (ModelState.IsValid)
             {
-                _fachada.AdicionarDocumento(documento);
+                _fachada.AdicionarDocumento(idDocArq, idVolume, documento);
                 return RedirectToAction("Index");
             }
 

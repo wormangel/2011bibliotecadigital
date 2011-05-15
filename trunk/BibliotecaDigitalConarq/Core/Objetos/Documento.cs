@@ -41,7 +41,7 @@ namespace Core.Objetos
         /// </summary>
         public long IdProcessoDossie
         {
-            get { return Volume.DocumentoArquivistico.Id; }
+            get { return (Volume != null) ? Volume.DocumentoArquivistico.Id : -1; }
         }
 
         // Referência
@@ -52,7 +52,7 @@ namespace Core.Objetos
         /// </summary>
         public long IdVolume
         {
-            get { return Volume.Id; }
+            get { return (Volume != null) ? Volume.Id : -1; }
         }
 
         // Metadados 1.8 - Tipo de meio (O)

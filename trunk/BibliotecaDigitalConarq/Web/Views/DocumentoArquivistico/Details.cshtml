@@ -17,7 +17,7 @@
 
     <div class="display-label">Tipo do meio</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.TipoDoMeio.Description)
+        @Html.DisplayFor(model => model.TipoDoMeio)
     </div>
 
     <div class="display-label">Título</div>
@@ -27,7 +27,7 @@
 
     <div class="display-label">Tipo do título</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.TipoDoTitulo.Description)
+        @Html.DisplayFor(model => model.TipoDoTitulo)
     </div>
 
     <div class="display-label">Descrição</div>
@@ -52,7 +52,7 @@
 
     <div class="display-label">Tipo do destinatário</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.TipoDoDestinatario.Description)
+        @Html.DisplayFor(model => model.TipoDoDestinatario)
     </div>
 
     <div class="display-label">Interessado</div>
@@ -87,7 +87,7 @@
 
     <div class="display-label">Destinação prevista</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.DestinacaoPrevista.Description)
+        @Html.DisplayFor(model => model.DestinacaoPrevista)
     </div>
 
     <div class="display-label">Prazo de guarda</div>
@@ -99,8 +99,19 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Localizacao)
     </div>
+
+    <div class="display-label">Volumes <a href="/DocumentoArquivistico/@Html.DisplayFor(model => model.Id)/Volume/Create">Criar volume</a></div>
+    <div class="display-field">
+        @if (Model.Volumes != null)
+        {
+            foreach (var item in Model.Volumes)
+            {
+                @Html.DisplayFor(modelVol => item.Localizacao);
+            }
+        }
+    </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Voltar para a lista", "Index")
 </p>

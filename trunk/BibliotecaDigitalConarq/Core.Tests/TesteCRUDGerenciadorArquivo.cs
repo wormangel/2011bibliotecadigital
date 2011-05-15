@@ -45,7 +45,7 @@ namespace Core.Tests
             _repositorioMock.Expect("Salvar", arquivo);
             _repositorioMock.ExpectAndReturn("RecuperarPorId", arquivo, 1);
 
-            _gerenciador.Adicionar(arquivo);
+            _gerenciador.Adicionar(arquivo, null);
             Arquivo arquivoTemp = _gerenciador.RecuperarPorId(1);
             Assert.AreEqual("WindowsXP", arquivo.AmbienteSoftware);
             arquivoTemp.AmbienteSoftware = "Windows7";
@@ -76,7 +76,7 @@ namespace Core.Tests
             _repositorioMock.Expect("Adicionar", arquivo);
             _repositorioMock.ExpectAndReturn("RecuperarTodos", arquivosRecuperados.AsQueryable());
 
-            _gerenciador.Adicionar(arquivo);
+            _gerenciador.Adicionar(arquivo, null);
             Assert.AreEqual(arquivosRecuperados, _gerenciador.RecuperarArquivos());
 
             _repositorioMock.Verify();

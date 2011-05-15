@@ -27,7 +27,7 @@ namespace Core.Gerenciadores
             return _documentosArquivisticos.RecuperarPorId(id);
         }
 
-        public IEnumerable<DocumentoArquivistico> RecuperarDocumentosArquivisticos()
+        public IQueryable<DocumentoArquivistico> RecuperarDocumentosArquivisticos()
         {
             return _documentosArquivisticos.RecuperarDocumentos();
         }
@@ -48,7 +48,7 @@ namespace Core.Gerenciadores
         }
         
         // VOLUMES
-        public IEnumerable<Volume> RecuperarVolumes()
+        public IQueryable<Volume> RecuperarVolumes(long idDocumentoArquivistico)
         {
             return _volumes.RecuperarVolumes();
         }
@@ -58,9 +58,9 @@ namespace Core.Gerenciadores
             return _volumes.RecuperarPorId(id);
         }
 
-        public void AdicionarVolume(Volume volume)
+        public void AdicionarVolume(long idDocumentoArquivistico, Volume volume)
         {
-            _volumes.Adicionar(volume);
+            _volumes.Adicionar(_documentosArquivisticos.RecuperarPorId(idDocumentoArquivistico), volume);
         }
 
         public void SalvarVolume(Volume volume)
@@ -84,9 +84,9 @@ namespace Core.Gerenciadores
             return _documentos.RecuperarPorId(id);
         }
 
-        public void AdicionarDocumento(Documento documento)
+        public void AdicionarDocumento(long idDocumentoArquivistico, long idVolume, Documento documento)
         {
-            _documentos.Adicionar(documento);
+            _documentos.Adicionar(documento, _documentosArquivisticos.RecuperarPorId(idDocumentoArquivistico));
         }
 
         public void SalvarDocumento(Documento documento)
