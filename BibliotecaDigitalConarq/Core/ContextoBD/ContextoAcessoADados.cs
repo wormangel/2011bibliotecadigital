@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using Core.Objetos;
 
-namespace Core.Repositorios
+namespace Core.ContextoBD
 {
     /// <summary>
     /// Contexto de acesso a dados para o Entity Framework. O gerenciador de

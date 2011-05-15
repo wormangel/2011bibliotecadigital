@@ -23,6 +23,10 @@ namespace Web.Controllers
         public ViewResult Index(long idDocArq, long idVol)
         {
             IQueryable<Documento> documentos = _fachada.RecuperarDocumentos();
+            var volume = _fachada.RecuperarVolumePorId(idVol);
+            ViewBag.TituloDocArq = volume.DocumentoArquivistico.Titulo;
+            ViewBag.TipoDocArq = "processo/dossiê"; // TODO: criar enum!
+            ViewBag.NrVolume = volume.NumeroDoVolume;
             return View(documentos);
         }
 

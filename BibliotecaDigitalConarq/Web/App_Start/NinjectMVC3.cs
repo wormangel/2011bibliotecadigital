@@ -1,4 +1,5 @@
 using System.Data.Entity;
+using Core.ContextoBD;
 using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
