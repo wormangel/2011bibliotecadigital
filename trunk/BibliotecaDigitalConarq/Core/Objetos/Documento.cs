@@ -286,7 +286,6 @@ namespace Core.Objetos
         public IQueryable<Arquivo> Arquivos { get; set; }
 
         // O volume a que este documento pertence
-        [Required]
         public Volume Volume { get; set; }
     }
 }

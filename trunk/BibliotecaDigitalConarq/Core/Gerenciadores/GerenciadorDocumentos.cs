@@ -32,7 +32,7 @@ namespace Core.Gerenciadores
 
         public void Adicionar(Volume volume, Documento documento)
         {
-            volume.Documentos.ToList().Add(documento);
+            documento.Volume = volume;
             _repositorio.Adicionar(documento);
         }
 

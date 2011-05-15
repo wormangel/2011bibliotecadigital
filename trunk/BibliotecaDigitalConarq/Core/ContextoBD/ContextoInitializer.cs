@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
-using Core.Repositorios;
 
-namespace Core.Repositorios
+namespace Core.ContextoBD
 {
-    public class ContextoInitializer : DropCreateDatabaseAlways<ContextoAcessoADados>
+    public class ContextoInitializer : DropCreateDatabaseIfModelChanges<ContextoAcessoADados>
     {
     }
 }
