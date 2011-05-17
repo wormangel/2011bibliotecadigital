@@ -34,6 +34,12 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="LightInfocon.GoldenIndex.Extractors">
+      <HintPath>..\packages\LightInfocon\LightInfocon.GoldenIndex.Extractors.dll</HintPath>
+    </Reference>
+    <Reference Include="LightInfocon.GoldenIndex.General">
+      <HintPath>..\packages\LightInfocon\LightInfocon.GoldenIndex.General.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
@@ -46,9 +52,34 @@
   <ItemGroup>
     <Compile Include="ContextoAcessoADados.cs" />
     <Compile Include="ContextoInitializer.cs" />
-    <Compile Include="Interfaces\IRepositorio.cs" />
+    <Compile Include="Gerenciadores\FachadaGerenciadores.cs" />
+    <Compile Include="Gerenciadores\GerenciadorArquivos.cs" />
+    <Compile Include="Gerenciadores\GerenciadorDocumentos.cs" />
+    <Compile Include="Gerenciadores\GerenciadorDocumentosArquivisticos.cs" />
+    <Compile Include="Gerenciadores\GerenciadorVolumes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Repositorios\Repositorio.cs" />
+    <Compile Include="Repositorios\RepositorioDocumento.cs" />
+    <Compile Include="Repositorios\RepositorioVolume.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{93E96FFB-2675-4232-A1EA-8171C010A266}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

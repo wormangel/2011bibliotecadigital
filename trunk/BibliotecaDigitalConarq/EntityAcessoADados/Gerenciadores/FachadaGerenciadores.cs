@@ -1,11 +1,12 @@
 ﻿using System.Linq;
+using Core.Gerenciadores;
+using Core.Interfaces;
 using Core.Objetos;
-using Core.Repositorios;
-using EntityAcessoADados.Interfaces;
+using EntityAcessoADados.Repositorios;
 
-namespace Core.Gerenciadores
+namespace EntityAcessoADados.Gerenciadores
 {
-    public class FachadaGerenciadores
+    public class FachadaGerenciadores : IFachadaGerenciadores
     {
         private readonly GerenciadorDocumentos _documentos;
         private readonly GerenciadorDocumentosArquivisticos _documentosArquivisticos;

@@ -2,7 +2,8 @@
 using System.Linq;
 using Core.Gerenciadores;
 using Core.Objetos;
-using Core.Repositorios;
+using EntityAcessoADados.Gerenciadores;
+using EntityAcessoADados.Repositorios;
 using NUnit.Framework;
 using NUnit.Mocks;
 

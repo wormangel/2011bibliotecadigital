@@ -56,11 +56,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Gerenciadores\FachadaGerenciadores.cs" />
-    <Compile Include="Gerenciadores\GerenciadorDocumentos.cs" />
-    <Compile Include="Gerenciadores\GerenciadorVolumes.cs" />
-    <Compile Include="Gerenciadores\GerenciadorArquivos.cs" />
-    <Compile Include="Gerenciadores\GerenciadorDocumentosArquivisticos.cs" />
+    <Compile Include="Gerenciadores\IFachadaGerenciadores.cs" />
+    <Compile Include="Gerenciadores\IGerenciadorArquivos.cs" />
+    <Compile Include="Gerenciadores\IGerenciadorDocumentos.cs" />
+    <Compile Include="Gerenciadores\IGerenciadorDocumentosArquivisticos.cs" />
+    <Compile Include="Gerenciadores\IGerenciadorVolumes.cs" />
+    <Compile Include="Interfaces\ILogger.cs" />
+    <Compile Include="Interfaces\IRepositorio.cs" />
     <Compile Include="Objetos\Arquivo.cs" />
     <Compile Include="Objetos\Documento.cs" />
     <Compile Include="Objetos\DocumentoArquivistico.cs" />
@@ -71,16 +73,6 @@
     <Compile Include="Objetos\Enums\TipoDoTitulo.cs" />
     <Compile Include="Objetos\Volume.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="ContextoBD\ContextoAcessoADados.cs" />
-    <Compile Include="ContextoBD\ContextoInitializer.cs" />
-    <Compile Include="Repositorios\RepositorioDocumento.cs" />
-    <Compile Include="Repositorios\Repositorio.cs" />
-    <Compile Include="Repositorios\RepositorioVolume.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -89,17 +81,8 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EntityAcessoADados\EntityAcessoADados.csproj">
-      <Project>{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}</Project>
-      <Name>EntityAcessoADados</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

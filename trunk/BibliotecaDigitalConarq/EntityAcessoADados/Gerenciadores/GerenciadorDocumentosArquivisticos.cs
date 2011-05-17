@@ -1,10 +1,11 @@
 ﻿using System.Linq;
+using Core.Gerenciadores;
+using Core.Interfaces;
 using Core.Objetos;
-using EntityAcessoADados.Interfaces;
 
-namespace Core.Gerenciadores
+namespace EntityAcessoADados.Gerenciadores
 {
-    public class GerenciadorDocumentosArquivisticos
+    public class GerenciadorDocumentosArquivisticos : IGerenciadorDocumentosArquivisticos
     {
         private readonly IRepositorio<DocumentoArquivistico> _repositorio;
 

@@ -1,19 +1,20 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using Core.Gerenciadores;
+using Core.Interfaces;
 using Core.Objetos;
-using Core.Properties;
-using EntityAcessoADados.Interfaces;
+using EntityAcessoADados.Properties;
 using LightInfocon.GoldenIndex.Extractors;
 using LightInfocon.GoldenIndex.General;
 
-namespace Core.Gerenciadores
+namespace EntityAcessoADados.Gerenciadores
 {
     /// <summary>
     /// Responsável por gerenciar os Arquivos, realizando também o processo de
     /// extração e indexação de seu conteúdo.
     /// </summary>
-    public class GerenciadorArquivos
+    public class GerenciadorArquivos : IGerenciadorArquivos
     {
         private readonly IGoldenIndex _goldenIndex;
         private readonly IRepositorio<Arquivo> _repositorio;

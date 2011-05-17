@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace EntityAcessoADados.Interfaces
+namespace Core.Interfaces
 {
     public interface IRepositorio<T> where T : class
     {

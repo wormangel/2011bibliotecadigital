@@ -4,14 +4,15 @@ using System.Web;
 using System.Web.Mvc;
 using Core.Gerenciadores;
 using Core.Objetos;
+using EntityAcessoADados.Gerenciadores;
 
 namespace Web.Controllers
 {
     public class DocumentoController : Controller
     {
-        private readonly FachadaGerenciadores _fachada;
+        private readonly IFachadaGerenciadores _fachada;
 
-        public DocumentoController(FachadaGerenciadores fachada)
+        public DocumentoController(IFachadaGerenciadores fachada)
         {
             _fachada = fachada;
         }

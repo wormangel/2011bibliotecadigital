@@ -1,10 +1,11 @@
 ﻿using System.Linq;
+using Core.Gerenciadores;
 using Core.Objetos;
-using Core.Repositorios;
+using EntityAcessoADados.Repositorios;
 
-namespace Core.Gerenciadores
+namespace EntityAcessoADados.Gerenciadores
 {
-    public class GerenciadorVolumes
+    public class GerenciadorVolumes : IGerenciadorVolumes
     {
         private readonly RepositorioVolume _repositorio;
 
