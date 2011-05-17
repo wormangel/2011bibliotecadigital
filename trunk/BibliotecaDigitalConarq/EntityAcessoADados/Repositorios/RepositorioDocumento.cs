@@ -19,7 +19,6 @@ namespace EntityAcessoADados.Repositorios
 
         public new void Salvar(Documento item)
         {
-            contexto.Set<Documento>().Attach(item);
             contexto.Volumes.Attach(item.Volume);
             contexto.Entry(item).State = EntityState.Modified;
             contexto.SaveChanges();
