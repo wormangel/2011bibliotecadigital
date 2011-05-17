@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Core.Gerenciadores;
+using Core.Interfaces;
 using Core.Objetos;
 using EntityAcessoADados.Repositorios;
 
@@ -7,9 +8,9 @@ namespace EntityAcessoADados.Gerenciadores
 {
     public class GerenciadorDocumentos : IGerenciadorDocumentos
     {
-        private readonly RepositorioDocumento _repositorio;
+        private readonly IRepositorio<Documento> _repositorio;
 
-        public GerenciadorDocumentos(RepositorioDocumento repositorio)
+        public GerenciadorDocumentos(IRepositorio<Documento> repositorio)
         {
             _repositorio = repositorio;
         }

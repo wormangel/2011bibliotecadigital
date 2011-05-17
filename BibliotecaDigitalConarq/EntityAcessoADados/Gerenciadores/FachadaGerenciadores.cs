@@ -8,17 +8,17 @@ namespace EntityAcessoADados.Gerenciadores
 {
     public class FachadaGerenciadores : IFachadaGerenciadores
     {
-        private readonly GerenciadorDocumentos _documentos;
-        private readonly GerenciadorDocumentosArquivisticos _documentosArquivisticos;
-        private readonly GerenciadorVolumes _volumes;
+        private readonly IGerenciadorDocumentos _documentos;
+        private readonly IGerenciadorDocumentosArquivisticos _documentosArquivisticos;
+        private readonly IGerenciadorVolumes _volumes;
 
-        public FachadaGerenciadores(IRepositorio<DocumentoArquivistico> repositorioDocumentosArquivisticos,
-                                    RepositorioVolume repositorioVolumes,
-                                    RepositorioDocumento repositorioDocumentos)
+        public FachadaGerenciadores(IGerenciadorDocumentos documentos,
+                                    IGerenciadorDocumentosArquivisticos documentosArquivisticos,
+                                    IGerenciadorVolumes volumes)
         {
-            _documentosArquivisticos = new GerenciadorDocumentosArquivisticos(repositorioDocumentosArquivisticos);
-            _volumes = new GerenciadorVolumes(repositorioVolumes);
-            _documentos = new GerenciadorDocumentos(repositorioDocumentos);
+            _documentosArquivisticos = documentosArquivisticos;
+            _volumes = volumes;
+            _documentos = documentos;
         }
 
         public DocumentoArquivistico RecuperarDocumentoArquivisticoPorId(long id)

@@ -1,17 +1,19 @@
 ﻿using System.Linq;
 using Core.Gerenciadores;
+using Core.Interfaces;
 using Core.Objetos;
-using EntityAcessoADados.Repositorios;
 
 namespace EntityAcessoADados.Gerenciadores
 {
     public class GerenciadorVolumes : IGerenciadorVolumes
     {
-        private readonly RepositorioVolume _repositorio;
+        private readonly IRepositorio<Volume> _repositorio;
+        private readonly IRepositorio<DocumentoArquivistico> _repositorioDocArq;
 
-        public GerenciadorVolumes(RepositorioVolume repositorio)
+        public GerenciadorVolumes(IRepositorio<Volume> repositorio, IRepositorio<DocumentoArquivistico> repoDocArq)
         {
             _repositorio = repositorio;
+            _repositorioDocArq = repoDocArq;
         }
 
         public IQueryable<Volume> RecuperarVolumes()
