@@ -1,27 +1,26 @@
 ﻿using System.Data;
+using System.Data.Entity;
+using System.Data.Objects.DataClasses;
 using Core.Objetos;
 
 namespace EntityAcessoADados.Repositorios
 {
     public class RepositorioVolume : Repositorio<Volume>
     {
-        protected new readonly ContextoAcessoADados contexto;
-
-        public RepositorioVolume(ContextoAcessoADados contexto) : base(contexto)
+        public RepositorioVolume(DbContext contexto) : base(contexto)
         {
-            this.contexto = contexto;
         }
 
-        public new void Adicionar(Volume item)
+        public override void Adicionar(Volume item)
         {
-            contexto.DocumentosArquivisticos.Attach(item.DocumentoArquivistico);
+            ((ContextoAcessoADados)contexto).DocumentosArquivisticos.Attach(item.DocumentoArquivistico);
             contexto.Set<Volume>().Add(item);
             contexto.SaveChanges();
         }
 
-        public new void Salvar(Volume item)
+        public override void Salvar(Volume item)
         {
-            contexto.DocumentosArquivisticos.Attach(item.DocumentoArquivistico);
+            ((ContextoAcessoADados)contexto).DocumentosArquivisticos.Attach(item.DocumentoArquivistico);
             contexto.Entry(item).State = EntityState.Modified;
             contexto.SaveChanges();
         }

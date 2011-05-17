@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using Core.Interfaces;
 
@@ -7,9 +8,9 @@ namespace EntityAcessoADados.Repositorios
 {
     public class Repositorio<T> : IDisposable, IRepositorio<T> where T : class
     {
-        protected ContextoAcessoADados contexto;
+        protected DbContext contexto;
 
-        public Repositorio(ContextoAcessoADados contexto)
+        public Repositorio(DbContext contexto)
         {
             this.contexto = contexto;
         }
@@ -25,36 +26,36 @@ namespace EntityAcessoADados.Repositorios
 
         #region IRepositorio<T> Members
 
-        public void Adicionar(T item)
+        public virtual void Adicionar(T item)
         {
             contexto.Set<T>().Add(item);
             contexto.SaveChanges();
         }
 
-        public void Remover(T item)
+        public virtual void Remover(T item)
         {
             contexto.Set<T>().Remove(item);
             contexto.SaveChanges();
         }
 
-        public void Remover(long id)
+        public virtual void Remover(long id)
         {
             contexto.Set<T>().Remove(RecuperarPorId(id));
             contexto.SaveChanges();
         }
 
-        public void Salvar(T item)
+        public virtual void Salvar(T item)
         {
             contexto.Entry(item).State = EntityState.Modified;
             contexto.SaveChanges();
         }
 
-        public T RecuperarPorId(long id)
+        public virtual T RecuperarPorId(long id)
         {
             return contexto.Set<T>().Find(id);
         }
 
-        public IQueryable<T> RecuperarTodos()
+        public virtual IQueryable<T> RecuperarTodos()
         {
             return contexto.Set<T>();
         }

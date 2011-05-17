@@ -64,7 +64,7 @@ namespace Web.App_Start
             kernel.Bind<IGerenciadorDocumentosArquivisticos>().To<GerenciadorDocumentosArquivisticos>();
             kernel.Bind<IGerenciadorDocumentos>().To<GerenciadorDocumentos>();
             kernel.Bind<IGerenciadorVolumes>().To<GerenciadorVolumes>();
-            kernel.Bind<DbContext>().To<ContextoAcessoADados>();
+            kernel.Bind<DbContext>().To<ContextoAcessoADados>().InRequestScope();
         }
     }
 }
