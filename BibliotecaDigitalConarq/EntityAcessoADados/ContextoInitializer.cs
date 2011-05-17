@@ -2,7 +2,7 @@
 
 namespace EntityAcessoADados
 {
-    public class ContextoInitializer : DropCreateDatabaseAlways<ContextoAcessoADados>
+    public class ContextoInitializer : DropCreateDatabaseIfModelChanges<ContextoAcessoADados>
     {
     }
 }
