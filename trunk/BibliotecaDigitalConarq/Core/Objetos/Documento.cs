@@ -283,9 +283,9 @@ namespace Core.Objetos
         // Referências
 
         // Os arquivos que compõem este documento
-        public IQueryable<Arquivo> Arquivos { get; set; }
+        public virtual IQueryable<Arquivo> Arquivos { get; set; }
 
         // O volume a que este documento pertence
-        public Volume Volume { get; set; }
+        public virtual Volume Volume { get; set; }
     }
 }

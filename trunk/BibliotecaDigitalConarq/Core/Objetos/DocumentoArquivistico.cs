@@ -139,7 +139,7 @@ namespace Core.Objetos
         /// produção do documento.
         /// </summary>
         [Required(ErrorMessage = "A data de produção deve ser informada"), Display(Name = "Data de produção")]
-        public DateTime DataDeProducao { get; set; }
+        public String DataDeProducao { get; set; }
 
         // Metadados 1.31 - Classe (O)
         /// <summary>
@@ -166,7 +166,7 @@ namespace Core.Objetos
         /// para o cumprimento da destinação.
         /// </summary>
         [Required(ErrorMessage = "O prazo de guarda deve ser informado"), Display(Name = "Prazo de guarda")]
-        public TimeSpan PrazoDeGuarda{ get; set; }
+        public String PrazoDeGuarda{ get; set; }
 
         // Metadados 1.34 - Localização (OA)
         /// <summary>
@@ -181,7 +181,7 @@ namespace Core.Objetos
 
         // Os volumes que este processo/dossiê contém
         [Display(Name = "Volumes contidos neste documento arquivístico")]
-        public IQueryable<Volume> Volumes { get; set; }
+        public virtual IQueryable<Volume> Volumes { get; set; }
     }
 
 }

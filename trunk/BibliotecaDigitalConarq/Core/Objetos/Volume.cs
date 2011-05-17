@@ -73,10 +73,10 @@ namespace Core.Objetos
         // Referências
 
         // O processo/dossiê a que este volume pertence
-        public DocumentoArquivistico DocumentoArquivistico { get; set; }
+        public virtual DocumentoArquivistico DocumentoArquivistico { get; set; }
 
         // Os documentos que este volume contém
-        public IQueryable<Documento> Documentos { get; set; }
+        public virtual IQueryable<Documento> Documentos { get; set; }
 
     }
 }
