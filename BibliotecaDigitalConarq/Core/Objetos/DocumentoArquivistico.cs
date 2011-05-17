@@ -181,7 +181,7 @@ namespace Core.Objetos
 
         // Os volumes que este processo/dossiê contém
         [Display(Name = "Volumes contidos neste documento arquivístico")]
-        public virtual IQueryable<Volume> Volumes { get; set; }
+        public virtual ICollection<Volume> Volumes { get; set; }
     }
 
 }

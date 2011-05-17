@@ -76,7 +76,7 @@ namespace Core.Objetos
         public virtual DocumentoArquivistico DocumentoArquivistico { get; set; }
 
         // Os documentos que este volume contém
-        public virtual IQueryable<Documento> Documentos { get; set; }
+        public virtual ICollection<Documento> Documentos { get; set; }
 
     }
 }
