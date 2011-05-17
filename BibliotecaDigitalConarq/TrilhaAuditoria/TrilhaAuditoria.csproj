@@ -41,17 +41,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\TipoDoLog.cs" />
-    <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Objetos\DebugLogger.cs" />
     <Compile Include="Objetos\Log.cs" />
     <Compile Include="Objetos\TrilhaDeAuditoria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{93E96FFB-2675-4232-A1EA-8171C010A266}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EntityAcessoADados\EntityAcessoADados.csproj">
       <Project>{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}</Project>
       <Name>EntityAcessoADados</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

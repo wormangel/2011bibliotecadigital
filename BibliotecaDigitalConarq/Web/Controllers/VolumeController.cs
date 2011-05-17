@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Core.Gerenciadores;
 using Core.Objetos;
+using EntityAcessoADados.Gerenciadores;
 using Ninject;
 
 namespace Web.Controllers
@@ -10,9 +11,9 @@ namespace Web.Controllers
     public class VolumeController : Controller
     {
         [Inject]
-        private readonly FachadaGerenciadores _fachada;
+        private readonly IFachadaGerenciadores _fachada;
 
-        public VolumeController(FachadaGerenciadores fachada)
+        public VolumeController(IFachadaGerenciadores fachada)
         {
             _fachada = fachada;
         }

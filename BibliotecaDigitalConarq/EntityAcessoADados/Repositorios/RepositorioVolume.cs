@@ -1,7 +1,7 @@
-﻿using Core.ContextoBD;
+﻿using System.Data;
 using Core.Objetos;
 
-namespace Core.Repositorios
+namespace EntityAcessoADados.Repositorios
 {
     public class RepositorioVolume : Repositorio<Volume>
     {
@@ -21,8 +21,9 @@ namespace Core.Repositorios
 
         public new void Salvar(Volume item)
         {
-            contexto.DocumentosArquivisticos.Attach(item.DocumentoArquivistico);
             contexto.Set<Volume>().Attach(item);
+            contexto.DocumentosArquivisticos.Attach(item.DocumentoArquivistico);
+            contexto.Entry(item).State = EntityState.Modified;
             contexto.SaveChanges();
         }
     }

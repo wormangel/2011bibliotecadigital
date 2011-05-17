@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TrilhaAuditoria.Interfaces
+namespace Core.Interfaces
 {
     public interface ILogger
     {

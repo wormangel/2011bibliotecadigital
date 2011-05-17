@@ -2,19 +2,20 @@
 using System.Linq;
 using System.Web.Mvc;
 using Core.Gerenciadores;
+using Core.Interfaces;
 using Core.Objetos;
-using EntityAcessoADados.Interfaces;
+using EntityAcessoADados.Gerenciadores;
 using Web.ViewModels.Arquivo;
 
 namespace Web.Controllers
 {
     public class ArquivoController : Controller
     {
-        private readonly GerenciadorArquivos _servico;
+        private readonly IGerenciadorArquivos _servico;
 
-        public ArquivoController(IRepositorio<Arquivo> repositorio)
+        public ArquivoController(IGerenciadorArquivos gerenciador)
         {
-            _servico = new GerenciadorArquivos(repositorio);
+            _servico = gerenciador;
         }
 
         //

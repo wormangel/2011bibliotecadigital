@@ -9,9 +9,9 @@ namespace Web.Controllers
     public class DocumentoArquivisticoController : Controller
     {
         [Inject]
-        private readonly FachadaGerenciadores _fachada;
+        private readonly IFachadaGerenciadores _fachada;
 
-        public DocumentoArquivisticoController(FachadaGerenciadores fachada)
+        public DocumentoArquivisticoController(IFachadaGerenciadores fachada)
         {
             _fachada = fachada;
         }

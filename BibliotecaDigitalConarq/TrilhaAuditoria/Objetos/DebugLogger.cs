@@ -1,6 +1,6 @@
 ﻿using System;
+using Core.Interfaces;
 using TrilhaAuditoria.Enums;
-using TrilhaAuditoria.Interfaces;
 
 namespace TrilhaAuditoria.Objetos
 {

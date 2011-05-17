@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Core.Gerenciadores;
+using Core.Interfaces;
 using Core.Objetos;
-using EntityAcessoADados.Interfaces;
+using EntityAcessoADados.Gerenciadores;
 using NUnit.Framework;
 using NUnit.Mocks;
 
