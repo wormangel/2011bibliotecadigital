@@ -8,12 +8,10 @@ namespace EntityAcessoADados.Gerenciadores
     public class GerenciadorVolumes : IGerenciadorVolumes
     {
         private readonly IRepositorio<Volume> _repositorio;
-        private readonly IRepositorio<DocumentoArquivistico> _repositorioDocArq;
 
-        public GerenciadorVolumes(IRepositorio<Volume> repositorio, IRepositorio<DocumentoArquivistico> repoDocArq)
+        public GerenciadorVolumes(IRepositorio<Volume> repositorio)
         {
             _repositorio = repositorio;
-            _repositorioDocArq = repoDocArq;
         }
 
         public IQueryable<Volume> RecuperarVolumes()
