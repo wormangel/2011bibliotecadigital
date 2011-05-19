@@ -180,7 +180,7 @@ namespace Core.Objetos
         /// </summary>
         public long IdArquivo
         {
-            get { return (Arquivos != null) ? Arquivos.ElementAt(0).ArquivoId : -1; }
+            get { return (Arquivos != null && Arquivos.Count > 0) ? Arquivos.ElementAt(0).ArquivoId : -1; }
         }
 
         // Metadados 1.21 - Gênero (F)
@@ -249,7 +249,7 @@ namespace Core.Objetos
         /// Identificação da classe52 do documento com base em um
         /// plano de classificação.
         /// </summary>
-        [Required(ErrorMessage = "A classe deve ser informada"), Display(Name = "Data de produção")]
+        [Required(ErrorMessage = "A classe deve ser informada"), Display(Name = "Classe")]
         public String Classe { get; set; }
 
         //TODO Temporalidade - próximas iterações

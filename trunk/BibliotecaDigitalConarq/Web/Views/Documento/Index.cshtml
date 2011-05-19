@@ -4,7 +4,7 @@
     ViewBag.Title = "Biblioteca Digital - Listando documentos";
 }
 
-<h2>Listando documentos do volume @(ViewBag.NrVolume) do @(ViewBag.TipoDocArq) @(ViewBag.TituloDocArq)</h2>
+<h2>Listando documentos do volume <a href="/DocumentoArquivistico/@(ViewBag.IdDocArq)/Volume/Details/@(ViewBag.IdVol)">@(ViewBag.NrVolume)</a> do @(ViewBag.TipoDocArq) <a href="/DocumentoArquivistico/Details/@(ViewBag.IdDocArq)">@(ViewBag.TituloDocArq)</a></h2>
 
 <p>
     @Html.ActionLink("Criar novo", "Create")
@@ -16,14 +16,6 @@
         </th>
         <th>
             Nr. do protocolo
-        </th>
-        <th>
-            <!-- criar um link -->
-            Id doc. arquivístico
-        </th>
-        <th>
-            <!-- criar um link -->
-            Id volume
         </th>
         <th>
             Id versão
@@ -95,12 +87,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NumeroDoProtocolo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdProcessoDossie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdVolume)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IdVersao)

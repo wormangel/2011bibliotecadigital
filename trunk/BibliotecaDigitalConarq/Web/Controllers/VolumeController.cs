@@ -23,8 +23,9 @@ namespace Web.Controllers
 
         public ViewResult Index(long idDocArq)
         {
-            IQueryable<Volume> volumes = _fachada.RecuperarVolumes(idDocArq);
+            IQueryable<Volume> volumes = _fachada.RecuperarVolumes();
             ViewBag.TituloDoc = _fachada.RecuperarDocumentoArquivisticoPorId(idDocArq).Titulo;
+            ViewBag.IdDocArq = idDocArq;
             return View(volumes);
         }
 

@@ -4,16 +4,13 @@
     ViewBag.Title = "Biblioteca Digital - Listando volumes";
 }
 
-<h2>Listando volumes do documento arquivístico @(ViewBag.TituloDoc)</h2>
+<h2>Listando volumes do documento arquivístico <a href="/DocumentoArquivistico/Details/@(ViewBag.IdDocArq)">@(ViewBag.TituloDoc)</a></h2>
 
 <p>
     @Html.ActionLink("Criar novo", "Create")
 </p>
 <table>
     <tr>
-        <th>
-            Id. doc. arquivístico
-        </th>
         <th>
             Nr. doc. arquivístico
         </th>
@@ -31,9 +28,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdProcessoDossie)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.NumeroDoProcessoOuDossie)
         </td>

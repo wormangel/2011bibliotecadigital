@@ -56,8 +56,8 @@ namespace Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IRepositorio<DocumentoArquivistico>>().To<Repositorio<DocumentoArquivistico>>();
-            kernel.Bind<IRepositorio<Documento>>().To<RepositorioDocumento>();
-            kernel.Bind<IRepositorio<Volume>>().To<RepositorioVolume>();
+            kernel.Bind<IRepositorio<Documento>>().To<Repositorio<Documento>>();
+            kernel.Bind<IRepositorio<Volume>>().To<Repositorio<Volume>>();
             kernel.Bind<IRepositorio<Arquivo>>().To<Repositorio<Arquivo>>();
             kernel.Bind<IFachadaGerenciadores>().To<FachadaGerenciadores>();
             kernel.Bind<IGerenciadorArquivos>().To<GerenciadorArquivos>();

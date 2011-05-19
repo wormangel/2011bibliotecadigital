@@ -11,14 +11,14 @@ namespace EntityAcessoADados.Repositorios
         {
         }
 
-        public override void Adicionar(Volume item)
+        public new void Adicionar(Volume item)
         {
             ((ContextoAcessoADados)contexto).DocumentosArquivisticos.Attach(item.DocumentoArquivistico);
             contexto.Set<Volume>().Add(item);
             contexto.SaveChanges();
         }
 
-        public override void Salvar(Volume item)
+        public new void Salvar(Volume item)
         {
             ((ContextoAcessoADados)contexto).DocumentosArquivisticos.Attach(item.DocumentoArquivistico);
             contexto.Entry(item).State = EntityState.Modified;

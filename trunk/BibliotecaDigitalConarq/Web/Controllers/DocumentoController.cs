@@ -27,6 +27,8 @@ namespace Web.Controllers
             ViewBag.TituloDocArq = volume.DocumentoArquivistico.Titulo;
             ViewBag.TipoDocArq = "processo/dossiê"; // TODO: criar enum!
             ViewBag.NrVolume = volume.NumeroDoVolume;
+            ViewBag.IdVol = idVol;
+            ViewBag.IdDocArq = idDocArq;
             return View(documentos);
         }
 

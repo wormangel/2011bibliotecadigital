@@ -10,14 +10,9 @@
 <fieldset>
     <legend>Dados</legend>
 
-    <div class="display-label">Id doc. arquivístico</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IdProcessoDossie)
-    </div>
-
     <div class="display-label">Nr. doc. arquivístico</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.NumeroDoProcessoOuDossie)
+        <a href="/DocumentoArquivistico/Details/@Html.DisplayFor(model => model.IdProcessoDossie)">@Html.DisplayFor(model => model.NumeroDoProcessoOuDossie)</a>
     </div>
 
     <div class="display-label">Tipo do meio</div>
@@ -44,14 +39,16 @@
     <div class="display-field">
         @if (Model.Documentos != null)
         {
-            foreach (var item in Model.Documentos.Where(v => v.IdProcessoDossie == Model.Id).ToList())
+            <ul>
+            @foreach (var item in Model.Documentos.Where(v => v.IdProcessoDossie == Model.Id).ToList())
             {
-                @(item.Localizacao)
+                <li><a href="/DocumentoArquivistico/@(item.IdProcessoDossie)/Volume/@(item.IdVolume)/Documento/Details/@(item.Id)">Documento @(item.NumeroDoDocumento)</a></li>
             }
+            </ul>
         }
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Voltar para a lista", "Index")
 </p>
