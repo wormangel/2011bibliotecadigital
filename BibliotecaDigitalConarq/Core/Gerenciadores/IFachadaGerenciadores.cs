@@ -11,7 +11,7 @@ namespace Core.Gerenciadores
         void AdicionarDocumentoArquivistico(DocumentoArquivistico documentoArquivistico);
         void RemoverDocumentoArquivistico(long id);
 
-        IQueryable<Volume> RecuperarVolumes(long idDocumentoArquivistico);
+        IQueryable<Volume> RecuperarVolumes();
         Volume RecuperarVolumePorId(long id);
         void AdicionarVolume(long idDocumentoArquivistico, Volume volume);
         void SalvarVolume(Volume volume);

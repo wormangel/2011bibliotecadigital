@@ -107,13 +107,13 @@
             <ul>
             @foreach (var item in Model.Volumes.Where(v => v.IdProcessoDossie == Model.Id).ToList())
             {
-                <li>item.Localizacao</li>
+                <li><a href="/DocumentoArquivistico/@(item.IdProcessoDossie)/Volume/Details/@(item.Id)">Volume @(item.NumeroDoVolume)</a></li>
             }
             </ul>
         }
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Voltar para a lista", "Index")
 </p>

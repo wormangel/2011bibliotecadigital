@@ -46,7 +46,7 @@ namespace EntityAcessoADados.Gerenciadores
             _documentosArquivisticos.Remover(id);
         }
 
-        public IQueryable<Volume> RecuperarVolumes(long idDocumentoArquivistico)
+        public IQueryable<Volume> RecuperarVolumes()
         {
             return _volumes.RecuperarVolumes();
         }
