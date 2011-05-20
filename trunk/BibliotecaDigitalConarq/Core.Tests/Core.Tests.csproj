@@ -71,6 +71,10 @@
       <Project>{B10CBD86-FAB9-44F2-B13E-51BD5F92AB10}</Project>
       <Name>EntityAcessoADados</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrilhaAuditoria\TrilhaAuditoria.csproj">
+      <Project>{04EE8E78-53A8-410A-99DB-5801CE0B9EFB}</Project>
+      <Name>TrilhaAuditoria</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

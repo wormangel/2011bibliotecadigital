@@ -8,41 +8,50 @@ namespace EntityAcessoADados.Gerenciadores
     public class GerenciadorVolumes : IGerenciadorVolumes
     {
         private readonly IRepositorio<Volume> _repositorio;
+        private readonly ILogger _trilhaAuditoria;
 
         public GerenciadorVolumes(IRepositorio<Volume> repositorio)
         {
             _repositorio = repositorio;
         }
 
+        public GerenciadorVolumes(IRepositorio<Volume> repositorio, ILogger trilhaAuditoria)
+        {
+            _repositorio = repositorio;
+            _trilhaAuditoria = trilhaAuditoria;
+        }
+
         public IQueryable<Volume> RecuperarVolumes()
         {
-            //logger.LogaAcaoVolume(vol.Id, usuario, "Recuperado todos os volumes");
+            _trilhaAuditoria.LogaAcaoVolume("Recuperado todos os volumes.");
             return _repositorio.RecuperarTodos();
         }
 
         public Volume RecuperarPorId(long id)
         {
-            //logger.LogaAcaoVolume(vol.Id, usuario, "Volume recuperado");
-            return _repositorio.RecuperarPorId(id);
+            var volume = _repositorio.RecuperarPorId(id);
+            _trilhaAuditoria.LogaAcaoVolume(id, -1, "Recuperado volume: " + volume);
+            return volume;
         }
 
         public void Remover(long id)
         {
+            var volume = RecuperarPorId(id);
             _repositorio.Remover(id);
-            //logger.LogaAcaoVolume(id, usuario, "Volume removido");
+            _trilhaAuditoria.LogaAcaoVolume(id, -1, "Removido volume: " + volume);
         }
 
         public void Salvar(Volume volume)
         {
             _repositorio.Salvar(volume);
-            //logger.LogaAcaoVolume(volume.Id, usuario, "Volume atualizado");
+            _trilhaAuditoria.LogaAcaoVolume(volume.Id, -1, "Salvo volume: " + volume);
         }
 
         public void Adicionar(DocumentoArquivistico documentoArquivistico, Volume volume)
         {
             volume.DocumentoArquivistico = documentoArquivistico;
             _repositorio.Adicionar(volume);
-            //logger.LogaAcaoVolume(volume.Id, usuario, "Volume criado");
+            _trilhaAuditoria.LogaAcaoVolume(volume.Id, -1, "Adicionado volume: " + volume);
         }
     }
 }

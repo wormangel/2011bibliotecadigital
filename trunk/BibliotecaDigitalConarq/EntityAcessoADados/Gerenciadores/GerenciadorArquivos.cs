@@ -18,10 +18,10 @@ namespace EntityAcessoADados.Gerenciadores
     {
         private readonly IGoldenIndex _goldenIndex;
         private readonly IRepositorio<Arquivo> _repositorio;
-        //private readonly TrilhaAuditoria _trilhaAuditoria;
+        private readonly ILogger _trilhaAuditoria;
         private readonly User _usuarioGoldenIndex;
 
-        public GerenciadorArquivos(IRepositorio<Arquivo> repositorio)
+        public GerenciadorArquivos(IRepositorio<Arquivo> repositorio, ILogger trilhaAuditoria)
         {
             _repositorio = repositorio;
 
@@ -32,6 +32,7 @@ namespace EntityAcessoADados.Gerenciadores
             _usuarioGoldenIndex = GoldenIndexClient.Authenticate(Settings.Default.UsuarioGoldenIndex,
                                                                  Settings.Default.SenhaGoldenIndex,
                                                                  _goldenIndex);
+            _trilhaAuditoria = trilhaAuditoria;
         }
 
         // TODO: Há duas formas de indexar os arquivo, uma é utilizando o serviço (que é feito usando
