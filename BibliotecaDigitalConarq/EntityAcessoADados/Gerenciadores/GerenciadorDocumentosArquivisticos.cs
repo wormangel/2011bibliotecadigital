@@ -8,48 +8,54 @@ namespace EntityAcessoADados.Gerenciadores
     public class GerenciadorDocumentosArquivisticos : IGerenciadorDocumentosArquivisticos
     {
         private readonly IRepositorio<DocumentoArquivistico> _repositorio;
-
-        // problema porque se eu adicionar referência no core da trilha causaria dependência circular
-        // a trilha usa IRepositorio, talvez seja interessante separar o repositorio em um package diferente
-        // private readonly Logger logger;
+        private readonly ILogger _trilhaAuditoria;
 
         public GerenciadorDocumentosArquivisticos(IRepositorio<DocumentoArquivistico> repositorio)
         {
             _repositorio = repositorio;
         }
 
-        public void Adicionar(DocumentoArquivistico doc)
+        public GerenciadorDocumentosArquivisticos(IRepositorio<DocumentoArquivistico> repositorio, ILogger trilhaAuditoria)
+        {
+            _repositorio = repositorio;
+            _trilhaAuditoria = trilhaAuditoria;
+        }
+
+        public void Adicionar(DocumentoArquivistico documentoArquivistico)
         {
             // Verifica com o gerenciador de segurança..
             // Indexa com o gerenciador de indexação.. (inclusive arquivos se houver)
             // Loga com o gerenciador de logging..
 
-            _repositorio.Adicionar(doc);
-            //logger.LogaAcaoDocumentoArquivistico(doc.Id, usuario, "Processo/Dossiê criado");
+            _repositorio.Adicionar(documentoArquivistico);
+            _trilhaAuditoria.LogaAcaoDocumentoArquivistico(documentoArquivistico.Id, -1, "Adicionado processo/dossiê: " + documentoArquivistico);
         }
 
         public IQueryable<DocumentoArquivistico> RecuperarDocumentos()
         {
+            _trilhaAuditoria.LogaAcaoDocumentoArquivistico("Recuperado todos os processo/dossiês");
             return _repositorio.RecuperarTodos();
-            //logger.LogaAcaoDocumentoArquivistico(doc.Id, usuario, "Recuperados todos os processo/dossiês");
         }
 
         public DocumentoArquivistico RecuperarPorId(long id)
         {
-            return _repositorio.RecuperarPorId(id);
-            //logger.LogaAcaoDocumentoArquivistico(doc.Id, usuario, "Processo/Dossiê recuperado");
+            var documentoArquivistico = _repositorio.RecuperarPorId(id);
+            _trilhaAuditoria.LogaAcaoDocumentoArquivistico(id, -1, "Recuperado processo/dossiê: " + documentoArquivistico);
+            return documentoArquivistico;
+            
         }
 
-        public void Salvar(DocumentoArquivistico documento)
+        public void Salvar(DocumentoArquivistico documentoArquivistico)
         {
-            _repositorio.Salvar(documento);
-            //logger.LogaAcaoDocumentoArquivistico(doc.Id, usuario, "Processo/Dossiê salvo");
+            _repositorio.Salvar(documentoArquivistico);
+            _trilhaAuditoria.LogaAcaoDocumentoArquivistico(documentoArquivistico.Id, -1, "Salvo processo/dossiê: " + documentoArquivistico);
         }
 
         public void Remover(long id)
         {
+            var documentoArquivistico = RecuperarPorId(id);
             _repositorio.Remover(id);
-            //logger.LogaAcaoDocumentoArquivistico(doc.Id, usuario, "Processo/Dossiê removido");
+            _trilhaAuditoria.LogaAcaoDocumentoArquivistico(id, -1, "Removido processo/dossiê: " + documentoArquivistico);
         }
     }
 }

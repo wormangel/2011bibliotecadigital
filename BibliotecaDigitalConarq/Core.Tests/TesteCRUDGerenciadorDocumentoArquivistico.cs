@@ -6,6 +6,7 @@ using Core.Objetos;
 using EntityAcessoADados.Gerenciadores;
 using NUnit.Framework;
 using NUnit.Mocks;
+using TrilhaAuditoria.Objetos;
 
 namespace Core.Tests
 {
@@ -18,9 +19,7 @@ namespace Core.Tests
         public void SetUp()
         {
             _repositorioMock = new DynamicMock(typeof (IRepositorio<DocumentoArquivistico>));
-            _gerenciador =
-                new GerenciadorDocumentosArquivisticos(
-                    (IRepositorio<DocumentoArquivistico>) _repositorioMock.MockInstance);
+            _gerenciador = new GerenciadorDocumentosArquivisticos((IRepositorio<DocumentoArquivistico>) _repositorioMock.MockInstance, new DebugLogger());
         }
 
         #endregion
@@ -111,6 +110,7 @@ namespace Core.Tests
         {
             var documento = new DocumentoArquivistico {Id = 1, Descricao = "Descrição"};
 
+            _repositorioMock.ExpectAndReturn("RecuperarPorId", documento, 1);
             _repositorioMock.ExpectAndReturn("RecuperarPorId", documento, 1);
             _repositorioMock.Call("Remover", 1);
             _repositorioMock.ExpectAndReturn("RecuperarPorId", null, 1);

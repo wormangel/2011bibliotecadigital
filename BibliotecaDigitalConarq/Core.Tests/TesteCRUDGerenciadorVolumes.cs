@@ -7,6 +7,7 @@ using EntityAcessoADados.Gerenciadores;
 using EntityAcessoADados.Repositorios;
 using NUnit.Framework;
 using NUnit.Mocks;
+using TrilhaAuditoria.Objetos;
 
 namespace Core.Tests
 {
@@ -19,7 +20,7 @@ namespace Core.Tests
         public void SetUp()
         {
             _repositorioMock = new DynamicMock(typeof (IRepositorio<Volume>));
-            _gerenciador = new GerenciadorVolumes((IRepositorio<Volume>) _repositorioMock.MockInstance);
+            _gerenciador = new GerenciadorVolumes((IRepositorio<Volume>) _repositorioMock.MockInstance, new DebugLogger());
         }
 
         #endregion
@@ -110,6 +111,7 @@ namespace Core.Tests
         {
             var volume = new Volume {Id = 1, QuantidadeDeFolhas = "100"};
 
+            _repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
             _repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
             _repositorioMock.Call("Remover", 1);
             _repositorioMock.ExpectAndReturn("RecuperarPorId", null, 1);

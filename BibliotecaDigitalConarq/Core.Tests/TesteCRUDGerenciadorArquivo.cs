@@ -6,6 +6,7 @@ using Core.Objetos;
 using EntityAcessoADados.Gerenciadores;
 using NUnit.Framework;
 using NUnit.Mocks;
+using TrilhaAuditoria.Objetos;
 
 namespace Core.Tests
 {
@@ -18,7 +19,7 @@ namespace Core.Tests
         public void SetUp()
         {
             _repositorioMock = new DynamicMock(typeof (IRepositorio<Arquivo>));
-            _gerenciador = new GerenciadorArquivos((IRepositorio<Arquivo>) _repositorioMock.MockInstance);
+            _gerenciador = new GerenciadorArquivos((IRepositorio<Arquivo>) _repositorioMock.MockInstance, new DebugLogger());
         }
 
         #endregion
