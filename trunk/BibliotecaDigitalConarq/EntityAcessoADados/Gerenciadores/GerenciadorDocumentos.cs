@@ -51,8 +51,8 @@ namespace EntityAcessoADados.Gerenciadores
         public void Remover(long id)
         {
             var documento = RecuperarPorId(id);
-            _repositorio.Remover(documento.Id);
-            _trilhaAuditoria.LogaAcaoDocumento(documento.Id, -1, "Removido documento: " + documento);
+            _repositorio.Remover(id);
+            _trilhaAuditoria.LogaAcaoDocumento(id, -1, "Removido documento: " + documento);
         }
     }
 }

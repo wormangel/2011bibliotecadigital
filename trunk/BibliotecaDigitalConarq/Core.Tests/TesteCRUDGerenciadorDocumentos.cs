@@ -4,8 +4,10 @@ using System.Linq;
 using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
+using EntityAcessoADados.Gerenciadores;
 using NUnit.Framework;
 using NUnit.Mocks;
+using TrilhaAuditoria.Objetos;
 
 namespace Core.Tests
 {
@@ -19,45 +21,44 @@ namespace Core.Tests
         public void SetUp()
         {
             this._repositorioMock = new DynamicMock(typeof(IRepositorio<Documento>));
-            this._gerenciador = new GerenciadorDocumentos((IRepositorio<Documento>)this._repositorioMock.MockInstance);
+            this._gerenciador = new GerenciadorDocumentos((IRepositorio<Documento>) _repositorioMock.MockInstance, new DebugLogger());
         }
 
         [Test]
-        public void CriarVolume()
+        public void CriarDocumento()
         {
-            var volume = new Documento();
-            var volumesRecuperados = new List<Documento> { volume };
-            
-            this._repositorioMock.Call("Adicionar", volume);
-            this._repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
+            var documento = new Documento();
+            var documentosRecuperados = new List<Documento> { documento };
 
-            this._gerenciador.Criar(volume);
-            Assert.AreEqual(volumesRecuperados, this._gerenciador.RecuperarDocumentos());
+            this._repositorioMock.Call("Adicionar", documento);
+            this._repositorioMock.ExpectAndReturn("RecuperarTodos", documentosRecuperados.AsQueryable());
+
+            this._gerenciador.Adicionar(null, documento);
+            Assert.AreEqual(documentosRecuperados, this._gerenciador.RecuperarDocumentos());
             
             this._repositorioMock.Verify();
         }
 
         [Test]
-        public void RecuperarVolumePorId()
+        public void RecuperarDocumentoPorId()
         {
-            // quantidade de folhas string? lol.
-            var volume = new Volume() {Id = 1, QuantidadeDeFolhas = "100"};
-            var volumesRecuperados = new List<Volume> { volume };
+            var documento = new Documento() {Id = 1, QuantidadeDeFolhas = 100};
+            var documentosRecuperados = new List<Documento> { documento };
 
-            this._repositorioMock.Call("Adicionar", volume);
-            this._repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
-            this._repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
+            this._repositorioMock.Call("Adicionar", documento);
+            this._repositorioMock.ExpectAndReturn("RecuperarPorId", documento, 1);
+            this._repositorioMock.ExpectAndReturn("RecuperarTodos", documentosRecuperados.AsQueryable());
 
-            this._gerenciador.Criar(volume);
+            this._gerenciador.Adicionar(null, documento);
             var docTemp = this._gerenciador.RecuperarPorId(1);
-            Assert.AreEqual(volumesRecuperados, this._gerenciador.RecuperarVolumes());
-            Assert.AreEqual("100", docTemp.QuantidadeDeFolhas);
+            Assert.AreEqual(documentosRecuperados, this._gerenciador.RecuperarDocumentos());
+            Assert.AreEqual(100, docTemp.QuantidadeDeFolhas);
 
             this._repositorioMock.Verify();
         }
 
         [Test]
-        public void RecuperarVolumePorIdInexistente()
+        public void RecuperarDocumentoPorIdInexistente()
         {
             this._repositorioMock.ExpectAndReturn("RecuperarPorId", null, 1);
 
@@ -68,16 +69,17 @@ namespace Core.Tests
         }
 
         [Test]
-        public void RemoverVolume()
+        public void RemoverDocumento()
         {
-            var volume = new Volume() { Id = 1, QuantidadeDeFolhas= "100" };
+            var documento = new Documento() { Id = 1, QuantidadeDeFolhas = 100 };
 
-            this._repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
+            this._repositorioMock.ExpectAndReturn("RecuperarPorId", documento, 1);
+            this._repositorioMock.ExpectAndReturn("RecuperarPorId", documento, 1);
             this._repositorioMock.Call("Remover", 1);
             this._repositorioMock.ExpectAndReturn("RecuperarPorId", null, 1);
 
             var docTemp = this._gerenciador.RecuperarPorId(1);
-            Assert.AreEqual("100", volume.QuantidadeDeFolhas);
+            Assert.AreEqual(100, documento.QuantidadeDeFolhas);
             this._gerenciador.Remover(1);
             Assert.Null(this._gerenciador.RecuperarPorId(1));
 
@@ -85,7 +87,7 @@ namespace Core.Tests
         }
 
         [Test]
-        public void RemoverVolumeInexistente()
+        public void RemoverDocumentoInexistente()
         {
             this._repositorioMock.Call("Remover", 1);
             
@@ -96,34 +98,34 @@ namespace Core.Tests
         }
 
         [Test]
-        public void AtualizarVolume()
+        public void AtualizarDocumento()
         {
-            var volume = new Volume() { Id = 1, QuantidadeDeFolhas= "100"};
+            var volume = new Documento() { Id = 1, QuantidadeDeFolhas= 100};
 
             this._repositorioMock.Call("Adicionar", volume);
             this._repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
             this._repositorioMock.Call("Salvar", volume);
             this._repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
 
-            this._gerenciador.Criar(volume);
+            this._gerenciador.Adicionar(null, volume);
             var volTemp = this._gerenciador.RecuperarPorId(1);
-            Assert.AreEqual("100", volume.QuantidadeDeFolhas);
-            volTemp.QuantidadeDeFolhas = "200";
-            this._gerenciador.Atualizar(volume);
+            Assert.AreEqual(100, volume.QuantidadeDeFolhas);
+            volTemp.QuantidadeDeFolhas = 200;
+            this._gerenciador.Salvar(volume);
             var volTemp2 = this._gerenciador.RecuperarPorId(1);
-            Assert.AreEqual("200", volTemp2.QuantidadeDeFolhas);
+            Assert.AreEqual(200, volTemp2.QuantidadeDeFolhas);
 
             this._repositorioMock.Verify();
         }
         
         [Test]
-        public void RecuperarVolumes()
+        public void RecuperarDocumentos()
         {
-            var volumesRecuperados = new List<Volume> { new Volume(), new Volume() };
+            var documentosRecuperados = new List<Documento> { new Documento(), new Documento() };
 
-            this._repositorioMock.ExpectAndReturn("RecuperarTodos", volumesRecuperados);
+            this._repositorioMock.ExpectAndReturn("RecuperarTodos", documentosRecuperados.AsQueryable());
 
-            Assert.AreEqual(volumesRecuperados, this._gerenciador.RecuperarVolumes());
+            Assert.AreEqual(documentosRecuperados.AsQueryable(), _gerenciador.RecuperarDocumentos());
             
             this._repositorioMock.Verify();
         }
