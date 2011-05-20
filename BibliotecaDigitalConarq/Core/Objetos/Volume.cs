@@ -59,7 +59,7 @@ namespace Core.Objetos
         /// Indicação da quantidade de folhas/páginas de um documento.
         /// </summary>
         [Required(ErrorMessage = "A quantidade de folhas/páginas deve ser informada"), Display(Name = "Quantidade de folhas/páginas")]
-        public String QuantidadeDeFolhas { get; set; }
+        public int QuantidadeDeFolhas { get; set; }
 
         // Metadados 1.34 - Localização (F)
         /// <summary>

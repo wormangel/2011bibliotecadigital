@@ -225,7 +225,7 @@ namespace Core.Objetos
         /// Indicação da quantidade de folhas/páginas de um documento.
         /// </summary>
         [Display(Name = "Quantidade de folhas")]
-        public String QuantidadeDeFolhas { get; set; }
+        public int QuantidadeDeFolhas { get; set; }
 
         // Metadados 1.27 - Indicação de anexos (O)
         /// <summary>

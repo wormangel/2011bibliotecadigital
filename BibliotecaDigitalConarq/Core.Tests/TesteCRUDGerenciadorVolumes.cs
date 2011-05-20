@@ -31,7 +31,7 @@ namespace Core.Tests
         [Test]
         public void AtualizarVolume()
         {
-            var volume = new Volume {Id = 1, QuantidadeDeFolhas = "100"};
+            var volume = new Volume {Id = 1, QuantidadeDeFolhas = 100};
 
             _repositorioMock.Call("Adicionar", volume);
             _repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
@@ -40,11 +40,11 @@ namespace Core.Tests
 
             _gerenciador.Adicionar(null, volume);
             Volume volTemp = _gerenciador.RecuperarPorId(1);
-            Assert.AreEqual("100", volume.QuantidadeDeFolhas);
-            volTemp.QuantidadeDeFolhas = "200";
+            Assert.AreEqual(100, volume.QuantidadeDeFolhas);
+            volTemp.QuantidadeDeFolhas = 200;
             _gerenciador.Salvar(volume);
             Volume volTemp2 = _gerenciador.RecuperarPorId(1);
-            Assert.AreEqual("200", volTemp2.QuantidadeDeFolhas);
+            Assert.AreEqual(200, volTemp2.QuantidadeDeFolhas);
 
             _repositorioMock.Verify();
         }
@@ -68,7 +68,7 @@ namespace Core.Tests
         public void RecuperarVolumePorId()
         {
             // quantidade de folhas string? lol.
-            var volume = new Volume {Id = 1, QuantidadeDeFolhas = "100"};
+            var volume = new Volume {Id = 1, QuantidadeDeFolhas = 100};
             var volumesRecuperados = new List<Volume> {volume};
 
             _repositorioMock.Call("Adicionar", volume);
@@ -78,7 +78,7 @@ namespace Core.Tests
             _gerenciador.Adicionar(null, volume);
             Volume docTemp = _gerenciador.RecuperarPorId(1);
             Assert.AreEqual(volumesRecuperados, _gerenciador.RecuperarVolumes());
-            Assert.AreEqual("100", docTemp.QuantidadeDeFolhas);
+            Assert.AreEqual(100, docTemp.QuantidadeDeFolhas);
 
             _repositorioMock.Verify();
         }
@@ -109,7 +109,7 @@ namespace Core.Tests
         [Test]
         public void RemoverVolume()
         {
-            var volume = new Volume {Id = 1, QuantidadeDeFolhas = "100"};
+            var volume = new Volume {Id = 1, QuantidadeDeFolhas = 100};
 
             _repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
             _repositorioMock.ExpectAndReturn("RecuperarPorId", volume, 1);
@@ -117,7 +117,7 @@ namespace Core.Tests
             _repositorioMock.ExpectAndReturn("RecuperarPorId", null, 1);
 
             Volume docTemp = _gerenciador.RecuperarPorId(1);
-            Assert.AreEqual("100", volume.QuantidadeDeFolhas);
+            Assert.AreEqual(100, volume.QuantidadeDeFolhas);
             _gerenciador.Remover(1);
             Assert.Null(_gerenciador.RecuperarPorId(1));
 
