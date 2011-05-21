@@ -21,7 +21,7 @@ namespace Web.Controllers
         //
         // GET: /Arquivo/
 
-        public ActionResult Index()
+        public ActionResult Index(long idDocArq, long idVol, long idDoc)
         {
             IQueryable<Arquivo> arquivos = _servico.RecuperarArquivos();
             return View(arquivos);
@@ -30,7 +30,7 @@ namespace Web.Controllers
         //
         // GET: /Arquivo/Details/5
 
-        public ActionResult Details(int id)
+        public ActionResult Details(long idDocArq, long idVol, long idDoc, int id)
         {
             return View(_servico.RecuperarPorId(id));
         }
@@ -38,7 +38,7 @@ namespace Web.Controllers
         //
         // GET: /Arquivo/Create
 
-        public ActionResult Create()
+        public ActionResult Create(long idDocArq, long idVol, long idDoc)
         {
             return View();
         }
@@ -47,7 +47,7 @@ namespace Web.Controllers
         // POST: /Arquivo/Create
 
         [HttpPost]
-        public ActionResult Create(CreateArquivoViewModel viewModel)
+        public ActionResult Create(long idDocArq, long idVol, long idDoc, CreateArquivoViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace Web.Controllers
         //
         // GET: /Arquivo/Edit/5
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(long idDocArq, long idVol, long idDoc, int id)
         {
             return View(_servico.RecuperarPorId(id));
         }
@@ -76,7 +76,7 @@ namespace Web.Controllers
         // POST: /Arquivo/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Arquivo arquivo)
+        public ActionResult Edit(long idDocArq, long idVol, long idDoc, Arquivo arquivo)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace Web.Controllers
         //
         // GET: /Arquivo/Delete/5
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(long idDocArq, long idVol, long idDoc, int id)
         {
             return View(_servico.RecuperarPorId(id));
         }
@@ -98,7 +98,7 @@ namespace Web.Controllers
         // POST: /Arquivo/Delete/5
 
         [HttpPost]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(long idDocArq, long idVol, long idDoc, int id)
         {
             _servico.Remover(id);
             return RedirectToAction("Index");

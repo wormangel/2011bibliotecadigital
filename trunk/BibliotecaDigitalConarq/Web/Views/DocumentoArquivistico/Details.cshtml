@@ -100,14 +100,14 @@
         @Html.DisplayFor(model => model.Localizacao)
     </div>
 
-    <div class="display-label">Volumes <a href="/DocumentoArquivistico/@Html.DisplayFor(model => model.Id)/Volume/Create">Criar volume</a></div>
+    <div class="display-label">Volumes <a href="@Url.RouteUrl("Volume", new { idDocArq = Model.Id, action = "Create"})">Criar volume</a></div>
     <div class="display-field">
         @if (Model.Volumes != null)
         {
             <ul>
             @foreach (var item in Model.Volumes.Where(v => v.IdProcessoDossie == Model.Id).ToList())
             {
-                <li><a href="/DocumentoArquivistico/@(item.IdProcessoDossie)/Volume/Details/@(item.Id)">Volume @(item.NumeroDoVolume)</a></li>
+                <li><a href="@Url.RouteUrl("Volume", new { idDocArq = item.IdProcessoDossie, action = "Details", id = item.Id })">Volume @(item.NumeroDoVolume)</a></li>
             }
             </ul>
         }
