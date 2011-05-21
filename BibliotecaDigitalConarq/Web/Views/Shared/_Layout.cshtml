@@ -19,10 +19,34 @@
             <nav>
                 <ul id="menu">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Arquivos", "Index", "Arquivo")</li>
-                    <li>@Html.ActionLink("Documentos", "Index", "Documento")</li>
                     <li>@Html.ActionLink("Documentos Arquivisticos", "Index", "DocumentoArquivistico")</li>
-                    <li>@Html.ActionLink("Volumes", "Index", "Volume")</li>
+                    @if (ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.Equals("DocumentoArquivistico") && !ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Index"))
+                    {
+                        <li><a href="@Url.RouteUrl("Volume", new { idDocArq = ViewContext.RouteData.Values.Values.ElementAt(0) })">Volumes</a></li>
+                    }
+                    @if (ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.Equals("Volume"))
+                    {
+                        <li>@Html.ActionLink("Volumes", "Index", "Volume")</li>
+                        if (!ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Index"))
+                        {
+                            <li><a href="@Url.RouteUrl("Documento", new { idDocArq = ViewContext.RouteData.Values.Values.ElementAt(0), idVol = ViewContext.RouteData.Values.Values.ElementAt(1), action = "Index" })">Documentos</a></li>
+                        }
+                    }
+                    @if (ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.Equals("Documento"))
+                    {
+                        <li><a href="@Url.RouteUrl("Volume", new { idDocArq = ViewContext.RouteData.Values.Values.ElementAt(0), action = "Index" })">Volumes</a></li>
+                        <li><a href="@Url.RouteUrl("Documento", new { idDocArq = ViewContext.RouteData.Values.Values.ElementAt(0), idVol = ViewContext.RouteData.Values.Values.ElementAt(1), action = "Index" })">Documentos</a></li>
+                        if (!ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Index"))
+                        {
+                            <li><a href="@Url.RouteUrl("Arquivo", new { idDocArq = ViewContext.RouteData.Values.Values.ElementAt(0), idVol = ViewContext.RouteData.Values.Values.ElementAt(1), idDoc = ViewContext.RouteData.Values.Values.ElementAt(3), action = "Index" })">Arquivos</a></li>
+                        }
+                    }
+                    @if (ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.Equals("Arquivo"))
+                    {
+                        <li><a href="@Url.RouteUrl("Volume", new { idDocArq = ViewContext.RouteData.Values.Values.ElementAt(0), action = "Index" })">Volumes</a></li>
+                        <li><a href="@Url.RouteUrl("Documento", new { idDocArq = ViewContext.RouteData.Values.Values.ElementAt(0), idVol = ViewContext.RouteData.Values.Values.ElementAt(1), action = "Index" })">Documentos</a></li>
+                        <li><a href="@Url.RouteUrl("Arquivo", new { idDocArq = ViewContext.RouteData.Values.Values.ElementAt(0), idVol = ViewContext.RouteData.Values.Values.ElementAt(1), idDoc = ViewContext.RouteData.Values.Values.ElementAt(3), action = "Index" })">Arquivos</a></li>
+                    }
                 </ul>
             </nav>
         </header>

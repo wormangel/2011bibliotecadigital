@@ -23,7 +23,7 @@ namespace Web
 
             routes.MapRoute(
                "Arquivo", // Route name
-               "DocumentoArquivistico/{idDocArq}/Volume/{idVol}/Documento/Upload/{id}", // URL with parameters
+               "DocumentoArquivistico/{idDocArq}/Volume/{idVol}/Documento/{idDoc}/Arquivo/{action}/{id}", // URL with parameters
                new { controller = "Arquivo", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 

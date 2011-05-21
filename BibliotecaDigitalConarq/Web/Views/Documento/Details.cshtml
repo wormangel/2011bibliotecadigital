@@ -15,19 +15,19 @@
         @Html.DisplayFor(model => model.NumeroDoDocumento)
     </div>
 
+    <div class="display-label">Nr. documento arquivístico</div>
+    <div class="display-field">
+        <a href="@Url.RouteUrl("Default", new { id = Model.IdProcessoDossie, controller = "DocumentoArquivistico", action = "Details" })">@Html.DisplayFor(model => model.Volume.NumeroDoProcessoOuDossie)</a>
+    </div>
+
+    <div class="display-label">Nr. volume</div>
+    <div class="display-field">
+        <a href="@Url.RouteUrl("Volume", new { idDocArq = Model.Volume.DocumentoArquivistico.Id, id = Model.Volume.Id, action = "Details" })">@Html.DisplayFor(model => model.Volume.NumeroDoVolume)</a>
+    </div>
+
     <div class="display-label">Nr. do protocolo</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.NumeroDoProtocolo)
-    </div>
-
-    <div class="display-label">Id doc. arquivístico</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IdProcessoDossie)
-    </div>
-
-    <div class="display-label">Id volume</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IdVolume)
     </div>
 
     <div class="display-label">Id versão</div>
