@@ -12,5 +12,6 @@ namespace Core.Gerenciadores
         void Adicionar(Arquivo arquivo, Stream conteudo);
         void Remover(long id);
         void Atualizar(Arquivo arquivo);
+        IQueryable<Arquivo> BuscaTextual(string query, bool buscaExata);
     }
 }

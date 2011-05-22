@@ -269,7 +269,7 @@ namespace Core.Objetos
         /// para o cumprimento da destinação.
         /// </summary>
         [Required(ErrorMessage = "O prazo de guarda deve ser informado"), Display(Name = "Prazo de guarda")]
-        public TimeSpan PrazoDeGuarda { get; set; }
+        public String PrazoDeGuarda { get; set; }
 
         // Metadados 1.34 - Localização (OA)
         /// <summary>

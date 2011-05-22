@@ -63,6 +63,7 @@
     <Compile Include="Gerenciadores\IGerenciadorVolumes.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\IRepositorio.cs" />
+    <Compile Include="Interfaces\IRepositorioArquivo.cs" />
     <Compile Include="Objetos\Arquivo.cs" />
     <Compile Include="Objetos\Documento.cs" />
     <Compile Include="Objetos\DocumentoArquivistico.cs" />
