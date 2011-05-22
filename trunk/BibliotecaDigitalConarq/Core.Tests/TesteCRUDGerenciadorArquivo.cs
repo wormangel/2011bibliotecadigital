@@ -19,7 +19,7 @@ namespace Core.Tests
         public void SetUp()
         {
             _repositorioMock = new DynamicMock(typeof (IRepositorio<Arquivo>));
-            _gerenciador = new GerenciadorArquivos((IRepositorio<Arquivo>) _repositorioMock.MockInstance, new DebugLogger());
+            _gerenciador = new GerenciadorArquivos((IRepositorioArquivo) _repositorioMock.MockInstance, new DebugLogger());
         }
 
         #endregion

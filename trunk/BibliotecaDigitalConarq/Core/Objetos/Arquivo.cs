@@ -72,6 +72,11 @@ namespace Core.Objetos
         /// </summary>
         public String CaminhoDoArquivo { get; set; }
 
+        /// <summary>
+        /// Conteúdo do arquivo extraído.
+        /// </summary>
+        public string Conteudo { get; set; }
+        
         // NOTE Verificar se entra no contexto do projeto
         /// <summary>
         /// Registro das relações de um arquivo com outros 

@@ -103,5 +103,12 @@ namespace Web.Controllers
             _servico.Remover(id);
             return RedirectToAction("Index");
         }
+
+
+        public ActionResult Busca(string query)
+        {
+            return View(_servico.BuscaTextual(query, false));
+        }
+
     }
 }

@@ -1,26 +1,21 @@
 ﻿@model IEnumerable<Core.Objetos.Arquivo>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Busca";
 }
 
-<h2>Index</h2>
-
-<form method="get" action="@Url.Action("Busca")" enctype="multipart/form-data">
-    Procurar: <input id="query" name="query" type="text" /><input type="submit" value="Buscar" />
-</form>
+<h2>Busca</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
 <table>
     <tr>
         <th>
             Nome
         </th>
         <th>
-            Características
+            Caracteristicas
         </th>
         <th>
             Formato
@@ -29,14 +24,20 @@
             Armazenamento
         </th>
         <th>
-            Ambiente de Software
+            AmbienteSoftware
         </th>
         <th>
-            Ambiente de Hardware
+            AmbienteHardware
         </th>
         <th>
-            Dependências
+            Dependencias
         </th>
+        <th>
+            CaminhoDoArquivo
+        </th>
+        <!--<th>
+            Conteudo
+        </th>-->
         <th></th>
     </tr>
 
@@ -63,6 +64,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Dependencias)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaminhoDoArquivo)
+        </td>
+        <!--<td>
+            Html.DisplayFor(modelItem => item.Conteudo)
+        </td>-->
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ArquivoId }) |
             @Html.ActionLink("Details", "Details", new { id=item.ArquivoId }) |

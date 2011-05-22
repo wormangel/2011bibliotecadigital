@@ -60,7 +60,7 @@ namespace Web.App_Start
             kernel.Bind<IRepositorio<DocumentoArquivistico>>().To<Repositorio<DocumentoArquivistico>>();
             kernel.Bind<IRepositorio<Documento>>().To<Repositorio<Documento>>();
             kernel.Bind<IRepositorio<Volume>>().To<Repositorio<Volume>>();
-            kernel.Bind<IRepositorio<Arquivo>>().To<Repositorio<Arquivo>>();
+            kernel.Bind<IRepositorioArquivo>().To<RepositorioArquivo>();
             kernel.Bind<IFachadaGerenciadores>().To<FachadaGerenciadores>();
             kernel.Bind<IGerenciadorArquivos>().To<GerenciadorArquivos>();
             kernel.Bind<IGerenciadorDocumentosArquivisticos>().To<GerenciadorDocumentosArquivisticos>();
