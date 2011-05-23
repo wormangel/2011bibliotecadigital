@@ -93,16 +93,20 @@ namespace EntityAcessoADados.Gerenciadores
 
         public IQueryable<Arquivo> RecuperarArquivos()
         {
+            _trilhaAuditoria.LogaAcaoDoArquivo("Recuperados todos os Arquivos");
             return _repositorio.RecuperarTodos();
         }
 
         public Arquivo RecuperarPorId(long id)
         {
-            return _repositorio.RecuperarPorId(id);
+            var arquivo = _repositorio.RecuperarPorId(id);
+            _trilhaAuditoria.LogaAcaoDoArquivo(id, -1, "Recuperado volume: " + arquivo);
+            return arquivo;
         }
 
         public void Salvar(Arquivo arquivo)
         {
+            _trilhaAuditoria.LogaAcaoDoArquivo(arquivo.ArquivoId, -1, "Salvo volume: " + arquivo);
             _repositorio.Salvar(arquivo);
         }
 
@@ -119,26 +123,34 @@ namespace EntityAcessoADados.Gerenciadores
             var anexo = new FileStream(arquivo.CaminhoDoArquivo, FileMode.Create);
             conteudo.CopyTo(anexo);
             anexo.Close();
+            _trilhaAuditoria.LogaAcaoDoArquivo(arquivo.ArquivoId, -1, "Criado arquivo físico referente ao arquivo: " + arquivo);
 
             // Terceiro, extrai o conteúdo do arquivo
+            _trilhaAuditoria.LogaAcaoDoArquivo(arquivo.ArquivoId, -1, "Iniciando a extração do conteúdo arquivo: " + arquivo);
             arquivo.Conteudo = _ExtrairConteudo(arquivo);
+            _trilhaAuditoria.LogaAcaoDoArquivo(arquivo.ArquivoId, -1, "Extração do conteúdo finalizada para o arquivo: " + arquivo);
 
             // Quarto cria o arquivo lógico (com metadados)
             _repositorio.Adicionar(arquivo);
+            _trilhaAuditoria.LogaAcaoDoArquivo(arquivo.ArquivoId, -1, "Sucesso na criação do arquivo: " + arquivo);
         }
 
         public void Remover(long id)
         {
+            var arquivo = _repositorio.RecuperarPorId(id);
             _repositorio.Remover(id);
+            _trilhaAuditoria.LogaAcaoDoArquivo(id, -1, "Removido arquivo: " + arquivo);
         }
 
         public void Atualizar(Arquivo arquivo)
         {
             _repositorio.Salvar(arquivo);
+            _trilhaAuditoria.LogaAcaoDoArquivo(arquivo.ArquivoId, -1, "Atualizado arquivo: " + arquivo);
         }
 
         public IQueryable<Arquivo> BuscaTextual(string query, bool buscaExata)
         {
+            _trilhaAuditoria.LogaAcaoDoArquivo("Busca textual aos termos: " + query);
             return _repositorio.BuscaTextual(query, buscaExata);
         }
     }
