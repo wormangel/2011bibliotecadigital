@@ -18,7 +18,7 @@ namespace Core.Tests
         [SetUp]
         public void SetUp()
         {
-            _repositorioMock = new DynamicMock(typeof (IRepositorio<Arquivo>));
+            _repositorioMock = new DynamicMock(typeof (IRepositorioArquivo));
             _gerenciador = new GerenciadorArquivos((IRepositorioArquivo) _repositorioMock.MockInstance, new DebugLogger());
         }
 
