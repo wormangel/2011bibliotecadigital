@@ -65,6 +65,12 @@
     <Compile Include="Interfaces\IRepositorio.cs" />
     <Compile Include="Interfaces\IRepositorioArquivo.cs" />
     <Compile Include="Objetos\Arquivo.cs" />
+    <Compile Include="Objetos\Classificacao\Classe.cs" />
+    <Compile Include="Objetos\Classificacao\Classificacao.cs" />
+    <Compile Include="Objetos\Classificacao\RegistroClasse.cs" />
+    <Compile Include="Objetos\Classificacao\Subclasse.cs" />
+    <Compile Include="Objetos\Classificacao\Grupo.cs" />
+    <Compile Include="Objetos\Classificacao\Subgrupo.cs" />
     <Compile Include="Objetos\Documento.cs" />
     <Compile Include="Objetos\DocumentoArquivistico.cs" />
     <Compile Include="Objetos\Enums\Status.cs" />
