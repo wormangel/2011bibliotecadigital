@@ -58,6 +58,7 @@ namespace Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<ILogger>().To<DebugLogger>();
+            
             kernel.Bind<IRepositorio<DocumentoArquivistico>>().To<Repositorio<DocumentoArquivistico>>();
             kernel.Bind<IRepositorio<Documento>>().To<Repositorio<Documento>>();
             kernel.Bind<IRepositorio<Volume>>().To<Repositorio<Volume>>();
@@ -66,6 +67,7 @@ namespace Web.App_Start
             kernel.Bind<IRepositorio<Grupo>>().To<Repositorio<Grupo>>();
             kernel.Bind<IRepositorio<Subgrupo>>().To<Repositorio<Subgrupo>>();
             kernel.Bind<IRepositorioArquivo>().To<RepositorioArquivo>();
+            
             kernel.Bind<IFachadaGerenciadores>().To<FachadaGerenciadores>();
             kernel.Bind<IGerenciadorArquivos>().To<GerenciadorArquivos>();
             kernel.Bind<IGerenciadorDocumentosArquivisticos>().To<GerenciadorDocumentosArquivisticos>();
@@ -73,6 +75,9 @@ namespace Web.App_Start
             kernel.Bind<IGerenciadorVolumes>().To<GerenciadorVolumes>();
             kernel.Bind<IGerenciadorClasses>().To<GerenciadorClasses>();
             kernel.Bind<IGerenciadorSubclasses>().To<GerenciadorSubclasses>();
+            kernel.Bind<IGerenciadorGrupos>().To<GerenciadorGrupos>();
+            kernel.Bind<IGerenciadorSubgrupos>().To<GerenciadorSubgrupos>();
+            
             kernel.Bind<DbContext>().To<ContextoAcessoADados>().InRequestScope();
         }
     }

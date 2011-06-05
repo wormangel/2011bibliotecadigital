@@ -1,4 +1,4 @@
-﻿@model Core.Objetos.Classificacoes.Subclasse
+﻿@model Core.Objetos.Classificacoes.Subgrupo
 
 @{
     ViewBag.Title = "Create";
@@ -12,7 +12,7 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Subclasse</legend>
+        <legend>Subgrupo</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Nome)

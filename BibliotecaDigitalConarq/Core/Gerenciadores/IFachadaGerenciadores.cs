@@ -35,5 +35,17 @@ namespace Core.Gerenciadores
         void AdicionarSubclasse(Subclasse subclasse);
         void SalvarSubclasse(Subclasse subclasse);
         void RemoverSubclasse(long id);
+
+        void AdicionarGrupo(Grupo grupo);
+        IQueryable<Grupo> RecuperarGrupos();
+        Grupo RecuperarGrupoPorId(long id);
+        void SalvarGrupo(Grupo grupo);
+        void RemoverGrupo(long id);
+
+        void AdicionarSubgrupo(Subgrupo subgrupo);
+        IQueryable<Subgrupo> RecuperarSubgrupos();
+        Subgrupo RecuperarSubgrupoPorId(long id);
+        void SalvarSubgrupo(Subgrupo subgrupo);
+        void RemoverSubgrupo(long id);
     }
 }

@@ -56,6 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gerenciadores\IGerenciadorSubgrupos.cs" />
+    <Compile Include="Gerenciadores\IGerenciadorGrupos.cs" />
     <Compile Include="Gerenciadores\IGerenciadorSubclasses.cs" />
     <Compile Include="Gerenciadores\IGerenciadorClasses.cs" />
     <Compile Include="Gerenciadores\IFachadaGerenciadores.cs" />
