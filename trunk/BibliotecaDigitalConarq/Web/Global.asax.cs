@@ -40,13 +40,25 @@ namespace Web
             );
 
             routes.MapRoute(
+                "Subgrupo", // Route name
+                "Classe/{idClasse}/Subclasse/{idSubclasse}/Grupo/{idGrupo}/Subgrupo/{action}/{id}", // URL with parameters
+                new { controller = "Subgrupo", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "Grupo", // Route name
+                "Classe/{idClasse}/Subclasse/{idSubclasse}/Grupo/{action}/{id}", // URL with parameters
+                new { controller = "Grupo", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Subclasse", // Route name
                 "Classe/{idClasse}/Subclasse/{action}/{id}", // URL with parameters
                 new { controller = "Subclasse", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
             
             routes.MapRoute(
-                "Default", // Route name
+                "Default", // Route name  (Classe)
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
