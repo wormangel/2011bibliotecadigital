@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
+using Core.Objetos.Classificacoes;
 using EntityAcessoADados.Repositorios;
 
 namespace EntityAcessoADados.Gerenciadores
@@ -11,14 +13,20 @@ namespace EntityAcessoADados.Gerenciadores
         private readonly IGerenciadorDocumentos _documentos;
         private readonly IGerenciadorDocumentosArquivisticos _documentosArquivisticos;
         private readonly IGerenciadorVolumes _volumes;
+        private readonly IGerenciadorClasses _classes;
+        private readonly IGerenciadorSubclasses _subclasses;
 
         public FachadaGerenciadores(IGerenciadorDocumentos documentos,
                                     IGerenciadorDocumentosArquivisticos documentosArquivisticos,
-                                    IGerenciadorVolumes volumes)
+                                    IGerenciadorVolumes volumes,
+                                    IGerenciadorClasses classes,
+                                    IGerenciadorSubclasses subclasses)
         {
             _documentosArquivisticos = documentosArquivisticos;
             _volumes = volumes;
             _documentos = documentos;
+            _classes = classes;
+            _subclasses = subclasses;
         }
 
         public DocumentoArquivistico RecuperarDocumentoArquivisticoPorId(long id)
@@ -95,5 +103,56 @@ namespace EntityAcessoADados.Gerenciadores
         {
             _documentos.Remover(id);
         }
+
+        public IQueryable<Classe> RecuperarClasses()
+        {
+            return _classes.RecuperarClasses();
+        }
+
+        public Classe RecuperarClassePorId(long id)
+        {
+            return _classes.RecuperarPorId(id);
+        }
+
+        public void AdicionarClasse(Classe classe)
+        {
+            _classes.Adicionar(classe);
+        }
+
+        public void SalvarClasse(Classe classe)
+        {
+            _classes.Salvar(classe);
+        }
+
+        public void RemoverClasse(long id)
+        {
+            _classes.Remover(id);
+        }
+
+        public IQueryable<Subclasse> RecuperarSubclasses()
+        {
+            return _subclasses.RecuperarSubclasses();
+        }
+
+        public Subclasse RecuperarSubclassePorId(long id)
+        {
+            return _subclasses.RecuperarPorId(id);
+        }
+
+        public void AdicionarSubclasse(Subclasse subclasse)
+        {
+            _subclasses.Adicionar(subclasse);
+        }
+
+        public void SalvarSubclasse(Subclasse subclasse)
+        {
+            _subclasses.Salvar(subclasse);
+        }
+
+        public void RemoverSubclasse(long id)
+        {
+            _subclasses.Remover(id);
+        }
     }
+
 }

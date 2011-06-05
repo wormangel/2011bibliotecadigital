@@ -12,7 +12,7 @@
 
     <div class="display-label">Nr. doc. arquivístico</div>
     <div class="display-field">
-        <a href="@Url.RouteUrl("Default", new { id = Model.IdProcessoDossie, action = "Details" })">@Html.DisplayFor(model => model.NumeroDoProcessoOuDossie)</a>
+        <a href="@Url.RouteUrl("Default", new { controller = "DocumentoArquivistico", id = Model.IdProcessoDossie, action = "Details" })">@Html.DisplayFor(model => model.NumeroDoProcessoOuDossie)</a>
     </div>
 
     <div class="display-label">Tipo do meio</div>

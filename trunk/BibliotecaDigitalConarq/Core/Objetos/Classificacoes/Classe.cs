@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Core.Objetos.Classificacao
+namespace Core.Objetos.Classificacoes
 {
-    class Classe : Classificacao
+    public class Classe : Classificacao
     {
         [Display(Name = "Subclasses contidos nesta classe")]
         public virtual ICollection<Subclasse> Subclasses { get; set; }

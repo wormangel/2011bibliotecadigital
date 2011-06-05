@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using Core.Objetos;
+using Core.Objetos.Classificacoes;
 
 namespace EntityAcessoADados
 {
@@ -14,6 +15,10 @@ namespace EntityAcessoADados
         public DbSet<DocumentoArquivistico> DocumentosArquivisticos { get; set; }
         public DbSet<Documento> Documentos { get; set; }
         public DbSet<Volume> Volumes { get; set; }
+        public DbSet<Classe> Classes { get; set; }
+        public DbSet<Subclasse> Subclasses { get; set; }
+        public DbSet<Grupo> Grupos { get; set; }
+        public DbSet<Subgrupo> Subgrupos { get; set; }
         
         // String de conexão definida no app.config
         public ContextoAcessoADados() : base("BibliotecaConarq")

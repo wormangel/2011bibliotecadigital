@@ -21,8 +21,7 @@ namespace Web.Controllers
 
         public ViewResult Index()
         {
-            IEnumerable<DocumentoArquivistico> documentos = _fachada.RecuperarDocumentosArquivisticos();
-            return View(documentos);
+            return View(_fachada.RecuperarDocumentosArquivisticos());
         }
 
         //
