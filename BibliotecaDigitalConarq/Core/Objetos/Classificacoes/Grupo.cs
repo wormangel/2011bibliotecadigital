@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Core.Objetos.Classificacao
+namespace Core.Objetos.Classificacoes
 {
-    class Grupo : Classificacao
+    public class Grupo : Classificacoes.Classificacao
     {
         public long IdSubclasse { get { return (Subclasse != null) ? Subclasse.Id : -1; }  }
 

@@ -38,6 +38,12 @@ namespace Web
                 "DocumentoArquivistico/{idDocArq}/Volume/{action}/{id}", // URL with parameters
                 new { controller = "Volume", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
+
+            routes.MapRoute(
+                "Subclasse", // Route name
+                "Classe/{idClasse}/Subclasse/{action}/{id}", // URL with parameters
+                new { controller = "Subclasse", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
             
             routes.MapRoute(
                 "Default", // Route name

@@ -2,6 +2,7 @@ using System.Data.Entity;
 using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
+using Core.Objetos.Classificacoes;
 using EntityAcessoADados;
 using EntityAcessoADados.Gerenciadores;
 using EntityAcessoADados.Repositorios;
@@ -60,12 +61,18 @@ namespace Web.App_Start
             kernel.Bind<IRepositorio<DocumentoArquivistico>>().To<Repositorio<DocumentoArquivistico>>();
             kernel.Bind<IRepositorio<Documento>>().To<Repositorio<Documento>>();
             kernel.Bind<IRepositorio<Volume>>().To<Repositorio<Volume>>();
+            kernel.Bind<IRepositorio<Classe>>().To<Repositorio<Classe>>();
+            kernel.Bind<IRepositorio<Subclasse>>().To<Repositorio<Subclasse>>();
+            kernel.Bind<IRepositorio<Grupo>>().To<Repositorio<Grupo>>();
+            kernel.Bind<IRepositorio<Subgrupo>>().To<Repositorio<Subgrupo>>();
             kernel.Bind<IRepositorioArquivo>().To<RepositorioArquivo>();
             kernel.Bind<IFachadaGerenciadores>().To<FachadaGerenciadores>();
             kernel.Bind<IGerenciadorArquivos>().To<GerenciadorArquivos>();
             kernel.Bind<IGerenciadorDocumentosArquivisticos>().To<GerenciadorDocumentosArquivisticos>();
             kernel.Bind<IGerenciadorDocumentos>().To<GerenciadorDocumentos>();
             kernel.Bind<IGerenciadorVolumes>().To<GerenciadorVolumes>();
+            kernel.Bind<IGerenciadorClasses>().To<GerenciadorClasses>();
+            kernel.Bind<IGerenciadorSubclasses>().To<GerenciadorSubclasses>();
             kernel.Bind<DbContext>().To<ContextoAcessoADados>().InRequestScope();
         }
     }

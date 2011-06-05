@@ -65,6 +65,8 @@
     <Compile Include="ContextoAcessoADados.cs" />
     <Compile Include="ContextoInitializer.cs" />
     <Compile Include="FullTextSearch.cs" />
+    <Compile Include="Gerenciadores\GerenciadorSubclasses.cs" />
+    <Compile Include="Gerenciadores\GerenciadorClasses.cs" />
     <Compile Include="Gerenciadores\FachadaGerenciadores.cs" />
     <Compile Include="Gerenciadores\GerenciadorArquivos.cs" />
     <Compile Include="Gerenciadores\GerenciadorDocumentos.cs" />

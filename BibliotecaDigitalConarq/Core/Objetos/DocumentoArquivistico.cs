@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
+using Core.Objetos.Classificacoes;
 using Core.Objetos.Enums;
 
 namespace Core.Objetos
@@ -147,7 +147,7 @@ namespace Core.Objetos
         /// plano de classificação.
         /// </summary>
         [Required(ErrorMessage = "A classe deve ser informada"), Display(Name = "Classe")]
-        public String Classe { get; set; }
+        public virtual Classificacao Classe { get; set; }
 
         //TODO Temporalidade - próximas iterações
         // Metadados 1.32 - Destinação prevista (O)

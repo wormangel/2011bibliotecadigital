@@ -1,5 +1,6 @@
 using System.Linq;
 using Core.Objetos;
+using Core.Objetos.Classificacoes;
 
 namespace Core.Gerenciadores
 {
@@ -22,5 +23,17 @@ namespace Core.Gerenciadores
         void AdicionarDocumento(long idDocumentoArquivistico, long idVolume, Documento documento);
         void SalvarDocumento(Documento documento);
         void RemoverDocumento(long id);
+        
+        IQueryable<Classe> RecuperarClasses();
+        Classe RecuperarClassePorId(long id);
+        void AdicionarClasse(Classe classe);
+        void SalvarClasse(Classe classe);
+        void RemoverClasse(long id);
+
+        IQueryable<Subclasse> RecuperarSubclasses();
+        Subclasse RecuperarSubclassePorId(long id);
+        void AdicionarSubclasse(Subclasse subclasse);
+        void SalvarSubclasse(Subclasse subclasse);
+        void RemoverSubclasse(long id);
     }
 }
