@@ -6,7 +6,7 @@ namespace Core.Gerenciadores
 {
     public interface IGerenciadorSubclasses
     {
-        void Adicionar(Subclasse doc);
+        void Adicionar(Subclasse subclasse);
         IQueryable<Subclasse> RecuperarSubclasses();
         Subclasse RecuperarPorId(long id);
         void Salvar(Subclasse subclasse);

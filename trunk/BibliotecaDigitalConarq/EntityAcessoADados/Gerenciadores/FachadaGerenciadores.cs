@@ -15,20 +15,27 @@ namespace EntityAcessoADados.Gerenciadores
         private readonly IGerenciadorVolumes _volumes;
         private readonly IGerenciadorClasses _classes;
         private readonly IGerenciadorSubclasses _subclasses;
+        private readonly IGerenciadorGrupos _grupos;
+        private readonly IGerenciadorSubgrupos _subgrupos;
 
         public FachadaGerenciadores(IGerenciadorDocumentos documentos,
                                     IGerenciadorDocumentosArquivisticos documentosArquivisticos,
                                     IGerenciadorVolumes volumes,
                                     IGerenciadorClasses classes,
-                                    IGerenciadorSubclasses subclasses)
+                                    IGerenciadorSubclasses subclasses,
+                                    IGerenciadorGrupos grupos,
+                                    IGerenciadorSubgrupos subgrupos)
         {
             _documentosArquivisticos = documentosArquivisticos;
             _volumes = volumes;
             _documentos = documentos;
             _classes = classes;
             _subclasses = subclasses;
+            _grupos = grupos;
+            _subgrupos = subgrupos;
         }
 
+        #region DocumentoArquivistico
         public DocumentoArquivistico RecuperarDocumentoArquivisticoPorId(long id)
         {
             return _documentosArquivisticos.RecuperarPorId(id);
@@ -53,7 +60,9 @@ namespace EntityAcessoADados.Gerenciadores
         {
             _documentosArquivisticos.Remover(id);
         }
+        #endregion
 
+        #region Volume
         public IQueryable<Volume> RecuperarVolumes()
         {
             return _volumes.RecuperarVolumes();
@@ -78,7 +87,9 @@ namespace EntityAcessoADados.Gerenciadores
         {
             _volumes.Remover(id);
         }
+        #endregion
 
+        #region Documento
         public IQueryable<Documento> RecuperarDocumentos()
         {
             return _documentos.RecuperarDocumentos();
@@ -103,7 +114,9 @@ namespace EntityAcessoADados.Gerenciadores
         {
             _documentos.Remover(id);
         }
+        #endregion
 
+        #region Classe
         public IQueryable<Classe> RecuperarClasses()
         {
             return _classes.RecuperarClasses();
@@ -128,7 +141,9 @@ namespace EntityAcessoADados.Gerenciadores
         {
             _classes.Remover(id);
         }
+        #endregion
 
+        #region Subclasse
         public IQueryable<Subclasse> RecuperarSubclasses()
         {
             return _subclasses.RecuperarSubclasses();
@@ -153,6 +168,61 @@ namespace EntityAcessoADados.Gerenciadores
         {
             _subclasses.Remover(id);
         }
+        #endregion
+
+        #region Grupo
+        public void AdicionarGrupo(Grupo grupo)
+        {
+            _grupos.Adicionar(grupo);
+        }
+
+        public IQueryable<Grupo> RecuperarGrupos()
+        {
+            return _grupos.RecuperarGrupos();
+        }
+
+        public Grupo RecuperarGrupoPorId(long id)
+        {
+            return _grupos.RecuperarPorId(id);
+        }
+
+        public void SalvarGrupo(Grupo grupo)
+        {
+            _grupos.Salvar(grupo);
+        }
+
+        public void RemoverGrupo(long id)
+        {
+            _grupos.Remover(id);
+        }
+        #endregion
+
+        #region Subgrupo
+        public void AdicionarSubgrupo(Subgrupo subgrupo)
+        {
+            _subgrupos.Adicionar(subgrupo);
+        }
+
+        public IQueryable<Subgrupo> RecuperarSubgrupos()
+        {
+            return _subgrupos.RecuperarSubgrupos();
+        }
+
+        public Subgrupo RecuperarSubgrupoPorId(long id)
+        {
+            return _subgrupos.RecuperarPorId(id);
+        }
+
+        public void SalvarSubgrupo(Subgrupo subgrupo)
+        {
+            _subgrupos.Salvar(subgrupo);
+        }
+
+        public void RemoverSubgrupo(long id)
+        {
+            _subgrupos.Remover(id);
+        }
+        #endregion
     }
 
 }
