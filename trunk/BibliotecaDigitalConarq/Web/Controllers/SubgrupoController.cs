@@ -23,7 +23,7 @@ namespace Web.Controllers
         //
         // GET: /Classe/
 
-        public ViewResult Index()
+        public ViewResult Index(int idClasse, int idSubclasse, int idGrupo)
         {
             return View(_fachada.RecuperarSubgrupos());
         }
@@ -31,7 +31,7 @@ namespace Web.Controllers
         //
         // GET: /Classe/Details/5
 
-        public ViewResult Details(int id)
+        public ViewResult Details(int idClasse, int idSubclasse, int idGrupo, int id)
         {
             return View(_fachada.RecuperarSubgrupoPorId(id));
         }
@@ -39,7 +39,7 @@ namespace Web.Controllers
         //
         // GET: /Classe/Create
 
-        public ViewResult Create()
+        public ViewResult Create(int idClasse, int idSubclasse, int idGrupo)
         {
             return View();
         } 
@@ -48,7 +48,7 @@ namespace Web.Controllers
         // POST: /Classe/Create
 
         [HttpPost]
-        public ActionResult Create(Subgrupo subgrupo)
+        public ActionResult Create(int idClasse, int idSubclasse, int idGrupo, Subgrupo subgrupo)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace Web.Controllers
         //
         // GET: /Classe/Edit/5
 
-        public ViewResult Edit(int id)
+        public ViewResult Edit(int idClasse, int idSubclasse, int idGrupo, int id)
         {
             return View(_fachada.RecuperarSubgrupoPorId(id));
         }
@@ -71,7 +71,7 @@ namespace Web.Controllers
         // POST: /Classe/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Subgrupo subgrupo)
+        public ActionResult Edit(int idClasse, int idSubclasse, int idGrupo, Subgrupo subgrupo)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace Web.Controllers
         //
         // GET: /Classe/Delete/5
 
-        public ViewResult Delete(int id)
+        public ViewResult Delete(int idClasse, int idSubclasse, int idGrupo, int id)
         {
             return View(_fachada.RecuperarSubgrupoPorId(id));
         }
@@ -93,7 +93,7 @@ namespace Web.Controllers
         // POST: /Classe/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int idClasse, int idSubclasse, int idGrupo, int id)
         {
             _fachada.RemoverSubgrupo(id);
             return RedirectToAction("Index");
