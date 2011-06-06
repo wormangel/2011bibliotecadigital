@@ -2,102 +2,102 @@
 @using Web.Extensions
 
 @{
-    ViewBag.Title = "Biblioteca Digital - Detalhes do " + @Html.DisplayFor(model => model.Titulo);
+    ViewBag.Title = "Biblioteca Digital - Detalhes do " + @Html.DisplayFor(model => model.VersaoAtual.Titulo);
 }
 
-<h2>Detalhes do @Html.DisplayFor(model => model.Titulo)</h2>
+<h2>Detalhes do @Html.DisplayFor(model => model.VersaoAtual.Titulo)</h2>
 
 <fieldset>
     <legend>Dados</legend>
 
     <div class="display-label">Número</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.NumeroDoProcessoOuDossie)
+        @Html.DisplayFor(model => model.VersaoAtual.NumeroDoProcessoOuDossie)
     </div>
 
     <div class="display-label">Tipo do meio</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.TipoDoMeio)
+        @Html.DisplayFor(model => model.VersaoAtual.TipoDoMeio)
     </div>
 
     <div class="display-label">Título</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Titulo)
+        @Html.DisplayFor(model => model.VersaoAtual.Titulo)
     </div>
 
     <div class="display-label">Tipo do título</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.TipoDoTitulo)
+        @Html.DisplayFor(model => model.VersaoAtual.TipoDoTitulo)
     </div>
 
     <div class="display-label">Descrição</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Descricao)
+        @Html.DisplayFor(model => model.VersaoAtual.Descricao)
     </div>
 
     <div class="display-label">Assunto</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Assunto)
+        @Html.DisplayFor(model => model.VersaoAtual.Assunto)
     </div>
 
     <div class="display-label">Autor</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Autor)
+        @Html.DisplayFor(model => model.VersaoAtual.Autor)
     </div>
 
     <div class="display-label">Destinatário</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Destinatario)
+        @Html.DisplayFor(model => model.VersaoAtual.Destinatario)
     </div>
 
     <div class="display-label">Tipo do destinatário</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.TipoDoDestinatario)
+        @Html.DisplayFor(model => model.VersaoAtual.TipoDoDestinatario)
     </div>
 
     <div class="display-label">Interessado</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Interessado)
+        @Html.DisplayFor(model => model.VersaoAtual.Interessado)
     </div>
 
     <div class="display-label">Procedência</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Procedencia)
+        @Html.DisplayFor(model => model.VersaoAtual.Procedencia)
     </div>
 
     <div class="display-label">Quantidade de folhas</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.QuantidadeDeFolhas)
+        @Html.DisplayFor(model => model.VersaoAtual.QuantidadeDeFolhas)
     </div>
 
     <div class="display-label">Numeração sequencial</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.NumeracaoSequencialDosDocumentos)
+        @Html.DisplayFor(model => model.VersaoAtual.NumeracaoSequencialDosDocumentos)
     </div>
 
     <div class="display-label">Data de produção</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.DataDeProducao)
+        @Html.DisplayFor(model => model.VersaoAtual.DataDeProducao)
     </div>
 
     <div class="display-label">Classe</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Classe)
+        @Html.DisplayFor(model => model.VersaoAtual.Classe)
     </div>
 
     <div class="display-label">Destinação prevista</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.DestinacaoPrevista)
+        @Html.DisplayFor(model => model.VersaoAtual.DestinacaoPrevista)
     </div>
 
     <div class="display-label">Prazo de guarda</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.PrazoDeGuarda)
+        @Html.DisplayFor(model => model.VersaoAtual.PrazoDeGuarda)
     </div>
 
     <div class="display-label">Localização</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Localizacao)
+        @Html.DisplayFor(model => model.VersaoAtual.Localizacao)
     </div>
 
     <div class="display-label">Volumes <a href="@Url.RouteUrl("Volume", new { idDocArq = Model.Id, action = "Create"})">Criar volume</a></div>
@@ -107,7 +107,7 @@
             <ul>
             @foreach (var item in Model.Volumes.Where(v => v.IdProcessoDossie == Model.Id).ToList())
             {
-                <li><a href="@Url.RouteUrl("Volume", new { idDocArq = item.IdProcessoDossie, action = "Details", id = item.Id })">Volume @(item.NumeroDoVolume)</a></li>
+                <li><a href="@Url.RouteUrl("Volume", new { idDocArq = item.IdProcessoDossie, action = "Details", id = item.Id })">Volume @(item.VersaoAtual.NumeroDoVolume)</a></li>
             }
             </ul>
         }

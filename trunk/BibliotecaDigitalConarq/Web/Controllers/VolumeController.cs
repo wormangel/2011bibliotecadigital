@@ -5,6 +5,7 @@ using Core.Gerenciadores;
 using Core.Objetos;
 using EntityAcessoADados.Gerenciadores;
 using Ninject;
+using Web.ViewModels.Volume;
 
 namespace Web.Controllers
 {
@@ -24,7 +25,7 @@ namespace Web.Controllers
         public ViewResult Index(long idDocArq)
         {
             IQueryable<Volume> volumes = _fachada.RecuperarVolumes();
-            ViewBag.TituloDoc = _fachada.RecuperarDocumentoArquivisticoPorId(idDocArq).Titulo;
+            ViewBag.TituloDoc = _fachada.RecuperarDocumentoArquivisticoPorId(idDocArq).VersaoAtual.Titulo;
             ViewBag.IdDocArq = idDocArq;
             return View(volumes);
         }
@@ -49,15 +50,20 @@ namespace Web.Controllers
         // POST: /DocumentoArquivistico/1/Volume/Create
 
         [HttpPost]
-        public ActionResult Create(long idDocArq, Volume volume)
+        public ActionResult Create(long idDocArq, VersaoVolume versaoSendoCriada)
         {
             if (ModelState.IsValid)
             {
+                Volume volume = new Volume();
+                volume.Versoes = new List<VersaoVolume>();
+                versaoSendoCriada.NumeroDaVersao = 1;
+                volume.Versoes.Add(versaoSendoCriada);
+
                 _fachada.AdicionarVolume(idDocArq, volume);
                 return RedirectToAction("Index");
             }
 
-            return View(volume);
+            return View(versaoSendoCriada);
         }
 
         //
@@ -65,22 +71,29 @@ namespace Web.Controllers
 
         public ActionResult Edit(long idDocArq, long id)
         {
+
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
-            return View(_fachada.RecuperarVolumePorId(id));
+            Volume volume = _fachada.RecuperarVolumePorId(id);
+            return View(new EditVolumeViewModel(volume));
         }
 
         //
         // POST: /DocumentoArquivistico/1/Volume/Editar/5
 
         [HttpPost]
-        public ActionResult Edit(long idDocArq, Volume volume)
+        public ActionResult Edit(long idDocArq, EditVolumeViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
+                Volume volume = _fachada.RecuperarVolumePorId(viewModel.Volume.Id);
+                viewModel.VersaoNova.NumeroDaVersao = volume.VersaoAtual.NumeroDaVersao + 1;
+
+                volume.Versoes.Add(viewModel.VersaoNova);
+
                 _fachada.SalvarVolume(volume);
                 return RedirectToAction("Index");
             }
-            return View(volume);
+            return View(viewModel);
         }
 
         //

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using Core.Objetos.Classificacoes;
 using Core.Objetos.Enums;
 
 namespace Core.Objetos
 {
-    // Referente ao 'Processo/Dossiê' citado na documentação da CONARQ
     public class DocumentoArquivistico
     {
         // Metadados 1.4 - Identificador do processo/dossiê (O)
@@ -16,6 +16,34 @@ namespace Core.Objetos
         /// </summary>
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
+
+        [Display(Name = "Versões do documento arquívistico")]
+        public virtual ICollection<VersaoDocumentoArquivistico> Versoes { get; set; }
+
+        private VersaoDocumentoArquivistico versaoAtual;
+        public virtual VersaoDocumentoArquivistico VersaoAtual
+        {
+            get
+            {
+                if (versaoAtual == null)
+                    versaoAtual = Versoes.AsQueryable().OrderByDescending(w => w.NumeroDaVersao).FirstOrDefault();
+                return versaoAtual;
+            }
+        }
+
+        // Referências
+
+        // Os volumes que este processo/dossiê contém
+        [Display(Name = "Volumes contidos neste documento arquivístico")]
+        public virtual ICollection<Volume> Volumes { get; set; }
+    }
+
+    // Referente ao 'Processo/Dossiê' citado na documentação da CONARQ
+    public class VersaoDocumentoArquivistico
+    {
+
+        [Display(Name = "Número da versão"), Key]
+        public long NumeroDaVersao { get; set; }
 
         // Metadados 1.5 - Número do processo/dossiê (O)
         /// <summary>
@@ -177,11 +205,7 @@ namespace Core.Objetos
         [Required(ErrorMessage = "A localização deve ser informada"), Display(Name = "Localização")]
         public String Localizacao { get; set; }
 
-        // Referências
-
-        // Os volumes que este processo/dossiê contém
-        [Display(Name = "Volumes contidos neste documento arquivístico")]
-        public virtual ICollection<Volume> Volumes { get; set; }
+        
     }
 
 }

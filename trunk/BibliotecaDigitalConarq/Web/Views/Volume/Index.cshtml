@@ -32,13 +32,13 @@
             @Html.DisplayFor(modelItem => item.NumeroDoProcessoOuDossie)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumeroDoVolume)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.NumeroDoVolume)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.QuantidadeDeFolhas)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.QuantidadeDeFolhas)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Localizacao)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Localizacao)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |

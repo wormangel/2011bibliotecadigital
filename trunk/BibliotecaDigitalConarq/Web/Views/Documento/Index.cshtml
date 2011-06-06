@@ -18,9 +18,6 @@
             Nr. do protocolo
         </th>
         <th>
-            Id versão
-        </th>
-        <th>
             Titulo
         </th>
         <th>
@@ -83,70 +80,67 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.NumeroDoDocumento)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.NumeroDoDocumento)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumeroDoProtocolo)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.NumeroDoProtocolo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IdVersao)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Titulo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Titulo)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Descricao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Assunto)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Assunto)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Autor)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Autor)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Destinatario)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Destinatario)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Originador)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Originador)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Redator)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Redator)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Procedencia)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Procedencia)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IdArquivo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Genero)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Genero)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Especie)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Especie)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Tipo)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Tipo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Idioma)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Idioma)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.QuantidadeDeFolhas)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.QuantidadeDeFolhas)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TemAnexos)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.TemAnexos)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DataDeProducao)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.DataDeProducao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Classe)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Classe)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PrazoDeGuarda)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.PrazoDeGuarda)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Localizacao)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Localizacao)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |

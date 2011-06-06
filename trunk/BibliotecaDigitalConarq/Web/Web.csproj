@@ -90,6 +90,9 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Arquivo\CreateArquivoViewModel.cs" />
+    <Compile Include="ViewModels\DocumentoArquivistico\EditDocumentoArquivisticoViewModel.cs" />
+    <Compile Include="ViewModels\Documento\EditDocumentoViewModel.cs" />
+    <Compile Include="ViewModels\Volume\EditVolumeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />

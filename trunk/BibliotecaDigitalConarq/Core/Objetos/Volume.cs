@@ -17,6 +17,22 @@ namespace Core.Objetos
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
+        [Display(Name = "Versões do volume")]
+        public virtual ICollection<VersaoVolume> Versoes { get; set; }
+
+        private VersaoVolume versaoAtual;
+        public virtual VersaoVolume VersaoAtual
+        {
+            get
+            {
+                if (versaoAtual == null)
+                    versaoAtual = Versoes.AsQueryable().OrderByDescending(w => w.NumeroDaVersao).FirstOrDefault();
+                return versaoAtual;
+            }
+    }
+
+        // Referências
+
         // Referência
         // Metadados 1.4 - Identificador do processo/dossiê (OA)
         /// <summary>
@@ -36,8 +52,20 @@ namespace Core.Objetos
         /// </summary>
         public String NumeroDoProcessoOuDossie
         {
-            get { return (DocumentoArquivistico != null) ? DocumentoArquivistico.NumeroDoProcessoOuDossie : null; }
+            get { return (DocumentoArquivistico != null) ? DocumentoArquivistico.VersaoAtual.NumeroDoProcessoOuDossie : null; }
         }
+
+        // O processo/dossiê a que este volume pertence
+        public virtual DocumentoArquivistico DocumentoArquivistico { get; set; }
+
+        // Os documentos que este volume contém
+        public virtual ICollection<Documento> Documentos { get; set; }    
+    }
+
+    public class VersaoVolume
+    {
+        [Display(Name = "Número da versão"), Key]
+        public long NumeroDaVersao { get; set; }
 
         // Metadados 1.7 - Número do volume (O)
         /// <summary>
@@ -69,14 +97,5 @@ namespace Core.Objetos
         /// </summary>
         [Display(Name = "Localização")]
         public String Localizacao { get; set; }
-
-        // Referências
-
-        // O processo/dossiê a que este volume pertence
-        public virtual DocumentoArquivistico DocumentoArquivistico { get; set; }
-
-        // Os documentos que este volume contém
-        public virtual ICollection<Documento> Documentos { get; set; }
-
     }
 }

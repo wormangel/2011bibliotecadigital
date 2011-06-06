@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Core.Gerenciadores;
 using Core.Objetos;
 using EntityAcessoADados.Gerenciadores;
+using Web.ViewModels.Documento;
 
 namespace Web.Controllers
 {
@@ -24,9 +25,9 @@ namespace Web.Controllers
         {
             IQueryable<Documento> documentos = _fachada.RecuperarDocumentos();
             var volume = _fachada.RecuperarVolumePorId(idVol);
-            ViewBag.TituloDocArq = volume.DocumentoArquivistico.Titulo;
+            ViewBag.TituloDocArq = volume.DocumentoArquivistico.VersaoAtual.Titulo;
             ViewBag.TipoDocArq = "processo/dossiê"; // TODO: criar enum!
-            ViewBag.NrVolume = volume.NumeroDoVolume;
+            ViewBag.NrVolume = volume.VersaoAtual.NumeroDoVolume;
             ViewBag.IdVol = idVol;
             ViewBag.IdDocArq = idDocArq;
             return View(documentos);
@@ -52,15 +53,20 @@ namespace Web.Controllers
         // POST: /DocumentoArquivistico/1/Volume/1/Documento/Create
 
         [HttpPost]
-        public ActionResult Create(long idDocArq, long idVol, Documento documento)
+        public ActionResult Create(long idDocArq, long idVol, VersaoDocumento versaoSendoCriada)
         {
             if (ModelState.IsValid)
             {
+                Documento documento = new Documento();
+                documento.Versoes = new List<VersaoDocumento>();
+                versaoSendoCriada.NumeroDaVersao = 1;
+                documento.Versoes.Add(versaoSendoCriada);
+
                 _fachada.AdicionarDocumento(idDocArq, idVol, documento);
                 return RedirectToAction("Index");
             }
 
-            return View(documento);
+            return View(versaoSendoCriada);
         }
 
         //
@@ -68,21 +74,27 @@ namespace Web.Controllers
 
         public ActionResult Edit(long idDocArq, long idVol, long id)
         {
-            return View(_fachada.RecuperarDocumentoPorId(id));
+            Documento doc = _fachada.RecuperarDocumentoPorId(id);
+            return View(new EditDocumentoViewModel(doc));
         }
 
         //
         // POST: /DocumentoArquivistico/1/Volume/1/Documento/Editar/5
 
         [HttpPost]
-        public ActionResult Edit(long idDocArq, long idVol, Documento documento)
+        public ActionResult Edit(long idDocArq, long idVol, EditDocumentoViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                _fachada.SalvarDocumento(documento);
+                Documento doc = _fachada.RecuperarDocumentoPorId(viewModel.Documento.Id);
+                viewModel.VersaoNova.NumeroDaVersao = doc.VersaoAtual.NumeroDaVersao + 1;
+
+                doc.Versoes.Add(viewModel.VersaoNova);
+
+                _fachada.SalvarDocumento(doc);
                 return RedirectToAction("Index");
             }
-            return View(documento);
+            return View(viewModel);
         }
 
         //

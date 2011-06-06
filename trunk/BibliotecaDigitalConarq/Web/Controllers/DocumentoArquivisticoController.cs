@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Core.Gerenciadores;
 using Core.Objetos;
 using Ninject;
+using Web.ViewModels.DocumentoArquivistico;
 
 namespace Web.Controllers
 {
@@ -44,15 +45,20 @@ namespace Web.Controllers
         // POST: /DocumentoArquivistico/Create
 
         [HttpPost]
-        public ActionResult Create(DocumentoArquivistico documentoArquivistico)
+        public ActionResult Create(VersaoDocumentoArquivistico versaoSendoCriada)
         {
             if (ModelState.IsValid)
             {
-                _fachada.AdicionarDocumentoArquivistico(documentoArquivistico);
+                DocumentoArquivistico docArq = new DocumentoArquivistico();
+                docArq.Versoes = new List<VersaoDocumentoArquivistico>();
+                versaoSendoCriada.NumeroDaVersao = 1;
+                docArq.Versoes.Add(versaoSendoCriada);
+
+                _fachada.AdicionarDocumentoArquivistico(docArq);
                 return RedirectToAction("Index");
             }
 
-            return View(documentoArquivistico);
+            return View(versaoSendoCriada);
         }
 
         //
@@ -61,21 +67,27 @@ namespace Web.Controllers
         public ActionResult Edit(long id)
         {
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
-            return View(_fachada.RecuperarDocumentoArquivisticoPorId(id));
+            DocumentoArquivistico docArq = _fachada.RecuperarDocumentoArquivisticoPorId(id);
+            return View(new EditDocumentoArquivisticoViewModel(docArq));
         }
 
         //
         // POST: /DocumentoArquivistico/Editar/5
 
         [HttpPost]
-        public ActionResult Edit(DocumentoArquivistico documentoarquivistico)
+        public ActionResult Edit(EditDocumentoArquivisticoViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                _fachada.SalvarDocumentoArquivistico(documentoarquivistico);
+                DocumentoArquivistico docArq = _fachada.RecuperarDocumentoArquivisticoPorId(viewModel.DocumentoArquivistico.Id);
+                viewModel.VersaoNova.NumeroDaVersao = docArq.VersaoAtual.NumeroDaVersao + 1;
+
+                docArq.Versoes.Add(viewModel.VersaoNova);
+
+                _fachada.SalvarDocumentoArquivistico(docArq);
                 return RedirectToAction("Index");
             }
-            return View(documentoarquivistico);
+            return View(viewModel);
         }
 
         //
