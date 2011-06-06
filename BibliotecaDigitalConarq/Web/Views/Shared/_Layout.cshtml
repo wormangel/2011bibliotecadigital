@@ -20,7 +20,7 @@
                 <ul id="menu">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Documentos Arquivisticos", "Index", "DocumentoArquivistico")</li>
-                    @if (ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.Equals("DocumentoArquivistico") && !ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Index"))
+                    @if (ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.Equals("DocumentoArquivistico") && !ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Index") && !ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Create"))
                     {
                         <li><a href="@Url.RouteUrl("Volume", new { idDocArq = ViewContext.RouteData.Values.Values.ElementAt(2), action = "Index" })">Volumes</a></li>
                     }

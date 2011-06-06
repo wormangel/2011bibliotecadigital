@@ -1,4 +1,4 @@
-﻿@model Core.Objetos.Documento
+﻿@model Core.Objetos.VersaoDocumento
 @using Web.Extensions
 
 @{
@@ -29,14 +29,6 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.NumeroDoProtocolo)
             @Html.ValidationMessageFor(model => model.NumeroDoProtocolo)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.IdVersao)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.IdVersao)
-            @Html.ValidationMessageFor(model => model.IdVersao)
         </div>
 
         <div class="editor-label">

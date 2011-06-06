@@ -1,22 +1,22 @@
 ﻿@model Core.Objetos.Documento
 
 @{
-    ViewBag.Title = "Biblioteca Digital - Remover " + @Html.DisplayFor(model => model.Titulo) + "?";
+    ViewBag.Title = "Biblioteca Digital - Remover " + @Html.DisplayFor(model => model.VersaoAtual.Titulo) + "?";
 }
 
-<h2>Você tem certeza que deseja remover o @Html.DisplayFor(model => model.Titulo)?</h2>
+<h2>Você tem certeza que deseja remover o @Html.DisplayFor(model => model.VersaoAtual.Titulo)?</h2>
 
 <fieldset>
     <legend>Dados</legend>
 
     <div class="display-label">Número</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.NumeroDoDocumento)
+        @Html.DisplayFor(model => model.VersaoAtual.NumeroDoDocumento)
     </div>
 
     <div class="display-label">Nr. do protocolo</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.NumeroDoProtocolo)
+        @Html.DisplayFor(model => model.VersaoAtual.NumeroDoProtocolo)
     </div>
 
     <div class="display-label">Id doc. arquivístico</div>
@@ -29,49 +29,44 @@
         @Html.DisplayFor(model => model.IdVolume)
     </div>
 
-    <div class="display-label">Id Versão</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IdVersao)
-    </div>
-
     <div class="display-label">Título</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Titulo)
+        @Html.DisplayFor(model => model.VersaoAtual.Titulo)
     </div>
 
     <div class="display-label">Descrição</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Descricao)
+        @Html.DisplayFor(model => model.VersaoAtual.Descricao)
     </div>
 
     <div class="display-label">Assunto</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Assunto)
+        @Html.DisplayFor(model => model.VersaoAtual.Assunto)
     </div>
 
     <div class="display-label">Autor</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Autor)
+        @Html.DisplayFor(model => model.VersaoAtual.Autor)
     </div>
 
     <div class="display-label">Destinatário</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Destinatario)
+        @Html.DisplayFor(model => model.VersaoAtual.Destinatario)
     </div>
 
     <div class="display-label">Originador</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Originador)
+        @Html.DisplayFor(model => model.VersaoAtual.Originador)
     </div>
 
     <div class="display-label">Redator</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Redator)
+        @Html.DisplayFor(model => model.VersaoAtual.Redator)
     </div>
 
     <div class="display-label">Procedência</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Procedencia)
+        @Html.DisplayFor(model => model.VersaoAtual.Procedencia)
     </div>
 
     <div class="display-label">Id Arquivo</div>
@@ -81,52 +76,52 @@
 
     <div class="display-label">Gênero</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Genero)
+        @Html.DisplayFor(model => model.VersaoAtual.Genero)
     </div>
 
     <div class="display-label">Espécie</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Especie)
+        @Html.DisplayFor(model => model.VersaoAtual.Especie)
     </div>
 
     <div class="display-label">Tipo</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Tipo)
+        @Html.DisplayFor(model => model.VersaoAtual.Tipo)
     </div>
 
     <div class="display-label">Idioma</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Idioma)
+        @Html.DisplayFor(model => model.VersaoAtual.Idioma)
     </div>
 
     <div class="display-label">Quantidade de folhas</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.QuantidadeDeFolhas)
+        @Html.DisplayFor(model => model.VersaoAtual.QuantidadeDeFolhas)
     </div>
 
     <div class="display-label">Possui anexos?</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.TemAnexos)
+        @Html.DisplayFor(model => model.VersaoAtual.TemAnexos)
     </div>
 
     <div class="display-label">Data de produção</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.DataDeProducao)
+        @Html.DisplayFor(model => model.VersaoAtual.DataDeProducao)
     </div>
 
     <div class="display-label">Classe</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Classe)
+        @Html.DisplayFor(model => model.VersaoAtual.Classe)
     </div>
 
     <div class="display-label">Prazo de guarda</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.PrazoDeGuarda)
+        @Html.DisplayFor(model => model.VersaoAtual.PrazoDeGuarda)
     </div>
 
     <div class="display-label">Localização</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Localizacao)
+        @Html.DisplayFor(model => model.VersaoAtual.Localizacao)
     </div>
 
 </fieldset>

@@ -2,10 +2,10 @@
 @using Web.Extensions
 
 @{
-    ViewBag.Title = "Biblioteca Digital - Detalhes do volume " + @Html.DisplayFor(model => model.NumeroDoVolume);
+    ViewBag.Title = "Biblioteca Digital - Detalhes do volume " + @Html.DisplayFor(model => model.VersaoAtual.NumeroDoVolume);
 }
 
-<h2>Detalhes do volume @Html.DisplayFor(model => model.NumeroDoVolume)</h2>
+<h2>Detalhes do volume @Html.DisplayFor(model => model.VersaoAtual.NumeroDoVolume)</h2>
 
 <fieldset>
     <legend>Dados</legend>
@@ -17,22 +17,22 @@
 
     <div class="display-label">Tipo do meio</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.TipoDoMeio)
+        @Html.DisplayFor(model => model.VersaoAtual.TipoDoMeio)
     </div>
 
     <div class="display-label">Nr. do volume</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.NumeroDoVolume)
+        @Html.DisplayFor(model => model.VersaoAtual.NumeroDoVolume)
     </div>
 
     <div class="display-label">Quantidade de folhas</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.QuantidadeDeFolhas)
+        @Html.DisplayFor(model => model.VersaoAtual.QuantidadeDeFolhas)
     </div>
 
     <div class="display-label">Localização</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Localizacao)
+        @Html.DisplayFor(model => model.VersaoAtual.Localizacao)
     </div>
     
     <div class="display-label">Documentos <a href="@Url.RouteUrl("Documento", new { idDocArq = Model.IdProcessoDossie, idVol = Model.Id, action = "Create" })">Criar documento</a></div>
@@ -42,7 +42,7 @@
             <ul>
             @foreach (var item in Model.Documentos.Where(v => v.IdProcessoDossie == Model.Id).ToList())
             {
-                <li><a href="/DocumentoArquivistico/@(item.IdProcessoDossie)/Volume/@(item.IdVolume)/Documento/Details/@(item.Id)">Documento @(item.NumeroDoDocumento)</a></li>
+                <li><a href="/DocumentoArquivistico/@(item.IdProcessoDossie)/Volume/@(item.IdVolume)/Documento/Details/@(item.Id)">Documento @(item.VersaoAtual.NumeroDoDocumento)</a></li>
             }
             </ul>
         }

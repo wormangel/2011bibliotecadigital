@@ -17,21 +17,33 @@ namespace Core.Objetos
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
-        // Metadados 1.2 - Número do documento (OA)
-        /// <summary>
-        /// Número ou código alfanumérico atribuído ao documento no
-        /// ato da sua produção.
-        /// </summary>
-        [Required(ErrorMessage = "O número do documento deve ser informado"), Display(Name = "Número do documento")]
-        public String NumeroDoDocumento { get; set; }
+        [Display(Name = "Versões do documento")]
+        public virtual ICollection<VersaoDocumento> Versoes { get; set; }
 
-        // Metadados 1.3 - Número do protocolo (OA)
+        private VersaoDocumento versaoAtual;
+        public virtual VersaoDocumento VersaoAtual
+        {
+            get
+            {
+                if (versaoAtual == null)
+                    versaoAtual = Versoes.AsQueryable().OrderByDescending(w => w.NumeroDaVersao).FirstOrDefault();
+                return versaoAtual;
+            }
+        }
+
+        // Referências
+
+        // TODO Deveria retornar a lista dos IDs?
+        // Referência
+        // Metadados 1.20 - Identificador do arquivo (O)
         /// <summary>
-        /// Número ou código alfanumérico atribuído ao documento no
-        /// ato do protocolo.
+        /// Identificador dos arquivos que integram o
+        /// documento.
         /// </summary>
-        [Required(ErrorMessage = "O número do protocolo deve ser informado"), Display(Name = "Número do protocolo")]
-        public String NumeroDoProtocolo { get; set; }
+        public long IdArquivo
+        {
+            get { return (Arquivos != null && Arquivos.Count > 0) ? Arquivos.ElementAt(0).ArquivoId : -1; }
+        }
 
         // Referência
         // Metadados 1.4 - Identificador do processo/dossiê (OA)
@@ -55,6 +67,34 @@ namespace Core.Objetos
             get { return (Volume != null) ? Volume.Id : -1; }
         }
 
+        // Os arquivos que compõem este documento
+        public virtual ICollection<Arquivo> Arquivos { get; set; }
+
+        // O volume a que este documento pertence
+        public virtual Volume Volume { get; set; }
+    }
+
+    public class VersaoDocumento
+    {
+        [Display(Name = "Número da versão"), Key]
+        public long NumeroDaVersao { get; set; }
+
+        // Metadados 1.2 - Número do documento (OA)
+        /// <summary>
+        /// Número ou código alfanumérico atribuído ao documento no
+        /// ato da sua produção.
+        /// </summary>
+        [Required(ErrorMessage = "O número do documento deve ser informado"), Display(Name = "Número do documento")]
+        public String NumeroDoDocumento { get; set; }
+
+        // Metadados 1.3 - Número do protocolo (OA)
+        /// <summary>
+        /// Número ou código alfanumérico atribuído ao documento no
+        /// ato do protocolo.
+        /// </summary>
+        [Required(ErrorMessage = "O número do protocolo deve ser informado"), Display(Name = "Número do protocolo")]
+        public String NumeroDoProtocolo { get; set; }
+
         // Metadados 1.8 - Tipo de meio (O)
         /// <summary>
         /// Identificação do meio do documento/volume/processo/dossiê:
@@ -73,14 +113,6 @@ namespace Core.Objetos
         /// </summary>
         [Required(ErrorMessage = "Um documento deve ser classificado quanto ao grau de formalização"), Display(Name = "Status")]
         public Status Status { get; set; }
-
-        // Metadados 1.10 - Identificador de versão (OA)
-        /// <summary>
-        /// Identificar a versão do documento e estabelecer a relação
-        /// entre as versões anteriores e posteriores.
-        /// </summary>
-        [Display(Name = "Id da versão")]
-        public long IdVersao { get; set; }
 
         // Metadados 1.11 - Título (O)
         /// <summary>
@@ -171,18 +203,6 @@ namespace Core.Objetos
         [Required(ErrorMessage = "A procedência deve ser informada"), Display(Name = "Procedencia")]
         public String Procedencia { get; set; }
 
-        // TODO Deveria retornar a lista dos IDs?
-        // Referência
-        // Metadados 1.20 - Identificador do arquivo (O)
-        /// <summary>
-        /// Identificador dos arquivos que integram o
-        /// documento.
-        /// </summary>
-        public long IdArquivo
-        {
-            get { return (Arquivos != null && Arquivos.Count > 0) ? Arquivos.ElementAt(0).ArquivoId : -1; }
-        }
-
         // Metadados 1.21 - Gênero (F)
         /// <summary>
         /// Indica o gênero documental, ou seja, a configuração da
@@ -242,7 +262,7 @@ namespace Core.Objetos
         /// produção do documento.
         /// </summary>
         [Required(ErrorMessage = "A data de produção deve ser informada"), Display(Name = "Data de produção")]
-        public DateTime DataDeProducao { get; set; }
+        public String DataDeProducao { get; set; }
 
         // Metadados 1.31 - Classe (O)
         /// <summary>
@@ -280,12 +300,6 @@ namespace Core.Objetos
         [Required(ErrorMessage = "A localização deve ser informada"), Display(Name = "Localização")]
         public String Localizacao { get; set; }
 
-        // Referências
-
-        // Os arquivos que compõem este documento
-        public virtual ICollection<Arquivo> Arquivos { get; set; }
-
-        // O volume a que este documento pertence
-        public virtual Volume Volume { get; set; }
+        
     }
 }

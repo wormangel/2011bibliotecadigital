@@ -1,11 +1,11 @@
-﻿@model Core.Objetos.Documento
+﻿@model Web.ViewModels.Documento.EditDocumentoViewModel
 @using Web.Extensions
 
 @{
-    ViewBag.Title = "Biblioteca Digital - Editando " + @Html.DisplayFor(model => model.Titulo);
+    ViewBag.Title = "Biblioteca Digital - Editando " + @Html.DisplayFor(model => model.VersaoNova.Titulo);
 }
 
-<h2>Editando @Html.DisplayFor(model => model.Titulo)</h2>
+<h2>Editando @Html.DisplayFor(model => model.VersaoNova.Titulo)</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
@@ -15,198 +15,190 @@
     <fieldset>
         <legend>Atualize os campos do formulário</legend>
 
-        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Documento.Id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.NumeroDoDocumento)
+            @Html.LabelFor(model => model.VersaoNova.NumeroDoDocumento)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.NumeroDoDocumento)
-            @Html.ValidationMessageFor(model => model.NumeroDoDocumento)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.NumeroDoProtocolo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.NumeroDoProtocolo)
-            @Html.ValidationMessageFor(model => model.NumeroDoProtocolo)
+            @Html.EditorFor(model => model.VersaoNova.NumeroDoDocumento)
+            @Html.ValidationMessageFor(model => model.VersaoNova.NumeroDoDocumento)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.IdVersao)
+            @Html.LabelFor(model => model.VersaoNova.NumeroDoProtocolo)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.IdVersao)
-            @Html.ValidationMessageFor(model => model.IdVersao)
+            @Html.EditorFor(model => model.VersaoNova.NumeroDoProtocolo)
+            @Html.ValidationMessageFor(model => model.VersaoNova.NumeroDoProtocolo)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Titulo)
+            @Html.LabelFor(model => model.VersaoNova.Titulo)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Titulo)
-            @Html.ValidationMessageFor(model => model.Titulo)
+            @Html.EditorFor(model => model.VersaoNova.Titulo)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Titulo)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.TipoDoTitulo)
+            @Html.LabelFor(model => model.VersaoNova.TipoDoTitulo)
         </div>
         <div class="editor-field">
-            @Html.EnumDropDownListFor(model => model.TipoDoTitulo)
-            @Html.ValidationMessageFor(model => model.TipoDoTitulo)
+            @Html.EnumDropDownListFor(model => model.VersaoNova.TipoDoTitulo)
+            @Html.ValidationMessageFor(model => model.VersaoNova.TipoDoTitulo)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Descricao)
+            @Html.LabelFor(model => model.VersaoNova.Descricao)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Descricao)
-            @Html.ValidationMessageFor(model => model.Descricao)
+            @Html.EditorFor(model => model.VersaoNova.Descricao)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Descricao)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Assunto)
+            @Html.LabelFor(model => model.VersaoNova.Assunto)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Assunto)
-            @Html.ValidationMessageFor(model => model.Assunto)
+            @Html.EditorFor(model => model.VersaoNova.Assunto)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Assunto)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Autor)
+            @Html.LabelFor(model => model.VersaoNova.Autor)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Autor)
-            @Html.ValidationMessageFor(model => model.Autor)
+            @Html.EditorFor(model => model.VersaoNova.Autor)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Autor)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Destinatario)
+            @Html.LabelFor(model => model.VersaoNova.Destinatario)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Destinatario)
-            @Html.ValidationMessageFor(model => model.Destinatario)
+            @Html.EditorFor(model => model.VersaoNova.Destinatario)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Destinatario)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.TipoDoDestinatario)
+            @Html.LabelFor(model => model.VersaoNova.TipoDoDestinatario)
         </div>
         <div class="editor-field">
-            @Html.EnumDropDownListFor(model => model.TipoDoDestinatario)
-            @Html.ValidationMessageFor(model => model.TipoDoDestinatario)
+            @Html.EnumDropDownListFor(model => model.VersaoNova.TipoDoDestinatario)
+            @Html.ValidationMessageFor(model => model.VersaoNova.TipoDoDestinatario)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Originador)
+            @Html.LabelFor(model => model.VersaoNova.Originador)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Originador)
-            @Html.ValidationMessageFor(model => model.Originador)
+            @Html.EditorFor(model => model.VersaoNova.Originador)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Originador)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Redator)
+            @Html.LabelFor(model => model.VersaoNova.Redator)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Redator)
-            @Html.ValidationMessageFor(model => model.Redator)
+            @Html.EditorFor(model => model.VersaoNova.Redator)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Redator)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Procedencia)
+            @Html.LabelFor(model => model.VersaoNova.Procedencia)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Procedencia)
-            @Html.ValidationMessageFor(model => model.Procedencia)
+            @Html.EditorFor(model => model.VersaoNova.Procedencia)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Procedencia)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Genero)
+            @Html.LabelFor(model => model.VersaoNova.Genero)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Genero)
-            @Html.ValidationMessageFor(model => model.Genero)
+            @Html.EditorFor(model => model.VersaoNova.Genero)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Genero)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Especie)
+            @Html.LabelFor(model => model.VersaoNova.Especie)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Especie)
-            @Html.ValidationMessageFor(model => model.Especie)
+            @Html.EditorFor(model => model.VersaoNova.Especie)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Especie)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Tipo)
+            @Html.LabelFor(model => model.VersaoNova.Tipo)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Tipo)
-            @Html.ValidationMessageFor(model => model.Tipo)
+            @Html.EditorFor(model => model.VersaoNova.Tipo)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Tipo)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Idioma)
+            @Html.LabelFor(model => model.VersaoNova.Idioma)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Idioma)
-            @Html.ValidationMessageFor(model => model.Idioma)
+            @Html.EditorFor(model => model.VersaoNova.Idioma)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Idioma)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.QuantidadeDeFolhas)
+            @Html.LabelFor(model => model.VersaoNova.QuantidadeDeFolhas)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.QuantidadeDeFolhas)
-            @Html.ValidationMessageFor(model => model.QuantidadeDeFolhas)
+            @Html.EditorFor(model => model.VersaoNova.QuantidadeDeFolhas)
+            @Html.ValidationMessageFor(model => model.VersaoNova.QuantidadeDeFolhas)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.TemAnexos)
+            @Html.LabelFor(model => model.VersaoNova.TemAnexos)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.TemAnexos)
-            @Html.ValidationMessageFor(model => model.TemAnexos)
+            @Html.EditorFor(model => model.VersaoNova.TemAnexos)
+            @Html.ValidationMessageFor(model => model.VersaoNova.TemAnexos)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.DataDeProducao)
+            @Html.LabelFor(model => model.VersaoNova.DataDeProducao)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.DataDeProducao)
-            @Html.ValidationMessageFor(model => model.DataDeProducao)
+            @Html.EditorFor(model => model.VersaoNova.DataDeProducao)
+            @Html.ValidationMessageFor(model => model.VersaoNova.DataDeProducao)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Classe)
+            @Html.LabelFor(model => model.VersaoNova.Classe)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Classe)
-            @Html.ValidationMessageFor(model => model.Classe)
+            @Html.EditorFor(model => model.VersaoNova.Classe)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Classe)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.DestinacaoPrevista)
+            @Html.LabelFor(model => model.VersaoNova.DestinacaoPrevista)
         </div>
         <div class="editor-field">
-            @Html.EnumDropDownListFor(model => model.DestinacaoPrevista)
-            @Html.ValidationMessageFor(model => model.DestinacaoPrevista)
+            @Html.EnumDropDownListFor(model => model.VersaoNova.DestinacaoPrevista)
+            @Html.ValidationMessageFor(model => model.VersaoNova.DestinacaoPrevista)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.PrazoDeGuarda)
+            @Html.LabelFor(model => model.VersaoNova.PrazoDeGuarda)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.PrazoDeGuarda)
-            @Html.ValidationMessageFor(model => model.PrazoDeGuarda)
+            @Html.EditorFor(model => model.VersaoNova.PrazoDeGuarda)
+            @Html.ValidationMessageFor(model => model.VersaoNova.PrazoDeGuarda)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Localizacao)
+            @Html.LabelFor(model => model.VersaoNova.Localizacao)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Localizacao)
-            @Html.ValidationMessageFor(model => model.Localizacao)
+            @Html.EditorFor(model => model.VersaoNova.Localizacao)
+            @Html.ValidationMessageFor(model => model.VersaoNova.Localizacao)
         </div>
 
         <p>

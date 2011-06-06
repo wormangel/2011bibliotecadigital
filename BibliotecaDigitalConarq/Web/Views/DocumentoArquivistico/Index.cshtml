@@ -59,46 +59,46 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.NumeroDoProcessoOuDossie)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.NumeroDoProcessoOuDossie)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Titulo)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Titulo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Descricao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Assunto)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Assunto)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Autor)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Autor)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Destinatario)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Destinatario)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Interessado)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Interessado)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Procedencia)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Procedencia)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.QuantidadeDeFolhas)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.QuantidadeDeFolhas)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumeracaoSequencialDosDocumentos)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.NumeracaoSequencialDosDocumentos)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DataDeProducao)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.DataDeProducao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Classe)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Classe)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PrazoDeGuarda)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.PrazoDeGuarda)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Localizacao)
+            @Html.DisplayFor(modelItem => item.VersaoAtual.Localizacao)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |

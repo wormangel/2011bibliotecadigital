@@ -2,10 +2,10 @@
 @using Web.Extensions           
 
 @{
-    ViewBag.Title = "Biblioteca Digital - Remover volume " + @Html.DisplayFor(model => model.NumeroDoVolume) + "?";
+    ViewBag.Title = "Biblioteca Digital - Remover volume " + @Html.DisplayFor(model => model.VersaoAtual.NumeroDoVolume) + "?";
 }
 
-<h2>Você tem certeza que deseja remover o @Html.DisplayFor(model => model.NumeroDoVolume)?</h2>
+<h2>Você tem certeza que deseja remover o @Html.DisplayFor(model => model.VersaoAtual.NumeroDoVolume)?</h2>
 
 <fieldset>
     <legend>Dados</legend>
@@ -22,22 +22,22 @@
 
     <div class="display-label">Tipo do meio</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.TipoDoMeio.Description)
+        @Html.DisplayFor(model => model.VersaoAtual.TipoDoMeio)
     </div>
 
     <div class="display-label">Nr. do volume</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.NumeroDoVolume)
+        @Html.DisplayFor(model => model.VersaoAtual.NumeroDoVolume)
     </div>
 
     <div class="display-label">Quantidade de folhas</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.QuantidadeDeFolhas)
+        @Html.DisplayFor(model => model.VersaoAtual.QuantidadeDeFolhas)
     </div>
 
     <div class="display-label">Localização</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Localizacao)
+        @Html.DisplayFor(model => model.VersaoAtual.Localizacao)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
