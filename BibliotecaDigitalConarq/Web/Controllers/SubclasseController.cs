@@ -52,7 +52,7 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _fachada.AdicionarSubclasse(subclasse);
+                _fachada.AdicionarSubclasse(idClasse, subclasse);
                 return RedirectToAction("Index");
             }
 

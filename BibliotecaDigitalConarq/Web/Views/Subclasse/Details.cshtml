@@ -4,7 +4,34 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalhes da subclasse @Model.Nome</h2>
+
+<ul>
+    <li><a href="@Url.RouteUrl("Grupo", new { action = "Create", idClasse = Model.Classe.Id, idSubclasse = Model.Id })">Criar grupo</a></li>
+    <li><a href="@Url.RouteUrl("Default", new { controller = "DocumentoArquivistico", action = "Create" })">Criar documento arquivístico</a></li>
+</ul>
+
+@if (Model.Grupos.Count > 0)
+{
+    <h3>Grupos</h3>
+    <ul>
+    @foreach (var item in Model.Grupos)
+    {
+        <li><a href="@Url.RouteUrl("Grupo", new { action = "Details", idClasse = Model.Classe.Id, idSubclasse = Model.Id, id = item.Id })">@item.Nome</a></li>
+    }
+    </ul>
+}
+
+@if (Model.DocumentosArquivisticos.Count > 0)
+{
+    <h3>Documentos arquivísticos</h3>
+    <ul>
+    @foreach (var item in Model.DocumentosArquivisticos)
+    {
+        <li><a href="@Url.RouteUrl("Default", new { controller = "DocumentoArquivistico", action = "Details", id = item.Id })">@item.VersaoAtual.Titulo</a></li>
+    }
+    </ul>
+}
 
 <fieldset>
     <legend>Subclasse</legend>

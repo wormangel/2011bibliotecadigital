@@ -46,7 +46,7 @@ namespace Web.Controllers
         // POST: /DocumentoArquivistico/Create
 
         [HttpPost]
-        public ActionResult Create(VersaoDocumentoArquivistico versaoSendoCriada)
+        public ActionResult Create(string classificacao, long idClassificacao, VersaoDocumentoArquivistico versaoSendoCriada)
         {
             if (ModelState.IsValid)
             {
@@ -55,7 +55,7 @@ namespace Web.Controllers
                 versaoSendoCriada.NumeroDaVersao = 1;
                 docArq.Versoes.Add(versaoSendoCriada);
 
-                _fachada.AdicionarDocumentoArquivistico(docArq);
+                _fachada.AdicionarDocumentoArquivistico(_fachada.RecuperarClassificacao(classificacao, idClassificacao), docArq);
                 return RedirectToAction("Index");
             }
 

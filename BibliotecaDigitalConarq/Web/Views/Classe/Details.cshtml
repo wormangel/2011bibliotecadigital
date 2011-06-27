@@ -4,7 +4,34 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalhes da classe @Model.Nome</h2>
+
+<ul>
+    <li><a href="@Url.RouteUrl("Subclasse", new { action = "Create", idClasse = Model.Id })">Criar subclasse</a></li>
+    <li><a href="@Url.RouteUrl("DocumentoArquivistico", new { classificacao = "Classe", idClassificacao = Model.Id, action = "Create" })">Criar documento arquivístico</a></li>
+</ul>
+
+@if (Model.Subclasses.Count > 0)
+{
+    <h3>Subclasses</h3>
+    <ul>
+    @foreach (var item in Model.Subclasses)
+    {
+        <li><a href="@Url.RouteUrl("Subclasse", new { action = "Details", idClasse = Model.Id, id = item.Id })">@item.Nome</a></li>
+    }
+    </ul>
+}
+
+@if (Model.DocumentosArquivisticos.Count > 0)
+{
+    <h3>Documentos arquivísticos</h3>
+    <ul>
+    @foreach (var item in Model.DocumentosArquivisticos)
+    {
+        <li><a href="@Url.RouteUrl("Default", new { controller = "DocumentoArquivistico", action = "Details", id = item.Id })">@item.VersaoAtual.Titulo</a></li>
+    }
+    </ul>
+}
 
 <fieldset>
     <legend>Classe</legend>
@@ -25,6 +52,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar metadados", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Voltar para as classes", "Index")
 </p>

@@ -2,6 +2,7 @@
 using Core.Gerenciadores;
 using Core.Interfaces;
 using Core.Objetos;
+using Core.Objetos.Classificacoes;
 
 namespace EntityAcessoADados.Gerenciadores
 {
@@ -21,12 +22,12 @@ namespace EntityAcessoADados.Gerenciadores
             _trilhaAuditoria = trilhaAuditoria;
         }
 
-        public void Adicionar(DocumentoArquivistico documentoArquivistico)
+        public void Adicionar(Classificacao classificacao, DocumentoArquivistico documentoArquivistico)
         {
             // Verifica com o gerenciador de segurança..
             // Indexa com o gerenciador de indexação.. (inclusive arquivos se houver)
             // Loga com o gerenciador de logging..
-
+            documentoArquivistico.Classificacao = classificacao;
             _repositorio.Adicionar(documentoArquivistico);
             _trilhaAuditoria.LogaAcaoDocumentoArquivistico(documentoArquivistico.Id, -1, "Adicionado processo/dossiê: " + documentoArquivistico);
         }

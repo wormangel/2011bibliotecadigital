@@ -74,7 +74,13 @@ namespace Web
                 "Documento/{idDocumento}/Versao/{idVersao}", // URL with parameters
                 new { controller = "Documento", action = "Versao", idVersao = UrlParameter.Optional } // Parameter defaults
             );
-            
+
+            routes.MapRoute(
+                "DocumentoArquivistico", // Route name  (Classe)
+                "{classificacao}/{idClassificacao}/DocumentoArquivistico/{action}/", // URL with parameters
+                new { controller = "DocumentoArquivistico", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
+
             routes.MapRoute(
                 "Default", // Route name  (Classe)
                 "{controller}/{action}/{id}", // URL with parameters

@@ -9,7 +9,7 @@ namespace Core.Gerenciadores
         DocumentoArquivistico RecuperarDocumentoArquivisticoPorId(long id);
         IQueryable<DocumentoArquivistico> RecuperarDocumentosArquivisticos();
         void SalvarDocumentoArquivistico(DocumentoArquivistico documentoArquivistico);
-        void AdicionarDocumentoArquivistico(DocumentoArquivistico documentoArquivistico);
+        void AdicionarDocumentoArquivistico(Classificacao classificacao, DocumentoArquivistico documentoArquivistico);
         void RemoverDocumentoArquivistico(long id);
 
         IQueryable<Volume> RecuperarVolumes();
@@ -32,17 +32,17 @@ namespace Core.Gerenciadores
 
         IQueryable<Subclasse> RecuperarSubclasses();
         Subclasse RecuperarSubclassePorId(long id);
-        void AdicionarSubclasse(Subclasse subclasse);
+        void AdicionarSubclasse(long idClasse, Subclasse subclasse);
         void SalvarSubclasse(Subclasse subclasse);
         void RemoverSubclasse(long id);
 
-        void AdicionarGrupo(Grupo grupo);
+        void AdicionarGrupo(long idClasse, long idSubclasse, Grupo grupo);
         IQueryable<Grupo> RecuperarGrupos();
         Grupo RecuperarGrupoPorId(long id);
         void SalvarGrupo(Grupo grupo);
         void RemoverGrupo(long id);
 
-        void AdicionarSubgrupo(Subgrupo subgrupo);
+        void AdicionarSubgrupo(long idClasse, long idSubclasse, long idGrupo, Subgrupo subgrupo);
         IQueryable<Subgrupo> RecuperarSubgrupos();
         Subgrupo RecuperarSubgrupoPorId(long id);
         void SalvarSubgrupo(Subgrupo subgrupo);
@@ -53,5 +53,7 @@ namespace Core.Gerenciadores
         void AdicionarTemporalidade(Temporalidade temporalidade);
         void SalvarTemporalidade(Temporalidade temporalidade);
         void RemoverTemporalidade(long id);
+
+        Classificacao RecuperarClassificacao(string classificacao, long idClassificacao);
     }
 }

@@ -6,7 +6,7 @@ namespace Core.Gerenciadores
 {
     public interface IGerenciadorSubgrupos
     {
-        void Adicionar(Subgrupo subgrupo);
+        void Adicionar(Grupo grupo, Subgrupo subgrupo);
         IQueryable<Subgrupo> RecuperarSubgrupos();
         Subgrupo RecuperarPorId(long id);
         void Salvar(Subgrupo subgrupo);

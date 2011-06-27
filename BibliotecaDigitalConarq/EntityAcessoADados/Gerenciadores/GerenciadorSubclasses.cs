@@ -42,8 +42,9 @@ namespace EntityAcessoADados.Gerenciadores
             _trilhaAuditoria.LogaAcaoDocumento(subclasse.Id, -1, "Salvo subclasse: " + subclasse);
         }
 
-        public void Adicionar(Subclasse subclasse)
+        public void Adicionar(Classe classe, Subclasse subclasse)
         {
+            subclasse.Classe = classe;
             _repositorio.Adicionar(subclasse);
             _trilhaAuditoria.LogaAcaoDocumento(subclasse.Id, -1, "Adicionado subclasse: " + subclasse);
         }
