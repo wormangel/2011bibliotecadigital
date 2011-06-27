@@ -1,0 +1,107 @@
+﻿@model Web.ViewModels.DocumentoArquivistico.DetalhesVersaoViewModel
+@using Web.Extensions
+
+@{
+    ViewBag.Title = "Biblioteca Digital - Detalhes do " + @Html.DisplayFor(model => model.DocumentoArquivistico.VersaoAtual.Titulo) + 
+        " - Versão " + @Html.DisplayFor(model => model.Versao.NumeroDaVersao);
+}
+
+<h2>@Html.DisplayFor(model => model.DocumentoArquivistico.VersaoAtual.Titulo) - Versão @Html.DisplayFor(model => model.Versao.NumeroDaVersao)</h2>
+
+<fieldset>
+    <legend>Dados</legend>
+
+    <div class="display-label">Número</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.NumeroDoProcessoOuDossie)
+    </div>
+
+    <div class="display-label">Tipo do meio</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.TipoDoMeio)
+    </div>
+
+    <div class="display-label">Título</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Titulo)
+    </div>
+
+    <div class="display-label">Tipo do título</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.TipoDoTitulo)
+    </div>
+
+    <div class="display-label">Descrição</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Descricao)
+    </div>
+
+    <div class="display-label">Assunto</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Assunto)
+    </div>
+
+    <div class="display-label">Autor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Autor)
+    </div>
+
+    <div class="display-label">Destinatário</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Destinatario)
+    </div>
+
+    <div class="display-label">Tipo do destinatário</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.TipoDoDestinatario)
+    </div>
+
+    <div class="display-label">Interessado</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Interessado)
+    </div>
+
+    <div class="display-label">Procedência</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Procedencia)
+    </div>
+
+    <div class="display-label">Quantidade de folhas</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.QuantidadeDeFolhas)
+    </div>
+
+    <div class="display-label">Numeração sequencial</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.NumeracaoSequencialDosDocumentos)
+    </div>
+
+    <div class="display-label">Data de produção</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.DataDeProducao)
+    </div>
+
+    <div class="display-label">Classe</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Classe)
+    </div>
+
+    <div class="display-label">Destinação prevista</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.DestinacaoPrevista)
+    </div>
+
+    <div class="display-label">Prazo de guarda</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.PrazoDeGuarda)
+    </div>
+
+    <div class="display-label">Localização</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Localizacao)
+    </div>
+
+</fieldset>
+<p>
+    <a href="@Url.RouteUrl("VersaoDocumentoArquivistico", new { idDocArq = Model.DocumentoArquivistico.Id, action = "Versao"})">Voltar para a lista</a>
+</p>

@@ -115,5 +115,18 @@ namespace Web.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Versao(long idDocumento, long? idVersao)
+        {
+            Documento documento = _fachada.RecuperarDocumentoPorId(idDocumento);
+
+            if (idVersao != null)
+            {
+                VersaoDocumento versao = documento.Versoes.Where(v => v.NumeroDaVersao == idVersao).FirstOrDefault();
+                return View("DetalhesVersao", new DetalhesVersaoViewModel(documento, versao));
+            }
+
+            return View(documento);
+        }
+
     }
 }

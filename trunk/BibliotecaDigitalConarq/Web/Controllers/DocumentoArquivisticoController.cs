@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Core.Gerenciadores;
 using Core.Objetos;
@@ -108,5 +109,20 @@ namespace Web.Controllers
             _fachada.RemoverDocumentoArquivistico(id);
             return RedirectToAction("Index");
         }
+
+        public ActionResult Versao(long idDocArq, long? idVersao)
+        {
+            DocumentoArquivistico docArq = _fachada.RecuperarDocumentoArquivisticoPorId(idDocArq);
+
+            if (idVersao != null)
+            {
+                VersaoDocumentoArquivistico versao = docArq.Versoes.Where(v => v.NumeroDaVersao == idVersao).FirstOrDefault();
+                return View("DetalhesVersao", new DetalhesVersaoViewModel(docArq, versao));
+            }
+
+            return View(docArq);
+        }
     }
+
+    
 }

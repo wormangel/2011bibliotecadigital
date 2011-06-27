@@ -1,0 +1,14 @@
+﻿@model Core.Objetos.Documento
+
+@{
+    ViewBag.Title = "Biblioteca Digital - Listando versões do documento";
+}
+
+<h2>Versões do documento @Html.DisplayFor(model => model.VersaoAtual.Titulo) </h2>
+
+<ul>
+@foreach (var item in Model.Versoes)
+{
+    <li><a href="@Url.RouteUrl("VersaoDocumento", new { idDocumento = Model.Id,  idVersao = item.NumeroDaVersao, action = "Versao"})">Versão @(item.NumeroDaVersao)</a></li>
+}
+</ul>

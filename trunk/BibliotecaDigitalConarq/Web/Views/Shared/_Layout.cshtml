@@ -36,7 +36,7 @@
                     {
                         <li><a href="@Url.RouteUrl("Volume", new { idDocArq = ViewContext.RouteData.Values.Values.ElementAt(0), action = "Index" })">Volumes</a></li>
                         <li><a href="@Url.RouteUrl("Documento", new { idDocArq = ViewContext.RouteData.Values.Values.ElementAt(0), idVol = ViewContext.RouteData.Values.Values.ElementAt(1), action = "Index" })">Documentos</a></li>
-                        if (!ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Index"))
+                        if (!ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Index") && !ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Versao"))
                         {
                             <li><a href="@Url.RouteUrl("Arquivo", new { idDocArq = ViewContext.RouteData.Values.Values.ElementAt(0), idVol = ViewContext.RouteData.Values.Values.ElementAt(1), idDoc = ViewContext.RouteData.Values.Values.ElementAt(3), action = "Index" })">Arquivos</a></li>
                         }

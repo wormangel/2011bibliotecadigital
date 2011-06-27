@@ -56,6 +56,24 @@ namespace Web
                 "Classe/{idClasse}/Subclasse/{action}/{id}", // URL with parameters
                 new { controller = "Subclasse", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
+
+            routes.MapRoute(
+                "VersaoDocumentoArquivistico", // Route name
+                "DocumentoArquivistico/{idDocArq}/Versao/{idVersao}", // URL with parameters
+                new { controller = "DocumentoArquivistico", action = "Versao", idVersao = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "VersaoVolume", // Route name
+                "Volume/{idVolume}/Versao/{idVersao}", // URL with parameters
+                new { controller = "Volume", action = "Versao", idVersao = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "VersaoDocumento", // Route name
+                "Documento/{idDocumento}/Versao/{idVersao}", // URL with parameters
+                new { controller = "Documento", action = "Versao", idVersao = UrlParameter.Optional } // Parameter defaults
+            );
             
             routes.MapRoute(
                 "Default", // Route name  (Classe)
