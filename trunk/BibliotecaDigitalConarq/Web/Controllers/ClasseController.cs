@@ -53,7 +53,7 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 _fachada.AdicionarClasse(classe);
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = classe.Id });
             }
 
             return View(classe);

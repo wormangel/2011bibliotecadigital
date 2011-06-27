@@ -41,6 +41,7 @@ namespace Web.Controllers
 
         public ViewResult Create(int idClasse, int idSubclasse)
         {
+            ViewBag.Subclasse = _fachada.RecuperarSubclassePorId(idSubclasse);
             return View();
         } 
 
@@ -53,7 +54,7 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 _fachada.AdicionarGrupo(idClasse, idSubclasse, grupo);
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { idClasse = idClasse, idSubclasse = idSubclasse, id = grupo.Id });
             }
 
             return View(grupo);
