@@ -1,0 +1,41 @@
+﻿@model Core.Objetos.Temporalidade
+@using Web.Extensions
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<fieldset>
+    <legend>Temporalidade</legend>
+
+    <div class="display-label">Classe</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Classe.Nome)
+    </div>
+
+    <div class="display-label">Prazo de guarda (fase corrente)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PrazoDeGuardaFaseCorrente)
+    </div>
+
+    <div class="display-label">Prazo de guarda (fase intermediária)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PrazoDeGuardaFaseIntermediaria)
+    </div>
+
+    <div class="display-label">Destinação final</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DestinacaoFinal)
+    </div>
+
+    <div class="display-label">Observações</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Observacoes)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edita", "Editar", new { id=Model.Id }) |
+    @Html.ActionLink("Voltar para lista", "Index")
+</p>

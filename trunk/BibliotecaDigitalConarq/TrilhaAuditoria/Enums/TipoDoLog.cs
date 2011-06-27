@@ -17,6 +17,9 @@ namespace TrilhaAuditoria.Enums
         Documento,
 
         [Description("Arquivo")]
-        Arquivo
+        Arquivo,
+
+        [Description("Temporalidade")]
+        Temporalidade
     }
 }

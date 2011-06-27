@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gerenciadores\IGerenciadorDeTemporalidade.cs" />
     <Compile Include="Gerenciadores\IGerenciadorSubgrupos.cs" />
     <Compile Include="Gerenciadores\IGerenciadorGrupos.cs" />
     <Compile Include="Gerenciadores\IGerenciadorSubclasses.cs" />
@@ -77,11 +78,14 @@
     <Compile Include="Objetos\Classificacoes\Subgrupo.cs" />
     <Compile Include="Objetos\Documento.cs" />
     <Compile Include="Objetos\DocumentoArquivistico.cs" />
+    <Compile Include="Objetos\Enums\DestinacaoFinal.cs" />
+    <Compile Include="Objetos\Enums\Fase.cs" />
     <Compile Include="Objetos\Enums\Status.cs" />
     <Compile Include="Objetos\Enums\TipoDeDestinacao.cs" />
     <Compile Include="Objetos\Enums\TipoDoDestinatario.cs" />
     <Compile Include="Objetos\Enums\TipoDoMeio.cs" />
     <Compile Include="Objetos\Enums\TipoDoTitulo.cs" />
+    <Compile Include="Objetos\Temporalidade.cs" />
     <Compile Include="Objetos\Volume.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -22,5 +22,9 @@ namespace Core.Interfaces
         void LogaAcaoDoArquivo(long idArquivo, long usuario, String acao);
         
         void LogaAcaoDoArquivo(String acao);
+
+        void LogaAcaoTemporalidade(long idTemporalidade, long usuario, String acao);
+
+        void LogaAcaoTemporalidade(String acao);
     }
 }
