@@ -1,0 +1,36 @@
+﻿@model Web.ViewModels.Volume.DetalhesVersaoViewModel
+@using Web.Extensions
+
+@{
+    ViewBag.Title = "Biblioteca Digital - Detalhes do " + @Html.DisplayFor(model => model.Volume.VersaoAtual.NumeroDoVolume) + 
+        " - Versão " + @Html.DisplayFor(model => model.Versao.NumeroDaVersao);
+}
+
+<h2>@Html.DisplayFor(model => model.Volume.VersaoAtual.NumeroDoVolume) - Versão @Html.DisplayFor(model => model.Versao.NumeroDaVersao)</h2>
+
+<fieldset>
+    <legend>Dados</legend>
+
+    <div class="display-label">Tipo do meio</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.TipoDoMeio)
+    </div>
+
+    <div class="display-label">Nr. do volume</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.NumeroDoVolume)
+    </div>
+
+    <div class="display-label">Quantidade de folhas</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.QuantidadeDeFolhas)
+    </div>
+
+    <div class="display-label">Localização</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Localizacao)
+    </div>
+</fieldset>
+<p>
+    <a href="@Url.RouteUrl("VersaoVolume", new { idVolume = Model.Volume.Id, action = "Versao"})">Voltar para a lista</a>
+</p>

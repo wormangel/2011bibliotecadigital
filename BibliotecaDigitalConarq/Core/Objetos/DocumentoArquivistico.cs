@@ -175,7 +175,7 @@ namespace Core.Objetos
         /// plano de classificação.
         /// </summary>
         [Required(ErrorMessage = "A classe deve ser informada"), Display(Name = "Classe")]
-        public virtual Classificacao Classe { get; set; }
+        public String Classe { get; set; }
 
         //TODO Temporalidade - próximas iterações
         // Metadados 1.32 - Destinação prevista (O)

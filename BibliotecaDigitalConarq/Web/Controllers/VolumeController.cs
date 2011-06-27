@@ -114,5 +114,18 @@ namespace Web.Controllers
             _fachada.RemoverVolume(id);
             return RedirectToAction("Index");
         }
+
+        public ActionResult Versao(long idVolume, long? idVersao)
+        {
+            Volume volume = _fachada.RecuperarVolumePorId(idVolume);
+
+            if (idVersao != null)
+            {
+                VersaoVolume versao = volume.Versoes.Where(v => v.NumeroDaVersao == idVersao).FirstOrDefault();
+                return View("DetalhesVersao", new DetalhesVersaoViewModel(volume, versao));
+            }
+
+            return View(volume);
+        }
     }
 }

@@ -1,0 +1,132 @@
+﻿@model Web.ViewModels.Documento.DetalhesVersaoViewModel
+@using Web.Extensions
+
+@{
+    ViewBag.Title = "Biblioteca Digital - Detalhes do " + @Html.DisplayFor(model => model.Documento.VersaoAtual.Titulo) + 
+        " - Versão " + @Html.DisplayFor(model => model.Versao.NumeroDaVersao);
+}
+
+<h2>@Html.DisplayFor(model => model.Documento.VersaoAtual.Titulo) - Versão @Html.DisplayFor(model => model.Versao.NumeroDaVersao)</h2>
+
+<fieldset>
+    <legend>Dados</legend>
+
+    <div class="display-label">Número</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.NumeroDoDocumento)
+    </div>
+
+    <div class="display-label">Nr. do protocolo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.NumeroDoProtocolo)
+    </div>
+
+    <div class="display-label">Título</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Titulo)
+    </div>
+
+    <div class="display-label">Tipo do título</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.TipoDoTitulo)
+    </div>
+
+    <div class="display-label">Descrição</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Descricao)
+    </div>
+
+    <div class="display-label">Assunto</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Assunto)
+    </div>
+
+    <div class="display-label">Autor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Autor)
+    </div>
+
+    <div class="display-label">Destinatário</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Destinatario)
+    </div>
+
+    <div class="display-label">Tipo do destinatário</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.TipoDoDestinatario)
+    </div>
+
+    <div class="display-label">Originador</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Originador)
+    </div>
+
+    <div class="display-label">Redator</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Redator)
+    </div>
+
+    <div class="display-label">Procedência</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Procedencia)
+    </div>
+
+    <div class="display-label">Gênero</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Genero)
+    </div>
+
+    <div class="display-label">Espécie</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Especie)
+    </div>
+
+    <div class="display-label">Tipo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Tipo)
+    </div>
+
+    <div class="display-label">Idioma</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Idioma)
+    </div>
+
+    <div class="display-label">Quantidade de folhas</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.QuantidadeDeFolhas)
+    </div>
+
+    <div class="display-label">Possui anexos?</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.TemAnexos)
+    </div>
+
+    <div class="display-label">Data de produção</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.DataDeProducao)
+    </div>
+
+    <div class="display-label">Classe</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Classe)
+    </div>
+
+    <div class="display-label">Destinação prevista</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.DestinacaoPrevista)
+    </div>
+
+    <div class="display-label">Prazo de guarda</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.PrazoDeGuarda)
+    </div>
+
+    <div class="display-label">Localização</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Versao.Localizacao)
+    </div>
+
+</fieldset>
+<p>
+    <a href="@Url.RouteUrl("VersaoDocumento", new { idDocumento = Model.Documento.Id, action = "Versao"})">Voltar para a lista</a>
+</p>

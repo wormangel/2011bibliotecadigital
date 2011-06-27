@@ -6,6 +6,7 @@
 }
 
 <h2>Detalhes do @Html.DisplayFor(model => model.VersaoAtual.Titulo)</h2>
+(ver <a href="@Url.RouteUrl("VersaoDocumentoArquivistico", new { idDocArq = Model.Id, action = "Versao"})">outras versões</a>)
 
 <fieldset>
     <legend>Dados</legend>
