@@ -26,7 +26,6 @@ namespace Web.ViewModels.DocumentoArquivistico
             VersaoNova = new VersaoDocumentoArquivistico();
             VersaoNova.Assunto = DocumentoArquivistico.VersaoAtual.Assunto;
             VersaoNova.Autor = DocumentoArquivistico.VersaoAtual.Autor;
-            VersaoNova.Classe = DocumentoArquivistico.VersaoAtual.Classe;
             VersaoNova.DataDeProducao = DocumentoArquivistico.VersaoAtual.DataDeProducao;
             VersaoNova.Descricao = DocumentoArquivistico.VersaoAtual.Descricao;
             VersaoNova.DestinacaoPrevista = DocumentoArquivistico.VersaoAtual.DestinacaoPrevista;

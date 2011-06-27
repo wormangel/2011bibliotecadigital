@@ -42,8 +42,9 @@ namespace EntityAcessoADados.Gerenciadores
             _trilhaAuditoria.LogaAcaoDocumento(subgrupo.Id, -1, "Salvo subgrupo: " + subgrupo);
         }
 
-        public void Adicionar(Subgrupo subgrupo)
+        public void Adicionar(Grupo grupo, Subgrupo subgrupo)
         {
+            subgrupo.Grupo = grupo;
             _repositorio.Adicionar(subgrupo);
             _trilhaAuditoria.LogaAcaoDocumento(subgrupo.Id, -1, "Adicionado subgrupo: " + subgrupo);
         }

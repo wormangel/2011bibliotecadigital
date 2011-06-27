@@ -10,8 +10,7 @@ namespace Core.Objetos.Classificacoes
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
-        [Display(Name = "Subclasse que contém este grupo")]
-        public virtual Classificacoes.Classificacao Subclasse { get; set; }
+        public virtual Classificacao Classificacao { get; set; }
 
         public TipoRegistroClasse TipoRegistro { get; set;}
 

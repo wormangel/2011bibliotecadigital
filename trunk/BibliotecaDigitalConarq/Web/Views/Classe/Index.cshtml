@@ -4,10 +4,10 @@
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<h2>Lista de classes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Criar nova", "Create")
 </p>
 <table>
     <tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.Ativa)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Remover", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

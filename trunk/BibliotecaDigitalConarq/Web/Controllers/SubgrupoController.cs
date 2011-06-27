@@ -52,7 +52,7 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _fachada.AdicionarSubgrupo(subgrupo);
+                _fachada.AdicionarSubgrupo(idClasse, idSubclasse, idGrupo, subgrupo);
                 return RedirectToAction("Index");
             }
 

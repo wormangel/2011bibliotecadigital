@@ -21,6 +21,7 @@ namespace Core.Objetos
         public virtual ICollection<VersaoDocumentoArquivistico> Versoes { get; set; }
 
         private VersaoDocumentoArquivistico versaoAtual;
+        
         public virtual VersaoDocumentoArquivistico VersaoAtual
         {
             get
@@ -36,6 +37,15 @@ namespace Core.Objetos
         // Os volumes que este processo/dossiê contém
         [Display(Name = "Volumes contidos neste documento arquivístico")]
         public virtual ICollection<Volume> Volumes { get; set; }
+
+        // Metadados 1.31 - Classe (O)
+        /// <summary>
+        /// Identificação da classe do documento com base em um
+        /// plano de classificação.
+        /// </summary>
+        [Required(ErrorMessage = "A classificação deve ser informada"), Display(Name = "Classificação")]
+        public virtual Classificacao Classificacao { get; set; }
+
     }
 
     // Referente ao 'Processo/Dossiê' citado na documentação da CONARQ
@@ -168,14 +178,6 @@ namespace Core.Objetos
         /// </summary>
         [Required(ErrorMessage = "A data de produção deve ser informada"), Display(Name = "Data de produção")]
         public String DataDeProducao { get; set; }
-
-        // Metadados 1.31 - Classe (O)
-        /// <summary>
-        /// Identificação da classe do documento com base em um
-        /// plano de classificação.
-        /// </summary>
-        [Required(ErrorMessage = "A classe deve ser informada"), Display(Name = "Classe")]
-        public String Classe { get; set; }
 
         //TODO Temporalidade - próximas iterações
         // Metadados 1.32 - Destinação prevista (O)

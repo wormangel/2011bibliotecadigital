@@ -4,7 +4,22 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalhes do subgrupo @Model.Nome</h2>
+
+<ul>
+    <li><a href="@Url.RouteUrl("Default", new { controller = "DocumentoArquivistico", action = "Create" })">Criar documento arquivístico</a></li>
+</ul>
+
+@if (Model.DocumentosArquivisticos.Count > 0)
+{
+    <h3>Documentos arquivísticos</h3>
+    <ul>
+    @foreach (var item in Model.DocumentosArquivisticos)
+    {
+        <li><a href="@Url.RouteUrl("Default", new { controller = "DocumentoArquivistico", action = "Details", id = item.Id })">@item.VersaoAtual.Titulo</a></li>
+    }
+    </ul>
+}
 
 <fieldset>
     <legend>Subgrupo</legend>
@@ -25,6 +40,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar metadados", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Voltar para subgrupos", "Index")
 </p>

@@ -54,9 +54,9 @@ namespace EntityAcessoADados.Gerenciadores
             _documentosArquivisticos.Salvar(documentoArquivistico);
         }
 
-        public void AdicionarDocumentoArquivistico(DocumentoArquivistico documentoArquivistico)
+        public void AdicionarDocumentoArquivistico(Classificacao classificacao, DocumentoArquivistico documentoArquivistico)
         {
-            _documentosArquivisticos.Adicionar(documentoArquivistico);
+            _documentosArquivisticos.Adicionar(classificacao, documentoArquivistico);
         }
 
         public void RemoverDocumentoArquivistico(long id)
@@ -157,9 +157,9 @@ namespace EntityAcessoADados.Gerenciadores
             return _subclasses.RecuperarPorId(id);
         }
 
-        public void AdicionarSubclasse(Subclasse subclasse)
+        public void AdicionarSubclasse(long idClasse, Subclasse subclasse)
         {
-            _subclasses.Adicionar(subclasse);
+            _subclasses.Adicionar(_classes.RecuperarPorId(idClasse), subclasse);
         }
 
         public void SalvarSubclasse(Subclasse subclasse)
@@ -174,9 +174,9 @@ namespace EntityAcessoADados.Gerenciadores
         #endregion
 
         #region Grupo
-        public void AdicionarGrupo(Grupo grupo)
+        public void AdicionarGrupo(long idClasse, long idSubclasse, Grupo grupo)
         {
-            _grupos.Adicionar(grupo);
+            _grupos.Adicionar(_subclasses.RecuperarPorId(idSubclasse), grupo);
         }
 
         public IQueryable<Grupo> RecuperarGrupos()
@@ -201,9 +201,9 @@ namespace EntityAcessoADados.Gerenciadores
         #endregion
 
         #region Subgrupo
-        public void AdicionarSubgrupo(Subgrupo subgrupo)
+        public void AdicionarSubgrupo(long idClasse, long idSubclasse, long idGrupo, Subgrupo subgrupo)
         {
-            _subgrupos.Adicionar(subgrupo);
+            _subgrupos.Adicionar(_grupos.RecuperarPorId(idGrupo), subgrupo);
         }
 
         public IQueryable<Subgrupo> RecuperarSubgrupos()
@@ -252,6 +252,24 @@ namespace EntityAcessoADados.Gerenciadores
         }
 
         #endregion
+        
+        public Classificacao RecuperarClassificacao(string classificacao, long idClassificacao)
+        {
+            switch (classificacao)
+            {
+                case "Classe":
+                    return _classes.RecuperarPorId(idClassificacao);
+                case "Subclasse":
+                    return _subclasses.RecuperarPorId(idClassificacao);
+                case "Grupo":
+                    return _grupos.RecuperarPorId(idClassificacao);
+                case "Subgrupo":
+                    return _subgrupos.RecuperarPorId(idClassificacao);
+                default:
+                    break;
+            }
+            return null;
+        }
     }
 
 }
