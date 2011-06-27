@@ -35,6 +35,10 @@ p, ul {
     line-height: 1.6em;
 }
 
+ul.inline li {
+    display: inline;
+}
+
 header,
 footer,
 nav,

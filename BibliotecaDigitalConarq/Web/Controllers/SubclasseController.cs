@@ -53,7 +53,7 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 _fachada.AdicionarSubclasse(idClasse, subclasse);
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { idClasse = idClasse, id = subclasse.Id });
             }
 
             return View(subclasse);
