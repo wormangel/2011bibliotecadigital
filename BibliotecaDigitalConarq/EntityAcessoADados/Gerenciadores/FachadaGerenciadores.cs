@@ -17,6 +17,7 @@ namespace EntityAcessoADados.Gerenciadores
         private readonly IGerenciadorSubclasses _subclasses;
         private readonly IGerenciadorGrupos _grupos;
         private readonly IGerenciadorSubgrupos _subgrupos;
+        private readonly IGerenciadorDeTemporalidade _temporalidades;
 
         public FachadaGerenciadores(IGerenciadorDocumentos documentos,
                                     IGerenciadorDocumentosArquivisticos documentosArquivisticos,
@@ -24,7 +25,8 @@ namespace EntityAcessoADados.Gerenciadores
                                     IGerenciadorClasses classes,
                                     IGerenciadorSubclasses subclasses,
                                     IGerenciadorGrupos grupos,
-                                    IGerenciadorSubgrupos subgrupos)
+                                    IGerenciadorSubgrupos subgrupos,
+                                    IGerenciadorDeTemporalidade temporalidades)
         {
             _documentosArquivisticos = documentosArquivisticos;
             _volumes = volumes;
@@ -33,6 +35,7 @@ namespace EntityAcessoADados.Gerenciadores
             _subclasses = subclasses;
             _grupos = grupos;
             _subgrupos = subgrupos;
+            _temporalidades = temporalidades;
         }
 
         #region DocumentoArquivistico
@@ -222,6 +225,32 @@ namespace EntityAcessoADados.Gerenciadores
         {
             _subgrupos.Remover(id);
         }
+
+        public IQueryable<Temporalidade> RecuperarTemporalidades()
+        {
+            return _temporalidades.RecuperarTemporalidades();
+        }
+
+        public Temporalidade RecuperarTemporalidadePorId(long id)
+        {
+            return _temporalidades.RecuperarPorId(id);
+        }
+
+        public void AdicionarTemporalidade(Temporalidade temporalidade)
+        {
+            _temporalidades.Adicionar(temporalidade);
+        }
+
+        public void SalvarTemporalidade(Temporalidade temporalidade)
+        {
+            _temporalidades.Salvar(temporalidade);
+        }
+
+        public void RemoverTemporalidade(long id)
+        {
+            _temporalidades.Remover(id);
+        }
+
         #endregion
     }
 

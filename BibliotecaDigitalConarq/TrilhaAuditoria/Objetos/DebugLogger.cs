@@ -51,5 +51,15 @@ namespace TrilhaAuditoria.Objetos
         {
             LogaAcaoDoArquivo(-1, -1, acao);
         }
+
+        public void LogaAcaoTemporalidade(long idTemporalidade, long usuario, string acao)
+        {
+            Console.WriteLine(new Log(TipoDoLog.Temporalidade, idTemporalidade, usuario, acao));
+        }
+
+        public void LogaAcaoTemporalidade(string temporalidade)
+        {
+            LogaAcaoDoArquivo(-1, -1, temporalidade);
+        }
     }
 }

@@ -67,6 +67,7 @@ namespace Web.App_Start
             kernel.Bind<IRepositorio<Grupo>>().To<Repositorio<Grupo>>();
             kernel.Bind<IRepositorio<Subgrupo>>().To<Repositorio<Subgrupo>>();
             kernel.Bind<IRepositorioArquivo>().To<RepositorioArquivo>();
+            kernel.Bind<IRepositorio<Temporalidade>>().To<Repositorio<Temporalidade>>();
             
             kernel.Bind<IFachadaGerenciadores>().To<FachadaGerenciadores>();
             kernel.Bind<IGerenciadorArquivos>().To<GerenciadorArquivos>();
@@ -77,7 +78,9 @@ namespace Web.App_Start
             kernel.Bind<IGerenciadorSubclasses>().To<GerenciadorSubclasses>();
             kernel.Bind<IGerenciadorGrupos>().To<GerenciadorGrupos>();
             kernel.Bind<IGerenciadorSubgrupos>().To<GerenciadorSubgrupos>();
-            
+
+            kernel.Bind<IGerenciadorDeTemporalidade>().To<GerenciadorDeTemporalidade>();
+
             kernel.Bind<DbContext>().To<ContextoAcessoADados>().InRequestScope();
         }
     }

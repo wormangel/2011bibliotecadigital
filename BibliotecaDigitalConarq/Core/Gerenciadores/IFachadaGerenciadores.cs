@@ -47,5 +47,11 @@ namespace Core.Gerenciadores
         Subgrupo RecuperarSubgrupoPorId(long id);
         void SalvarSubgrupo(Subgrupo subgrupo);
         void RemoverSubgrupo(long id);
+
+        IQueryable<Temporalidade> RecuperarTemporalidades();
+        Temporalidade RecuperarTemporalidadePorId(long id);
+        void AdicionarTemporalidade(Temporalidade temporalidade);
+        void SalvarTemporalidade(Temporalidade temporalidade);
+        void RemoverTemporalidade(long id);
     }
 }

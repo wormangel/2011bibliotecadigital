@@ -37,6 +37,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\LightInfocon\LightInfocon.GoldenIndex.General.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
     </Reference>
@@ -57,11 +58,13 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TesteCRUDClasses.cs" />
     <Compile Include="TesteCRUDGerenciadorArquivo.cs" />
     <Compile Include="TesteCRUDGerenciadorDocumentos.cs" />
     <Compile Include="TesteCRUDGerenciadorVolumes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TesteCRUDGerenciadorDocumentoArquivistico.cs" />
+    <Compile Include="TesteTemporalidade.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">

@@ -21,6 +21,8 @@ namespace EntityAcessoADados
         public DbSet<Grupo> Grupos { get; set; }
         public DbSet<Subgrupo> Subgrupos { get; set; }
 
+        public DbSet<Temporalidade> Temporalidades { get; set; }
+
         
         // String de conexão definida no app.config
         public ContextoAcessoADados() : base("BibliotecaConarq")

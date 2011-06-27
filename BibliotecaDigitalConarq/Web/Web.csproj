@@ -82,6 +82,7 @@
     <Compile Include="Controllers\DocumentoArquivisticoController.cs" />
     <Compile Include="Controllers\DocumentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TemporalidadeController.cs" />
     <Compile Include="Controllers\VolumeController.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="Global.asax.cs">
@@ -326,6 +327,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Documento\DetalhesVersao.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Temporalidade\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Temporalidade\Detalhes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Temporalidade\Criar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Temporalidade\Remover.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Temporalidade\Editar.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

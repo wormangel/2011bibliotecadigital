@@ -65,6 +65,7 @@
     <Compile Include="ContextoAcessoADados.cs" />
     <Compile Include="ContextoInitializer.cs" />
     <Compile Include="FullTextSearch.cs" />
+    <Compile Include="Gerenciadores\GerenciadorDeTemporalidade.cs" />
     <Compile Include="Gerenciadores\GerenciadorSubgrupos.cs" />
     <Compile Include="Gerenciadores\GerenciadorGrupos.cs" />
     <Compile Include="Gerenciadores\GerenciadorSubclasses.cs" />

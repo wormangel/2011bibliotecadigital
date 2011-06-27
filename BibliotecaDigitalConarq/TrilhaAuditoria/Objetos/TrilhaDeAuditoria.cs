@@ -64,7 +64,18 @@ namespace TrilhaAuditoria.Objetos
 
         public void LogaAcaoDoArquivo(string acao)
         {
-            throw new NotImplementedException();
+            LogaAcaoDoArquivo(-1, -1, acao);
+        }
+
+        public void LogaAcaoTemporalidade(long idTemporalidade, long usuario, string acao)
+        {
+            _repositorio.Adicionar(new Log(TipoDoLog.Temporalidade, idTemporalidade, usuario, acao));
+            _debugger.LogaAcaoTemporalidade(idTemporalidade, usuario, acao);
+        }
+
+        public void LogaAcaoTemporalidade(string acao)
+        {
+            LogaAcaoTemporalidade(-1, -1, acao);
         }
 
         #endregion

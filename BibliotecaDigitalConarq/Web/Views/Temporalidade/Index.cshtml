@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Core.Objetos.Temporalidade>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tabela de temporalidade</h2>
+
+<p>
+    @Html.ActionLink("Criar nova entrada na tabela", "Criar")
+</p>
+<table>
+    <tr>
+        <th>
+            Classe
+        </th>
+        <th>
+            Prazo de guarda (fase corrente)
+        </th>   
+        <th>
+            Prazo de guarda (fase intermediária)
+        </th>
+        <th>
+            Destinação final
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Classe.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrazoDeGuardaFaseCorrente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrazoDeGuardaFaseIntermediaria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DestinacaoFinal)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.Id }) |
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.Id }) |
+            @Html.ActionLink("Remover", "Remover", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
