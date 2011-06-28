@@ -19,9 +19,6 @@ namespace Web.Controllers
             _fachada = fachada;
         }
 
-        //
-        // GET: /DocumentoArquivistico/1/Volume/
-
         public ViewResult Index(long idDocArq)
         {
             IQueryable<Volume> volumes = _fachada.RecuperarVolumes();
@@ -30,27 +27,18 @@ namespace Web.Controllers
             return View(volumes);
         }
 
-        //
-        // GET: /DocumentoArquivistico/1/Volume/Details/5
-
-        public ViewResult Details(long idDocArq, long id)
+        public ViewResult Detalhes(long idDocArq, long id)
         {
             return View(_fachada.RecuperarVolumePorId(id));
         }
 
-        //
-        // GET: /DocumentoArquivistico/1/Volume/Create
-
-        public ActionResult Create(long idDocArq)
+        public ActionResult Criar(long idDocArq)
         {
             return View();
         }
 
-        //
-        // POST: /DocumentoArquivistico/1/Volume/Create
-
         [HttpPost]
-        public ActionResult Create(long idDocArq, VersaoVolume versaoSendoCriada)
+        public ActionResult Criar(long idDocArq, VersaoVolume versaoSendoCriada)
         {
             if (ModelState.IsValid)
             {
@@ -66,10 +54,7 @@ namespace Web.Controllers
             return View(versaoSendoCriada);
         }
 
-        //
-        // GET: /DocumentoArquivistico/1/Volume/Editar/5
-
-        public ActionResult Edit(long idDocArq, long id)
+        public ActionResult Editar(long idDocArq, long id)
         {
 
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
@@ -77,11 +62,8 @@ namespace Web.Controllers
             return View(new EditVolumeViewModel(volume));
         }
 
-        //
-        // POST: /DocumentoArquivistico/1/Volume/Editar/5
-
         [HttpPost]
-        public ActionResult Edit(long idDocArq, EditVolumeViewModel viewModel)
+        public ActionResult Editar(long idDocArq, EditVolumeViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -96,20 +78,14 @@ namespace Web.Controllers
             return View(viewModel);
         }
 
-        //
-        // GET: /DocumentoArquivistico/1/Volume/Delete/5
-
-        public ActionResult Delete(long idDocArq, long id)
+        public ActionResult Remover(long idDocArq, long id)
         {
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
             return View(_fachada.RecuperarVolumePorId(id));
         }
 
-        //
-        // POST: /DocumentoArquivistico/1/Volume/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(long idDocArq, long id)
+        [HttpPost, ActionName("Remover")]
+        public ActionResult RemoverConfirmed(long idDocArq, long id)
         {
             _fachada.RemoverVolume(id);
             return RedirectToAction("Index");

@@ -1,13 +1,13 @@
 ﻿@model IQueryable<Core.Objetos.Classificacoes.Subclasse>
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Listar";
 }
 
 <h2>Lista de subclasses</h2>
 
 <p>
-    @Html.ActionLink("Criar nova", "Create")
+    @Html.ActionLink("Criar nova", "Criar")
 </p>
 <table>
     <tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.Ativa)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Editar", "Editar", new { id=item.Id }) |
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.Id }) |
+            @Html.ActionLink("Remover", "Remover", new { id = item.Id })
         </td>
     </tr>
 }

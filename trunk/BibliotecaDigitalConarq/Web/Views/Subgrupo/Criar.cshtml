@@ -1,10 +1,10 @@
-﻿@model Core.Objetos.Classificacoes.Classe
+﻿@model Core.Objetos.Classificacoes.Subgrupo
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Criar";
 }
 
-<h2>Criar classe</h2>
+<h2>Criar</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
@@ -12,7 +12,7 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Classe</legend>
+        <legend>Subgrupo</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Nome)
@@ -45,5 +45,5 @@
 }
 
 <div>
-    @Html.ActionLink("Voltar para classes", "Index")
+    @Html.ActionLink("Voltar", "Index")
 </div>

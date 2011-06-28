@@ -1,7 +1,7 @@
-﻿@model Core.Objetos.Classificacoes.Grupo
+﻿@model Core.Objetos.Classificacoes.Subclasse
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Criar";
 }
 
 <h2>Create</h2>
@@ -12,7 +12,7 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Grupo</legend>
+        <legend>Subclasse</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Nome)
@@ -39,11 +39,11 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Criar" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para subclasses", "Index")
 </div>

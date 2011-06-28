@@ -1,14 +1,14 @@
 ﻿@model Core.Objetos.Classificacoes.Classe
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
 }
 
 <h2>Detalhes da classe @Model.Nome</h2>
 
 <ul>
-    <li><a href="@Url.RouteUrl("Subclasse", new { action = "Create", idClasse = Model.Id })">Criar subclasse</a></li>
-    <li><a href="@Url.RouteUrl("DocumentoArquivistico", new { classificacao = "Classe", idClassificacao = Model.Id, action = "Create" })">Criar documento arquivístico</a></li>
+    <li><a href="@Url.RouteUrl("Subclasse", new { action = "Criar", idClasse = Model.Id })">Criar subclasse</a></li>
+    <li><a href="@Url.RouteUrl("DocumentoArquivistico", new { classificacao = "Classe", idClassificacao = Model.Id, action = "Criar" })">Criar documento arquivístico</a></li>
 </ul>
 
 @if (Model.Subclasses.Count > 0)
@@ -17,7 +17,7 @@
     <ul>
     @foreach (var item in Model.Subclasses)
     {
-        <li><a href="@Url.RouteUrl("Subclasse", new { action = "Details", idClasse = Model.Id, id = item.Id })">@item.Nome</a></li>
+        <li><a href="@Url.RouteUrl("Subclasse", new { action = "Detalhes", idClasse = Model.Id, id = item.Id })">@item.Nome</a></li>
     }
     </ul>
 }
@@ -28,7 +28,7 @@
     <ul>
     @foreach (var item in Model.DocumentosArquivisticos)
     {
-        <li><a href="@Url.RouteUrl("Default", new { controller = "DocumentoArquivistico", action = "Details", id = item.Id })">@item.VersaoAtual.Titulo</a></li>
+        <li><a href="@Url.RouteUrl("Default", new { controller = "DocumentoArquivistico", action = "Detalhes", id = item.Id })">@item.VersaoAtual.Titulo</a></li>
     }
     </ul>
 }
@@ -52,6 +52,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Editar metadados", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Editar metadados", "Editar", new { id=Model.Id }) |
     @Html.ActionLink("Voltar para as classes", "Index")
 </p>

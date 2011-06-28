@@ -19,59 +19,41 @@ namespace Web.Controllers
         {
             this._fachada = fachada;
         }
-        
-        //
-        // GET: /Classe/
 
         public ViewResult Index(int idClasse)
         {
             return View(_fachada.RecuperarSubclasses());
         }
 
-        //
-        // GET: /Classe/Details/5
-
-        public ViewResult Details(int idClasse, int id)
+        public ViewResult Detalhes(int idClasse, int id)
         {
             return View(_fachada.RecuperarSubclassePorId(id));
         }
 
-        //
-        // GET: /Classe/Create
-
-        public ViewResult Create()
+        public ViewResult Criar()
         {
             return View();
         } 
 
-        //
-        // POST: /Classe/Create
-
         [HttpPost]
-        public ActionResult Create(int idClasse, Subclasse subclasse)
+        public ActionResult Criar(int idClasse, Subclasse subclasse)
         {
             if (ModelState.IsValid)
             {
                 _fachada.AdicionarSubclasse(idClasse, subclasse);
-                return RedirectToAction("Details", new { idClasse = idClasse, id = subclasse.Id });
+                return RedirectToAction("Detalhes", new { idClasse = idClasse, id = subclasse.Id });
             }
 
             return View(subclasse);
         }
-        
-        //
-        // GET: /Classe/Edit/5
 
-        public ViewResult Edit(int idClasse, int id)
+        public ViewResult Editar(int idClasse, int id)
         {
             return View(_fachada.RecuperarSubclassePorId(id));
         }
 
-        //
-        // POST: /Classe/Edit/5
-
         [HttpPost]
-        public ActionResult Edit(int idClasse, Subclasse subclasse)
+        public ActionResult Editar(int idClasse, Subclasse subclasse)
         {
             if (ModelState.IsValid)
             {
@@ -81,19 +63,13 @@ namespace Web.Controllers
             return View(subclasse);
         }
 
-        //
-        // GET: /Classe/Delete/5
-
-        public ViewResult Delete(int idClasse, int id)
+        public ViewResult Remover(int idClasse, int id)
         {
             return View(_fachada.RecuperarSubclassePorId(id));
         }
 
-        //
-        // POST: /Classe/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int idClasse, int id)
+        [HttpPost, ActionName("Remover")]
+        public ActionResult RemoverConfirmed(int idClasse, int id)
         {
             _fachada.RemoverSubclasse(id);
             return RedirectToAction("Index");

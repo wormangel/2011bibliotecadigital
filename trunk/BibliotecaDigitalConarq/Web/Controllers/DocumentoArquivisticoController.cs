@@ -18,35 +18,23 @@ namespace Web.Controllers
             _fachada = fachada;
         }
 
-        //
-        // GET: /DocumentoArquivistico/
-
         public ViewResult Index()
         {
             return View(_fachada.RecuperarDocumentosArquivisticos());
         }
 
-        //
-        // GET: /DocumentoArquivistico/Details/5
-
-        public ViewResult Details(long id)
+        public ViewResult Detalhes(long id)
         {
             return View(_fachada.RecuperarDocumentoArquivisticoPorId(id));
         }
 
-        //
-        // GET: /DocumentoArquivistico/Create
-
-        public ActionResult Create()
+        public ActionResult Criar()
         {
             return View();
         }
 
-        //
-        // POST: /DocumentoArquivistico/Create
-
         [HttpPost]
-        public ActionResult Create(string classificacao, long idClassificacao, VersaoDocumentoArquivistico versaoSendoCriada)
+        public ActionResult Criar(string classificacao, long idClassificacao, VersaoDocumentoArquivistico versaoSendoCriada)
         {
             if (ModelState.IsValid)
             {
@@ -62,21 +50,15 @@ namespace Web.Controllers
             return View(versaoSendoCriada);
         }
 
-        //
-        // GET: /DocumentoArquivistico/Editar/5
-
-        public ActionResult Edit(long id)
+        public ActionResult Editar(long id)
         {
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
             DocumentoArquivistico docArq = _fachada.RecuperarDocumentoArquivisticoPorId(id);
             return View(new EditDocumentoArquivisticoViewModel(docArq));
         }
 
-        //
-        // POST: /DocumentoArquivistico/Editar/5
-
         [HttpPost]
-        public ActionResult Edit(EditDocumentoArquivisticoViewModel viewModel)
+        public ActionResult Editar(EditDocumentoArquivisticoViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -91,20 +73,14 @@ namespace Web.Controllers
             return View(viewModel);
         }
 
-        //
-        // GET: /DocumentoArquivistico/Delete/5
-
-        public ActionResult Delete(long id)
+        public ActionResult Remover(long id)
         {
             // mesma coisa do details, ver se tem como reaproveitar algo (DRY!)
             return View(_fachada.RecuperarDocumentoArquivisticoPorId(id));
         }
 
-        //
-        // POST: /DocumentoArquivistico/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(long id)
+        [HttpPost, ActionName("Remover")]
+        public ActionResult RemoverConfirmed(long id)
         {
             _fachada.RemoverDocumentoArquivistico(id);
             return RedirectToAction("Index");

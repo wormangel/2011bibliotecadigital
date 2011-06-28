@@ -30,7 +30,7 @@ namespace Web.Controllers
         //
         // GET: /Arquivo/Details/5
 
-        public ActionResult Details(long idDocArq, long idVol, long idDoc, int id)
+        public ActionResult Detalhes(long idDocArq, long idVol, long idDoc, int id)
         {
             return View(_servico.RecuperarPorId(id));
         }
@@ -38,7 +38,7 @@ namespace Web.Controllers
         //
         // GET: /Arquivo/Create
 
-        public ActionResult Create(long idDocArq, long idVol, long idDoc)
+        public ActionResult Criar(long idDocArq, long idVol, long idDoc)
         {
             return View();
         }
@@ -47,7 +47,7 @@ namespace Web.Controllers
         // POST: /Arquivo/Create
 
         [HttpPost]
-        public ActionResult Create(long idDocArq, long idVol, long idDoc, CreateArquivoViewModel viewModel)
+        public ActionResult Criar(long idDocArq, long idVol, long idDoc, CreateArquivoViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace Web.Controllers
         //
         // GET: /Arquivo/Edit/5
 
-        public ActionResult Edit(long idDocArq, long idVol, long idDoc, int id)
+        public ActionResult Editar(long idDocArq, long idVol, long idDoc, int id)
         {
             return View(_servico.RecuperarPorId(id));
         }
@@ -76,7 +76,7 @@ namespace Web.Controllers
         // POST: /Arquivo/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(long idDocArq, long idVol, long idDoc, Arquivo arquivo)
+        public ActionResult Editar(long idDocArq, long idVol, long idDoc, Arquivo arquivo)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace Web.Controllers
         //
         // GET: /Arquivo/Delete/5
 
-        public ActionResult Delete(long idDocArq, long idVol, long idDoc, int id)
+        public ActionResult Remover(long idDocArq, long idVol, long idDoc, int id)
         {
             return View(_servico.RecuperarPorId(id));
         }
@@ -97,8 +97,8 @@ namespace Web.Controllers
         //
         // POST: /Arquivo/Delete/5
 
-        [HttpPost]
-        public ActionResult DeleteConfirmed(long idDocArq, long idVol, long idDoc, int id)
+        [HttpPost, ActionName("Remover")]
+        public ActionResult RemoverConfirmed(long idDocArq, long idVol, long idDoc, int id)
         {
             _servico.Remover(id);
             return RedirectToAction("Index");

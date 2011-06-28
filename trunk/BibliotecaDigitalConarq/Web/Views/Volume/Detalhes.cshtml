@@ -13,7 +13,7 @@
 
     <div class="display-label">Nr. doc. arquivístico</div>
     <div class="display-field">
-        <a href="@Url.RouteUrl("Default", new { controller = "DocumentoArquivistico", id = Model.IdProcessoDossie, action = "Details" })">@Html.DisplayFor(model => model.NumeroDoProcessoOuDossie)</a>
+        <a href="@Url.RouteUrl("Default", new { controller = "DocumentoArquivistico", id = Model.IdProcessoDossie, action = "Detalhes" })">@Html.DisplayFor(model => model.NumeroDoProcessoOuDossie)</a>
     </div>
 
     <div class="display-label">Tipo do meio</div>
@@ -36,7 +36,7 @@
         @Html.DisplayFor(model => model.VersaoAtual.Localizacao)
     </div>
     
-    <div class="display-label">Documentos <a href="@Url.RouteUrl("Documento", new { idDocArq = Model.IdProcessoDossie, idVol = Model.Id, action = "Create" })">Criar documento</a></div>
+    <div class="display-label">Documentos <a href="@Url.RouteUrl("Documento", new { idDocArq = Model.IdProcessoDossie, idVol = Model.Id, action = "Criar" })">Criar documento</a></div>
     <div class="display-field">
         @if (Model.Documentos != null)
         {
@@ -50,6 +50,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
     @Html.ActionLink("Voltar para a lista", "Index")
 </p>

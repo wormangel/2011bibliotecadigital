@@ -101,9 +101,9 @@
             @Html.DisplayFor(modelItem => item.VersaoAtual.Localizacao)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Visualizar", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Remover", "Delete", new { id=item.Id })
+            @Html.ActionLink("Editar", "Editar", new { id=item.Id }) |
+            @Html.ActionLink("Visualizar", "Detalhes", new { id=item.Id }) |
+            @Html.ActionLink("Remover", "Remover", new { id=item.Id })
         </td>
     </tr>
 }

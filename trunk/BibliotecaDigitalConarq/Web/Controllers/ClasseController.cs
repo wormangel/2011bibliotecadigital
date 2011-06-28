@@ -31,7 +31,7 @@ namespace Web.Controllers
         //
         // GET: /Classe/Details/5
 
-        public ViewResult Details(int id)
+        public ViewResult Detalhes(int id)
         {
             return View(_fachada.RecuperarClassePorId(id));
         }
@@ -39,7 +39,7 @@ namespace Web.Controllers
         //
         // GET: /Classe/Create
 
-        public ViewResult Create()
+        public ViewResult Criar()
         {
             return View();
         } 
@@ -48,12 +48,12 @@ namespace Web.Controllers
         // POST: /Classe/Create
 
         [HttpPost]
-        public ActionResult Create(Classe classe)
+        public ActionResult Criar(Classe classe)
         {
             if (ModelState.IsValid)
             {
                 _fachada.AdicionarClasse(classe);
-                return RedirectToAction("Details", new { id = classe.Id });
+                return RedirectToAction("Detalhes", new { id = classe.Id });
             }
 
             return View(classe);
@@ -62,7 +62,7 @@ namespace Web.Controllers
         //
         // GET: /Classe/Edit/5
 
-        public ViewResult Edit(int id)
+        public ViewResult Editar(int id)
         {
             return View(_fachada.RecuperarClassePorId(id));
         }
@@ -71,7 +71,7 @@ namespace Web.Controllers
         // POST: /Classe/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Classe classe)
+        public ActionResult Editar(Classe classe)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace Web.Controllers
         //
         // GET: /Classe/Delete/5
 
-        public ViewResult Delete(int id)
+        public ViewResult Remover(int id)
         {
             return View(_fachada.RecuperarClassePorId(id));
         }
@@ -92,8 +92,8 @@ namespace Web.Controllers
         //
         // POST: /Classe/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost, ActionName("Remover")]
+        public ActionResult RemoverConfirmed(int id)
         {
             _fachada.RemoverClasse(id);
             return RedirectToAction("Index");

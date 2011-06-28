@@ -1,10 +1,10 @@
 ﻿@model Core.Objetos.Arquivo
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <fieldset>
     <legend>Arquivo</legend>
@@ -50,6 +50,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ArquivoId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Editar", new { id=Model.ArquivoId }) |
+    @Html.ActionLink("Retornar para a lista", "Index")
 </p>
