@@ -1,15 +1,15 @@
 ﻿@model Web.ViewModels.Arquivo.CreateArquivoViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Criar";
 }
 
-<h2>Create</h2>
+<h2>Criar</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-<form method="post" action="@Url.Action("Create")" enctype="multipart/form-data">
+<form method="post" action="@Url.Action("Criar")" enctype="multipart/form-data">
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Arquivo</legend>
@@ -63,11 +63,11 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Criar" />
         </p>
     </fieldset>
 </form>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Retornar para a lista", "Index")
 </div>

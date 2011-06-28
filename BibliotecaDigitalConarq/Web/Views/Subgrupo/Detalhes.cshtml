@@ -1,13 +1,13 @@
 ﻿@model Core.Objetos.Classificacoes.Subgrupo
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
 }
 
 <h2>Detalhes do subgrupo @Model.Nome</h2>
 
 <ul>
-    <li><a href="@Url.RouteUrl("Default", new { controller = "DocumentoArquivistico", action = "Create" })">Criar documento arquivístico</a></li>
+    <li><a href="@Url.RouteUrl("DocumentoArquivistico", new { classificacao = "Classe", idClassificacao = Model.Grupo.Subclasse.Classe.Id, action = "Criar" })">Criar documento arquivístico</a></li>
 </ul>
 
 @if (Model.DocumentosArquivisticos.Count > 0)
@@ -16,7 +16,7 @@
     <ul>
     @foreach (var item in Model.DocumentosArquivisticos)
     {
-        <li><a href="@Url.RouteUrl("Default", new { controller = "DocumentoArquivistico", action = "Details", id = item.Id })">@item.VersaoAtual.Titulo</a></li>
+        <li><a href="@Url.RouteUrl("Default", new { controller = "DocumentoArquivistico", action = "Detalhes", id = item.Id })">@item.VersaoAtual.Titulo</a></li>
     }
     </ul>
 }
@@ -40,5 +40,5 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Editar metadados", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Editar metadados", "Editar", new { id=Model.Id }) |
 </p>

@@ -1,27 +1,27 @@
-﻿@if (!ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Index") && !ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Create"))
+﻿@if (!ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Index") && !ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Criar"))
 {
     <ul class="inline">
-    @if (ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.Equals("Classe") && !ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Create"))
+    @if (ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.Equals("Classe") && !ViewContext.Controller.ValueProvider.GetValue("action").RawValue.Equals("Criar"))
     {
-        <li><a href="@Url.RouteUrl("Default", new { id = ViewContext.RouteData.Values.Values.ElementAt(2), controller = "Classe", action = "Details" })">@Model.Nome</a></li>
+        <li><a href="@Url.RouteUrl("Default", new { id = ViewContext.RouteData.Values.Values.ElementAt(2), controller = "Classe", action = "Detalhes" })">@Model.Nome</a></li>
     }
     @if (ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.Equals("Subclasse"))
     {
-        <li><a href="@Url.RouteUrl("Default", new { id = ViewContext.RouteData.Values.Values.ElementAt(0), controller = "Classe", action = "Details" })">@Model.Classe.Nome</a></li>
-        <li>> <a href="@Url.RouteUrl("Subclasse", new { idClasse = ViewContext.RouteData.Values.Values.ElementAt(0), id = ViewContext.RouteData.Values.Values.ElementAt(2), action = "Details" })">@Model.Nome</a></li>
+        <li><a href="@Url.RouteUrl("Default", new { id = ViewContext.RouteData.Values.Values.ElementAt(0), controller = "Classe", action = "Detalhes" })">@Model.Classe.Nome</a></li>
+        <li>> <a href="@Url.RouteUrl("Subclasse", new { idClasse = ViewContext.RouteData.Values.Values.ElementAt(0), id = ViewContext.RouteData.Values.Values.ElementAt(2), action = "Detalhes" })">@Model.Nome</a></li>
     }
     @if (ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.Equals("Grupo"))
     {
-        <li><a href="@Url.RouteUrl("Default", new { id = ViewContext.RouteData.Values.Values.ElementAt(0), controller = "Classe", action = "Details" })">@Model.Subclasse.Classe.Nome</a></li>
-        <li>> <a href="@Url.RouteUrl("Subclasse", new { idClasse = ViewContext.RouteData.Values.Values.ElementAt(0), id = ViewContext.RouteData.Values.Values.ElementAt(1), action = "Details" })">@Model.Subclasse.Nome</a></li>
-        <li>> <a href="@Url.RouteUrl("Grupo", new { idClasse = ViewContext.RouteData.Values.Values.ElementAt(0), idSubclasse = ViewContext.RouteData.Values.Values.ElementAt(1), id = ViewContext.RouteData.Values.Values.ElementAt(3), action = "Details" })">@Model.Nome</a></li>
+        <li><a href="@Url.RouteUrl("Default", new { id = ViewContext.RouteData.Values.Values.ElementAt(0), controller = "Classe", action = "Detalhes" })">@Model.Subclasse.Classe.Nome</a></li>
+        <li>> <a href="@Url.RouteUrl("Subclasse", new { idClasse = ViewContext.RouteData.Values.Values.ElementAt(0), id = ViewContext.RouteData.Values.Values.ElementAt(1), action = "Detalhes" })">@Model.Subclasse.Nome</a></li>
+        <li>> <a href="@Url.RouteUrl("Grupo", new { idClasse = ViewContext.RouteData.Values.Values.ElementAt(0), idSubclasse = ViewContext.RouteData.Values.Values.ElementAt(1), id = ViewContext.RouteData.Values.Values.ElementAt(3), action = "Detalhes" })">@Model.Nome</a></li>
     }
     @if (ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.Equals("Subgrupo"))
     {
-        <li><a href="@Url.RouteUrl("Default", new { id = ViewContext.RouteData.Values.Values.ElementAt(0), controller = "Classe", action = "Details" })">@Model.Grupo.Subclasse.Classe.Nome</a></li>
-        <li>> <a href="@Url.RouteUrl("Subclasse", new { idClasse = ViewContext.RouteData.Values.Values.ElementAt(0), id = ViewContext.RouteData.Values.Values.ElementAt(1), action = "Details" })">@Model.Grupo.Subclasse.Nome</a></li>
-        <li>> <a href="@Url.RouteUrl("Grupo", new { idClasse = ViewContext.RouteData.Values.Values.ElementAt(0), idSubclasse = ViewContext.RouteData.Values.Values.ElementAt(1), id = ViewContext.RouteData.Values.Values.ElementAt(2), action = "Details" })">@Model.Grupo.Nome</a></li>
-        <li>> <a href="@Url.RouteUrl("Subgrupo", new { idClasse = ViewContext.RouteData.Values.Values.ElementAt(0), idSubclasse = ViewContext.RouteData.Values.Values.ElementAt(1), idGrupo = ViewContext.RouteData.Values.Values.ElementAt(2), id = ViewContext.RouteData.Values.Values.ElementAt(4), action = "Details" })">@Model.Nome</a></li>
+        <li><a href="@Url.RouteUrl("Default", new { id = ViewContext.RouteData.Values.Values.ElementAt(0), controller = "Classe", action = "Detalhes" })">@Model.Grupo.Subclasse.Classe.Nome</a></li>
+        <li>> <a href="@Url.RouteUrl("Subclasse", new { idClasse = ViewContext.RouteData.Values.Values.ElementAt(0), id = ViewContext.RouteData.Values.Values.ElementAt(1), action = "Detalhes" })">@Model.Grupo.Subclasse.Nome</a></li>
+        <li>> <a href="@Url.RouteUrl("Grupo", new { idClasse = ViewContext.RouteData.Values.Values.ElementAt(0), idSubclasse = ViewContext.RouteData.Values.Values.ElementAt(1), id = ViewContext.RouteData.Values.Values.ElementAt(2), action = "Detalhes" })">@Model.Grupo.Nome</a></li>
+        <li>> <a href="@Url.RouteUrl("Subgrupo", new { idClasse = ViewContext.RouteData.Values.Values.ElementAt(0), idSubclasse = ViewContext.RouteData.Values.Values.ElementAt(1), idGrupo = ViewContext.RouteData.Values.Values.ElementAt(2), id = ViewContext.RouteData.Values.Values.ElementAt(4), action = "Detalhes" })">@Model.Nome</a></li>
     }
     </ul>
 }

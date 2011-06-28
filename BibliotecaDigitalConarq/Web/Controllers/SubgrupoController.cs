@@ -19,59 +19,41 @@ namespace Web.Controllers
         {
             this._fachada = fachada;
         }
-        
-        //
-        // GET: /Classe/
 
         public ViewResult Index(int idClasse, int idSubclasse, int idGrupo)
         {
             return View(_fachada.RecuperarSubgrupos());
         }
 
-        //
-        // GET: /Classe/Details/5
-
-        public ViewResult Details(int idClasse, int idSubclasse, int idGrupo, int id)
+        public ViewResult Detalhes(int idClasse, int idSubclasse, int idGrupo, int id)
         {
             return View(_fachada.RecuperarSubgrupoPorId(id));
         }
 
-        //
-        // GET: /Classe/Create
-
-        public ViewResult Create(int idClasse, int idSubclasse, int idGrupo)
+        public ViewResult Criar(int idClasse, int idSubclasse, int idGrupo)
         {
             return View();
         } 
 
-        //
-        // POST: /Classe/Create
-
         [HttpPost]
-        public ActionResult Create(int idClasse, int idSubclasse, int idGrupo, Subgrupo subgrupo)
+        public ActionResult Criar(int idClasse, int idSubclasse, int idGrupo, Subgrupo subgrupo)
         {
             if (ModelState.IsValid)
             {
                 _fachada.AdicionarSubgrupo(idClasse, idSubclasse, idGrupo, subgrupo);
-                return RedirectToAction("Details", new { idClasse = idClasse, idSubclasse = idSubclasse, idGrupo = idGrupo, id = subgrupo.Id });
+                return RedirectToAction("Detalhes", new { idClasse = idClasse, idSubclasse = idSubclasse, idGrupo = idGrupo, id = subgrupo.Id });
             }
 
             return View(subgrupo);
         }
-        
-        //
-        // GET: /Classe/Edit/5
 
-        public ViewResult Edit(int idClasse, int idSubclasse, int idGrupo, int id)
+        public ViewResult Editar(int idClasse, int idSubclasse, int idGrupo, int id)
         {
             return View(_fachada.RecuperarSubgrupoPorId(id));
         }
 
-        //
-        // POST: /Classe/Edit/5
-
         [HttpPost]
-        public ActionResult Edit(int idClasse, int idSubclasse, int idGrupo, Subgrupo subgrupo)
+        public ActionResult Editar(int idClasse, int idSubclasse, int idGrupo, Subgrupo subgrupo)
         {
             if (ModelState.IsValid)
             {
@@ -81,19 +63,13 @@ namespace Web.Controllers
             return View(subgrupo);
         }
 
-        //
-        // GET: /Classe/Delete/5
-
-        public ViewResult Delete(int idClasse, int idSubclasse, int idGrupo, int id)
+        public ViewResult Remover(int idClasse, int idSubclasse, int idGrupo, int id)
         {
             return View(_fachada.RecuperarSubgrupoPorId(id));
         }
 
-        //
-        // POST: /Classe/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int idClasse, int idSubclasse, int idGrupo, int id)
+        [HttpPost, ActionName("Remover")]
+        public ActionResult RemoverConfirmed(int idClasse, int idSubclasse, int idGrupo, int id)
         {
             _fachada.RemoverSubgrupo(id);
             return RedirectToAction("Index");

@@ -7,7 +7,7 @@
 <h2>Lista de grupos</h2>
 
 <p>
-    @Html.ActionLink("Criar grupo", "Create")
+    @Html.ActionLink("Criar grupo", "Criar")
 </p>
 <table>
     <tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.Ativa)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Remover", "Delete", new { id=item.Id })
+            @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.Id }) |
+            @Html.ActionLink("Remover", "Remover", new { id = item.Id })
         </td>
     </tr>
 }
