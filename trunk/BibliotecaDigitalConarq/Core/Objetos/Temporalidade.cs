@@ -14,12 +14,6 @@ namespace Core.Objetos
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
-        public virtual Classe Classe { get; set; }
-
-        [Required(ErrorMessage = "Deve ser informada uma classe"), ForeignKey("Classe")]
-        [DisplayName("Classe")]
-        public long IdClasse { get; set; }
-
         [Required(ErrorMessage = "O prazo de guarda deve ser informado")]
         [DisplayName("Prazo de guarda (fase corrente)")]
         public int PrazoDeGuardaFaseCorrente { get; set; }
