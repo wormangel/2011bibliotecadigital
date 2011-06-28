@@ -8,5 +8,7 @@ namespace Core.Objetos.Classificacoes
     {
         [Display(Name = "Subclasses contidos nesta classe")]
         public virtual ICollection<Subclasse> Subclasses { get; set; }
+
+        public virtual Temporalidade Temporalidade { get; set; }
     }
 }

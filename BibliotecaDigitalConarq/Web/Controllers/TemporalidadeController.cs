@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Core.Gerenciadores;
 using Core.Objetos;
+using Core.Objetos.Classificacoes;
 using Ninject;
 
 namespace Web.Controllers
@@ -19,52 +20,60 @@ namespace Web.Controllers
         {
             _fachada = fachada;
         }
-        //
-        // GET: /Temporalidade/
 
         public ActionResult Index()
         {
-            return View(_fachada.RecuperarTemporalidades());
+            IQueryable<Classe> classes = _fachada.RecuperarClasses();
+
+            return View(classes);
         }
 
-        public ActionResult Detalhes(long id)
+        public ActionResult Detalhes(long idClasse)
         {
-            return View(_fachada.RecuperarTemporalidadePorId(id));
+            return View(_fachada.RecuperarClassePorId(idClasse));
         }
 
-        public ActionResult Criar()
+        public ActionResult Criar(long idClasse)
         {
+            Classe classe = _fachada.RecuperarClassePorId(idClasse);
+            ViewBag.NomeDaClasse = classe.Nome;
             return View();
         }
 
         [HttpPost]
-        public ActionResult Criar(Temporalidade temporalidade)
+        public ActionResult Criar(long idClasse, Temporalidade temporalidade)
         {
             if (ModelState.IsValid)
             {
-                _fachada.AdicionarTemporalidade(temporalidade);
+                Classe classe = _fachada.RecuperarClassePorId(idClasse);
+                classe.Temporalidade = temporalidade;
+
+                _fachada.SalvarClasse(classe);
                 return RedirectToAction("Index");
             }
 
-            return View(temporalidade);
+            return View(idClasse);
         }
 
-        public ActionResult Remover(long id)
+        public ActionResult Remover(long idClasse)
         {
-            return View(_fachada.RecuperarTemporalidadePorId(id));
+            return View(_fachada.RecuperarClassePorId(idClasse));
         }
 
         [HttpPost, ActionName("Remover")]
-        public ActionResult RemoverConfirmed(long id)
+        public ActionResult RemoverConfirmed(long idClasse)
         {
-            _fachada.RemoverTemporalidade(id);
+            Classe classe = _fachada.RecuperarClassePorId(idClasse);
+            classe.Temporalidade = null;
+            _fachada.SalvarClasse(classe);
+            _fachada.RemoverTemporalidade(idClasse);
             return RedirectToAction("Index");
         }
 
-        public ActionResult Editar(long id)
+        public ActionResult Editar(long idClasse)
         {
-            Temporalidade temporalidade = _fachada.RecuperarTemporalidadePorId(id);
-            return View(temporalidade);
+            Classe classe = _fachada.RecuperarClassePorId(idClasse);
+            return View(classe.Temporalidade);
         }
 
         [HttpPost]

@@ -1,4 +1,4 @@
-﻿@model Core.Objetos.Temporalidade
+﻿@model Core.Objetos.Classificacoes.Classe
 @using Web.Extensions
 
 @{
@@ -12,30 +12,30 @@
 
     <div class="display-label">Classe</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Classe.Nome)
+        @Html.DisplayFor(model => model.Nome)
     </div>
 
     <div class="display-label">Prazo de guarda (fase corrente)</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.PrazoDeGuardaFaseCorrente)
+        @Html.DisplayFor(model => model.Temporalidade.PrazoDeGuardaFaseCorrente)
     </div>
 
     <div class="display-label">Prazo de guarda (fase intermediária)</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.PrazoDeGuardaFaseIntermediaria)
+        @Html.DisplayFor(model => model.Temporalidade.PrazoDeGuardaFaseIntermediaria)
     </div>
 
     <div class="display-label">Destinação final</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.DestinacaoFinal)
+        @Model.Temporalidade.DestinacaoFinal.Description()
     </div>
 
     <div class="display-label">Observações</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Observacoes)
+        @Html.DisplayFor(model => model.Temporalidade.Observacoes)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edita", "Editar", new { id=Model.Id }) |
+    @Html.ActionLink("Editar", "Editar", new { idClasse=Model.Id }) |
     @Html.ActionLink("Voltar para lista", "Index")
 </p>
